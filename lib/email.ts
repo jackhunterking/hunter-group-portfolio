@@ -97,7 +97,7 @@ function buildEmailHtml({
           <!-- Header -->
           <tr>
             <td style="background:#000000;padding:32px;text-align:center;">
-              <img src="${siteUrl}/logos/HUNTER_PrimaryLogo_WhiteGold.png" alt="Jack Hunter Real Estate" height="40" style="height:40px;width:auto;display:inline-block;">
+              <img src="${siteUrl}/logos/HUNTER_Brandmark_Gold.png" alt="Jack Hunter Real Estate" height="40" style="height:40px;width:40px;display:inline-block;">
             </td>
           </tr>
 

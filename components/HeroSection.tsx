@@ -34,10 +34,10 @@ export default function HeroSection() {
         <div className={`container ${styles.topbarInner}`}>
           <a href="/" className={styles.logoHunter} aria-label="Jack Hunter Real Estate">
             <Image
-              src="/logos/HUNTER_PrimaryLogo_WhiteGold.png"
+              src="/logos/HUNTER_Brandmark_Gold.png"
               alt="Jack Hunter Real Estate"
-              width={194}
-              height={72}
+              width={80}
+              height={80}
               priority
             />
           </a>

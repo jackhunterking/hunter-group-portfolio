@@ -34,8 +34,8 @@ export default function Nav({ overlayHero = true, theme = "light" }: NavProps) {
 
   const logoSrc =
     theme === "light"
-      ? "/logos/HUNTER_PrimaryLogo_WhiteGold.png"
-      : "/logos/HUNTER_PrimaryLogo_BlackBlue.png";
+      ? "/logos/HUNTER_Brandmark_Gold.png"
+      : "/logos/HUNTER_Brandmark_Black.png";
 
   const classes = [
     styles.nav,
@@ -54,8 +54,8 @@ export default function Nav({ overlayHero = true, theme = "light" }: NavProps) {
           <Image
             src={logoSrc}
             alt="Jack Hunter Real Estate"
-            width={194}
-            height={72}
+            width={80}
+            height={80}
             priority
           />
         </Link>
