@@ -1,0 +1,81 @@
+.guides {
+  background: var(--paper);
+  padding: 120px 0;
+  position: relative;
+}
+
+.guides::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background-image: url("/logos/HUNTER_Brandmark_Gold.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.025;
+  pointer-events: none;
+}
+
+.guidesHead {
+  text-align: center;
+  margin-bottom: 72px;
+  position: relative;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin-bottom: 24px;
+}
+
+.hairline {
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background: currentColor;
+  vertical-align: middle;
+  margin-right: 14px;
+  opacity: 0.6;
+}
+
+.hairlineRight {
+  margin-left: 14px;
+  margin-right: 0;
+}
+
+.guidesTitle {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(40px, 6.5vw, 64px);
+  line-height: 1;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+}
+
+.guidesTitle em {
+  font-style: italic;
+  color: var(--navy);
+}
+
+.guideGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  position: relative;
+}
+
+@media (min-width: 800px) {
+  .guideGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+}

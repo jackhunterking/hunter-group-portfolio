@@ -1,0 +1,160 @@
+.services {
+  background: var(--ink);
+  color: var(--white);
+  padding: 120px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.services::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -8%;
+  width: 600px;
+  height: 600px;
+  background-image: url("/logos/HUNTER_Brandmark_Gold.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.03;
+  pointer-events: none;
+}
+
+.head {
+  text-align: center;
+  margin-bottom: 72px;
+  position: relative;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
+}
+
+.hairline {
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background: currentColor;
+  vertical-align: middle;
+  margin-right: 14px;
+  opacity: 0.6;
+}
+
+.title {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(40px, 6.5vw, 64px);
+  line-height: 1;
+  letter-spacing: -0.025em;
+  color: var(--white);
+}
+
+.title em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1px;
+  background: var(--hairline);
+  margin-bottom: 64px;
+  position: relative;
+}
+
+@media (min-width: 760px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.card {
+  background: var(--ink);
+  padding: 48px 32px;
+  transition: background 0.4s ease;
+  position: relative;
+}
+
+.card:hover {
+  background: rgba(30, 51, 120, 0.15);
+}
+
+.cardHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.icon {
+  color: var(--gold);
+}
+
+.number {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 28px;
+  color: rgba(255, 255, 255, 0.3);
+  line-height: 1;
+}
+
+.cardTitle {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--white);
+  margin-bottom: 14px;
+}
+
+.cardDescription {
+  font-size: 15px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 280px;
+}
+
+.cta {
+  text-align: center;
+  position: relative;
+}
+
+.ctaLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--white);
+  text-decoration: none;
+  padding: 18px 32px;
+  border: 1px solid var(--gold);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.ctaLink:hover {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+.ctaLink svg {
+  transition: transform 0.3s ease;
+}
+
+.ctaLink:hover svg {
+  transform: translateX(4px);
+}
