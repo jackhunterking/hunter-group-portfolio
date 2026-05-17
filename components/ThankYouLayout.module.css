@@ -43,9 +43,15 @@
 .hero {
   background: var(--ink);
   color: var(--white);
-  padding: 80px 0 100px;
+  padding: 56px 0 72px;
   position: relative;
   overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .hero {
+    padding: 80px 0 100px;
+  }
 }
 
 .hero::before {
@@ -169,7 +175,13 @@
 /* Next Steps section */
 .nextSection {
   background: var(--paper);
-  padding: 120px 0;
+  padding: 72px 0;
+}
+
+@media (min-width: 768px) {
+  .nextSection {
+    padding: 120px 0;
+  }
 }
 
 .nextHead {
@@ -311,8 +323,14 @@
 .signoff {
   background: var(--ink);
   color: var(--white);
-  padding: 100px 0;
+  padding: 64px 0;
   text-align: center;
+}
+
+@media (min-width: 768px) {
+  .signoff {
+    padding: 100px 0;
+  }
 }
 
 .signoffQuote {

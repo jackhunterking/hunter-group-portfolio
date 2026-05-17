@@ -1,6 +1,6 @@
 .promise {
   background: var(--paper);
-  padding: 140px 0;
+  padding: 80px 0;
   position: relative;
   overflow: hidden;
 }
@@ -73,7 +73,16 @@
   letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--muted);
-  margin-bottom: 60px;
+  margin-bottom: 40px;
+}
+
+@media (min-width: 768px) {
+  .promise {
+    padding: 140px 0;
+  }
+  .attribution {
+    margin-bottom: 60px;
+  }
 }
 
 .contact {

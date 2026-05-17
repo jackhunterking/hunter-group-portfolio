@@ -1,15 +1,27 @@
 .about {
   background: var(--paper);
-  padding: 120px 0;
+  padding: 72px 0;
   position: relative;
+}
+
+@media (min-width: 768px) {
+  .about {
+    padding: 120px 0;
+  }
 }
 
 .head {
   text-align: center;
-  margin-bottom: 72px;
+  margin-bottom: 48px;
   max-width: 640px;
   margin-left: auto;
   margin-right: auto;
+}
+
+@media (min-width: 768px) {
+  .head {
+    margin-bottom: 72px;
+  }
 }
 
 .eyebrow {
@@ -145,7 +157,13 @@
 }
 
 .personBody {
-  padding: 36px 32px 32px;
+  padding: 28px 20px 24px;
+}
+
+@media (min-width: 480px) {
+  .personBody {
+    padding: 36px 32px 32px;
+  }
 }
 
 .personName {

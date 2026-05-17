@@ -1,7 +1,13 @@
 .guides {
   background: var(--paper);
-  padding: 120px 0;
+  padding: 72px 0;
   position: relative;
+}
+
+@media (min-width: 768px) {
+  .guides {
+    padding: 120px 0;
+  }
 }
 
 .guides::before {
@@ -21,8 +27,14 @@
 
 .guidesHead {
   text-align: center;
-  margin-bottom: 72px;
+  margin-bottom: 48px;
   position: relative;
+}
+
+@media (min-width: 768px) {
+  .guidesHead {
+    margin-bottom: 72px;
+  }
 }
 
 .eyebrow {

@@ -6,10 +6,8 @@ import Link from "next/link";
 import styles from "./Nav.module.css";
 
 interface NavProps {
-  /** When true, nav is transparent at top and goes solid on scroll (for hero pages) */
+  /** Starts transparent over a dark hero and goes solid on scroll */
   overlayHero?: boolean;
-  /** Color theme — light nav for dark hero, dark nav for light hero */
-  theme?: "light" | "dark";
 }
 
 const LINKS = [
@@ -20,28 +18,22 @@ const LINKS = [
   { href: "/#iletisim", label: "İletişim" },
 ];
 
-export default function Nav({ overlayHero = true, theme = "light" }: NavProps) {
+export default function Nav({ overlayHero = false }: NavProps) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    if (!overlayHero) return;
     const onScroll = () => setScrolled(window.scrollY > 60);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [overlayHero]);
+  }, []);
 
-  const logoSrc =
-    theme === "light"
-      ? "/logos/HUNTER_Brandmark_Gold.png"
-      : "/logos/HUNTER_Brandmark_Black.png";
+  const transparent = overlayHero && !scrolled;
 
   const classes = [
     styles.nav,
-    overlayHero && styles.overlay,
-    scrolled && styles.scrolled,
-    theme === "dark" && styles.dark,
+    transparent ? styles.transparent : styles.solid,
     open && styles.menuOpen,
   ]
     .filter(Boolean)
@@ -49,10 +41,10 @@ export default function Nav({ overlayHero = true, theme = "light" }: NavProps) {
 
   return (
     <header className={classes}>
-      <div className={`container ${styles.inner}`}>
+      <div className={styles.inner}>
         <Link href="/" className={styles.logo} aria-label="Jack Hunter Real Estate">
           <Image
-            src={logoSrc}
+            src="/logos/HUNTER_Brandmark_Gold.png"
             alt="Jack Hunter Real Estate"
             width={80}
             height={80}
@@ -80,9 +72,9 @@ export default function Nav({ overlayHero = true, theme = "light" }: NavProps) {
           aria-label={open ? "Menüyü kapat" : "Menüyü aç"}
           aria-expanded={open}
         >
-          <span></span>
-          <span></span>
-          <span></span>
+          <span />
+          <span />
+          <span />
         </button>
       </div>
     </header>
