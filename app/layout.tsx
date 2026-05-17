@@ -20,22 +20,22 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://jackhunter.com"),
   title: {
-    default: "Jack & Tara Hunter — Toronto Real Estate",
-    template: "%s | Jack Hunter",
+    default: "Hunter Group Real Estate — Toronto Merkezli Türk Emlak Grubu",
+    template: "%s | Hunter Group Real Estate",
   },
   description:
-    "Toronto'da gayrimenkulün güvenilir adresi. Jack & Tara Hunter, RE/MAX Hallmark.",
+    "Toronto Merkezli Türk Emlak Grubu. Jack & Tara Hunter, RE/MAX Hallmark ile Toronto ve GTA'da alım, satım ve yatırım.",
   icons: {
     icon: [
       { url: "/logos/HUNTER_Brandmark_Gold.png", type: "image/png" },
     ],
   },
   openGraph: {
-    title: "Jack & Tara Hunter — Toronto Real Estate",
-    description: "Toronto'da gayrimenkulün güvenilir adresi.",
+    title: "Hunter Group Real Estate — Toronto Merkezli Türk Emlak Grubu",
+    description: "Toronto Merkezli Türk Emlak Grubu. Jack & Tara Hunter, RE/MAX Hallmark.",
     type: "website",
     locale: "tr_TR",
-    siteName: "Jack Hunter",
+    siteName: "Hunter Group Real Estate",
   },
 };
 

@@ -16,6 +16,7 @@ const JACK: PersonProps = {
   positioning:
     "Verilerle okur, stratejiyle hareket ederim. Her işlemi finansal bir yatırım gibi değerlendiririm.",
   credentials: ["ABR", "SRS", "Broker"],
+  photoSrc: "/jack-photo.jpg",
 };
 
 const TARA: PersonProps = {
@@ -24,6 +25,7 @@ const TARA: PersonProps = {
   positioning:
     "İnsanı dinler, detayı kaçırmam. Müşterinin hedefine ulaşması en büyük motivasyonum.",
   credentials: ["Platinum Award", "2x Top Producer"],
+  photoSrc: "/tara-photo.jpg",
 };
 
 function PersonCard({ name, title, positioning, credentials, photoSrc }: PersonProps) {

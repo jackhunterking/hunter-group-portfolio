@@ -42,14 +42,15 @@ export default function Nav({ overlayHero = false }: NavProps) {
   return (
     <header className={classes}>
       <div className={styles.inner}>
-        <Link href="/" className={styles.logo} aria-label="Jack Hunter Real Estate">
+        <Link href="/" className={styles.logo} aria-label="Hunter Group Real Estate">
           <Image
             src="/logos/HUNTER_Brandmark_Gold.png"
-            alt="Jack Hunter Real Estate"
+            alt="Hunter Group Real Estate"
             width={80}
             height={80}
             priority
           />
+          <span className={styles.logoText}>Hunter Group<br className={styles.logoBr} /> Real Estate</span>
         </Link>
 
         <nav className={styles.links}>

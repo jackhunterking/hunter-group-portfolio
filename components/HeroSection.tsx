@@ -32,17 +32,22 @@ export default function HeroSection() {
       {/* Top bar */}
       <div className={styles.topbar}>
         <div className={`container ${styles.topbarInner}`}>
-          <a href="/" className={styles.logoHunter} aria-label="Jack Hunter Real Estate">
+          <a href="/" className={styles.logoHunter} aria-label="Hunter Group Real Estate">
             <Image
               src="/logos/HUNTER_Brandmark_Gold.png"
-              alt="Jack Hunter Real Estate"
+              alt="Hunter Group Real Estate"
               width={80}
               height={80}
               priority
             />
           </a>
-          {/* REPLACE with real RE/MAX logo when available */}
-          <div className={styles.logoRemax}>RE/MAX Hallmark</div>
+          <Image
+            src="/logos/remax-logo.png"
+            alt="RE/MAX Hallmark"
+            width={120}
+            height={40}
+            style={{ objectFit: "contain" }}
+          />
         </div>
       </div>
 

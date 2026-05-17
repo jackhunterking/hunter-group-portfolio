@@ -25,10 +25,28 @@
   max-width: 320px;
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
 .logo img {
   height: 40px;
   width: auto;
   display: block;
+  flex-shrink: 0;
+}
+
+.logoText {
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--white);
+  line-height: 1.6;
 }
 
 .promise {

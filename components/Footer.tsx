@@ -7,25 +7,22 @@ export default function Footer() {
       <div className="container">
         <div className={styles.inner}>
           <div className={styles.brand}>
-            <a href="/" className={styles.logo} aria-label="Jack Hunter Real Estate">
+            <a href="/" className={styles.logo} aria-label="Hunter Group Real Estate">
               <Image
                 src="/logos/HUNTER_Brandmark_Gold.png"
-                alt="Jack Hunter Real Estate"
+                alt="Hunter Group Real Estate"
                 width={80}
                 height={80}
               />
+              <span className={styles.logoText}>Hunter Group<br />Real Estate</span>
             </a>
             <p className={styles.promise}>
-              &ldquo;Toronto&apos;da gayrimenkulün güvenilir adresi.&rdquo;
+              Toronto Merkezli Türk Emlak Grubu
             </p>
           </div>
 
           <div className={styles.meta}>
-            <div>
-              <a href="mailto:hello@jackhunter.com">hello@jackhunter.com</a>
-            </div>
-            <div>647 &middot; 391 &middot; 3311</div>
-            <div>1170 Merton St, Toronto</div>
+            <div>170 Merton St, Toronto, ON M4S 1A1</div>
           </div>
 
           <div className={styles.socials}>
@@ -61,7 +58,7 @@ export default function Footer() {
         </div>
 
         <div className={styles.bottom}>
-          <div>&copy; {new Date().getFullYear()} Jack Hunter Real Estate</div>
+          <div>&copy; {new Date().getFullYear()} Hunter Group Real Estate</div>
           <div>jackhunter.com</div>
         </div>
       </div>

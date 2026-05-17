@@ -31,10 +31,10 @@ export default function ThankYouLayout({
       {/* Minimal top bar */}
       <header className={styles.topbar}>
         <div className={`container ${styles.topbarInner}`}>
-          <Link href="/" className={styles.logo} aria-label="Jack Hunter Real Estate">
+          <Link href="/" className={styles.logo} aria-label="Hunter Group Real Estate">
             <Image
               src="/logos/HUNTER_Brandmark_Gold.png"
-              alt="Jack Hunter Real Estate"
+              alt="Hunter Group Real Estate"
               width={80}
               height={80}
               priority
@@ -148,11 +148,13 @@ export default function ThankYouLayout({
           </p>
           <p className={styles.signoffName}>— Jack &amp; Tara Hunter</p>
           <div className={styles.signoffContact}>
-            <a href="mailto:hello@jackhunter.com" className={styles.signoffBtn}>
-              hello@jackhunter.com
-            </a>
-            <a href="tel:+16473913311" className={styles.signoffBtn}>
-              647 &middot; 391 &middot; 3311
+            <a
+              href="https://wa.me/16473913311"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.signoffBtn}
+            >
+              WhatsApp&apos;tan Yazın
             </a>
           </div>
         </div>

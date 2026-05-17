@@ -11,26 +11,18 @@ interface Service {
 const SERVICES: Service[] = [
   {
     number: "01",
-    title: "Ev Alma",
+    title: "Alım",
     description:
-      "Doğru evi, doğru fiyata, doğru zamanda. Bütçeden kapanışa kadar yanınızdayız.",
+      "Konut, yatırım veya ticari — doğru mülkü, doğru fiyata, doğru zamanda buluyoruz. Arama sürecinden kapanışa kadar her adımda yanınızdayız.",
     iconPath: "M8 28L32 10l24 18v26H8V28z M26 54V38h12v16",
   },
   {
     number: "02",
-    title: "Ev Satma",
+    title: "Satım",
     description:
-      "Mülkünüzü en iyi koşullarda satmak için profesyonel pazarlama ve müzakere.",
+      "Her türlü gayrimenkulü en iyi koşullarda satmak için profesyonel pazarlama, fiyatlandırma stratejisi ve güçlü müzakere.",
     iconPath:
       "M10 22L32 10l22 12v32H10V22z M22 54V36h20v18",
-  },
-  {
-    number: "03",
-    title: "Yatırım",
-    description:
-      "GTA ve sınır ötesi pazarlarda akıllı yatırım stratejileri. Sayılarla konuşalım.",
-    iconPath:
-      "M8 48L20 32l12 8L52 16 M44 16h8v8",
   },
 ];
 

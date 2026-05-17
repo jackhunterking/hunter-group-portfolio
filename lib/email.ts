@@ -97,7 +97,7 @@ function buildEmailHtml({
           <!-- Header -->
           <tr>
             <td style="background:#000000;padding:32px;text-align:center;">
-              <img src="${siteUrl}/logos/HUNTER_Brandmark_Gold.png" alt="Jack Hunter Real Estate" height="40" style="height:40px;width:40px;display:inline-block;">
+              <img src="${siteUrl}/logos/HUNTER_Brandmark_Gold.png" alt="Hunter Group Real Estate" height="40" style="height:40px;width:40px;display:inline-block;">
             </td>
           </tr>
 
@@ -148,7 +148,7 @@ function buildEmailHtml({
                 <a href="${siteUrl}" style="color:rgba(255,255,255,0.5);text-decoration:none;">jackhunter.com</a>
               </p>
               <p style="margin:16px 0 0;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);">
-                &copy; 2026 Jack Hunter Real Estate
+                &copy; 2026 Hunter Group Real Estate
               </p>
             </td>
           </tr>

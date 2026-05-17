@@ -12,7 +12,7 @@ const ALICI_STEPS = [
     title: "Mortgage Ön Onayı",
     description:
       "Bütçenizi netleştirmenin ilk adımı. Doğru profesyonelle bağlantı kuralım.",
-    href: "mailto:hello@jackhunter.com?subject=Mortgage%20%C3%96n%20Onay%C4%B1%20Hakk%C4%B1nda",
+    href: "https://wa.me/16473913311?text=Mortgage%20%C3%96n%20Onay%C4%B1%20Hakk%C4%B1nda%20g%C3%B6r%C3%BC%C5%9Fmek%20istiyorum.",
     cta: "Görüşme Talep Et",
   },
   {
@@ -20,7 +20,7 @@ const ALICI_STEPS = [
     title: "Tercihlerinizi Konuşalım",
     description:
       "Mahalle, bütçe, zaman çizelgesi. Sizin için doğru fırsatları bulalım.",
-    href: "mailto:hello@jackhunter.com?subject=Al%C4%B1c%C4%B1%20Konsoltasyonu",
+    href: "https://wa.me/16473913311?text=Al%C4%B1c%C4%B1%20konsültasyonu%20hakk%C4%B1nda%20g%C3%B6r%C3%BC%C5%9Fmek%20istiyorum.",
     cta: "Konsültasyon Al",
   },
   {

@@ -12,7 +12,7 @@ const SATICI_STEPS = [
     title: "Evinizin Değerini Öğrenin",
     description:
       "Profesyonel piyasa analizi ile mülkünüzün gerçek değerini birlikte belirleyelim.",
-    href: "mailto:hello@jackhunter.com?subject=Evimin%20De%C4%9Ferini%20%C3%96%C4%9Frenmek%20%C4%B0stiyorum",
+    href: "https://wa.me/16473913311?text=Evimin%20de%C4%9Ferini%20%C3%B6%C4%9Frenmek%20istiyorum.",
     cta: "Değer Analizi İste",
   },
   {
@@ -20,7 +20,7 @@ const SATICI_STEPS = [
     title: "Satış Stratejisi",
     description:
       "Fiyatlandırma, staging, pazarlama. Maksimum getiri için planı birlikte kuralım.",
-    href: "mailto:hello@jackhunter.com?subject=Sat%C4%B1c%C4%B1%20Konsoltasyonu",
+    href: "https://wa.me/16473913311?text=Sat%C4%B1c%C4%B1%20konsültasyonu%20hakk%C4%B1nda%20g%C3%B6r%C3%BC%C5%9Fmek%20istiyorum.",
     cta: "Konsültasyon Al",
   },
   {

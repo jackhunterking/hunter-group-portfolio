@@ -3,13 +3,14 @@ import styles from "./LogoStrip.module.css";
 interface LogoConfig {
   name: string;
   src?: string;
+  invert?: boolean;
 }
 
 const LOGOS: LogoConfig[] = [
-  { name: "RE/MAX Hallmark" },
-  { name: "Platinum Club" },
-  { name: "Executive Club" },
-  { name: "100% Club" },
+  { name: "RE/MAX Hallmark", src: "/logos/remax-logo.png" },
+  { name: "Platinum Club", src: "/logos/platinum-logo.jpg", invert: true },
+  { name: "Executive Club", src: "/logos/executive-logo.jpg", invert: true },
+  { name: "100% Club", src: "/logos/100club-logo.jpg", invert: true },
 ];
 
 export default function LogoStrip() {
@@ -21,7 +22,11 @@ export default function LogoStrip() {
           {LOGOS.map((logo) => (
             <div key={logo.name} className={styles.slot}>
               {logo.src ? (
-                <img src={logo.src} alt={logo.name} />
+                <img
+                  src={logo.src}
+                  alt={logo.name}
+                  style={logo.invert ? { filter: "invert(1) brightness(2)" } : undefined}
+                />
               ) : (
                 <div className={styles.placeholder}>
                   {logo.name}
