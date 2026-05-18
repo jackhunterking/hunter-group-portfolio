@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import styles from "./ThankYouLayout.module.css";
 
@@ -28,23 +29,7 @@ export default function ThankYouLayout({
 }: ThankYouLayoutProps) {
   return (
     <main>
-      {/* Minimal top bar */}
-      <header className={styles.topbar}>
-        <div className={`container ${styles.topbarInner}`}>
-          <Link href="/" className={styles.logo} aria-label="Hunter Group Real Estate">
-            <Image
-              src="/logos/HUNTER_Brandmark_Gold.png"
-              alt="Hunter Group Real Estate"
-              width={80}
-              height={80}
-              priority
-            />
-          </Link>
-          <Link href="/rehber" className={styles.backLink}>
-            ← Rehberlere Dön
-          </Link>
-        </div>
-      </header>
+      <Nav />
 
       {/* Hero / Success */}
       <section className={styles.hero}>

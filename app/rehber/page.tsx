@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Nav from "@/components/Nav";
 import HeroSection from "@/components/HeroSection";
 import GuideCard from "@/components/GuideCard";
 import LogoStrip from "@/components/LogoStrip";
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
 export default function RehberPage() {
   return (
     <main>
+      <Nav />
       <HeroSection />
 
       <section className={styles.guides} id="rehberler">

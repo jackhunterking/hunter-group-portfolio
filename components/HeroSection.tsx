@@ -29,28 +29,6 @@ export default function HeroSection() {
 
       <div className={styles.placeholderLabel}>▢ Hero portresi yerleşecek alan</div>
 
-      {/* Top bar */}
-      <div className={styles.topbar}>
-        <div className={`container ${styles.topbarInner}`}>
-          <a href="/" className={styles.logoHunter} aria-label="Hunter Group Real Estate">
-            <Image
-              src="/logos/HUNTER_Brandmark_Gold.png"
-              alt="Hunter Group Real Estate"
-              width={80}
-              height={80}
-              priority
-            />
-          </a>
-          <Image
-            src="/logos/remax-logo.png"
-            alt="RE/MAX Hallmark"
-            width={120}
-            height={40}
-            style={{ objectFit: "contain" }}
-          />
-        </div>
-      </div>
-
       {/* Hero content */}
       <div className={styles.content}>
         <div className={styles.contentInner}>
