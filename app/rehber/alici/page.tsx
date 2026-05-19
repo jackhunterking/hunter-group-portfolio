@@ -35,6 +35,7 @@ export default function AliciRehber() {
               label="Alıcı"
               title={<>Alıcı <em>Rehberi</em></>}
               description="Bütçe belirleme, mortgage ön onayı, mülk arama ve kapanış sürecine kadar her adımda yanınızdayız."
+              imageSrc="/alis-rehberi-mockup.png"
             />
           </div>
         </div>
