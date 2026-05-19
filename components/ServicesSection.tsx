@@ -69,7 +69,7 @@ export default function ServicesSection() {
         </div>
 
         <div className={styles.cta}>
-          <Link href="/rehber" className={styles.ctaLink}>
+          <Link href="/#rehberler" className={styles.ctaLink}>
             Ücretsiz Rehberlerimize Göz Atın
             <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
               <path

@@ -47,7 +47,7 @@ export default function HomeHero() {
           </p>
 
           <div className={styles.ctas}>
-            <Link href="/rehber" className={styles.ctaPrimary}>
+            <Link href="/#rehberler" className={styles.ctaPrimary}>
               Ücretsiz Rehberler
               <svg width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true">
                 <path
