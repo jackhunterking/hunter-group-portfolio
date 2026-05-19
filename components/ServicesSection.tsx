@@ -35,9 +35,6 @@ export default function ServicesSection() {
             <span className={styles.hairline} />
             Hizmetlerimiz
           </span>
-          <h2 className={styles.title}>
-            Sizin <em>için orada.</em>
-          </h2>
         </div>
 
         <div className={styles.grid}>
