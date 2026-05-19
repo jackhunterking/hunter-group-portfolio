@@ -35,6 +35,7 @@ export default function SaticiRehber() {
               label="Satıcı"
               title={<>Satıcı <em>Rehberi</em></>}
               description="Fiyatlandırma, pazarlama, müzakere ve kapanış sürecinde maksimum getiri için yanınızdayız."
+              imageSrc="/satis-rehberi-mockup.png"
             />
           </div>
         </div>
