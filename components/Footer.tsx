@@ -27,7 +27,7 @@ export default function Footer() {
 
           <div className={styles.socials}>
             <a
-              href="https://instagram.com/jack.hunter.x"
+              href="https://www.instagram.com/jack.ve.tara.remax/"
               aria-label="Instagram"
               target="_blank"
               rel="noopener noreferrer"
@@ -39,18 +39,18 @@ export default function Footer() {
               </svg>
             </a>
             <a
-              href="https://linkedin.com/in/jack-h-hunter/"
-              aria-label="LinkedIn"
+              href="https://www.facebook.com/jack.ve.tara.remax"
+              aria-label="Facebook"
               target="_blank"
               rel="noopener noreferrer"
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="1.4" />
                 <path
-                  d="M8 10v7M8 7v.01M12 17v-4a2 2 0 014 0v4M12 10v7"
+                  d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"
                   stroke="currentColor"
                   strokeWidth="1.4"
                   strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             </a>
