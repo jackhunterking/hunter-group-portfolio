@@ -1,46 +1,45 @@
 import type { Metadata } from "next";
-import ThankYouLayout from "@/components/ThankYouLayout";
+import Nav from "@/components/Nav";
+import GuideCard from "@/components/GuideCard";
+import Footer from "@/components/Footer";
+import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "Ev Alma Rehberi — Teşekkür Ederiz",
-  description: "Ev Alma Rehberiniz hazır. Toronto'da hayalinizdeki eve giden yolda yanınızdayız.",
+  title: "Alıcı Rehberi — Ücretsiz İndir",
+  description: "Kanada'da mülk satın almanın profesyonel yol haritası. Ücretsiz rehberi indirin.",
 };
 
-const ALICI_STEPS = [
-  {
-    number: "01",
-    title: "Mortgage Ön Onayı",
-    description:
-      "Bütçenizi netleştirmenin ilk adımı. Doğru profesyonelle bağlantı kuralım.",
-    href: "https://wa.me/16473913311?text=Mortgage%20%C3%96n%20Onay%C4%B1%20Hakk%C4%B1nda%20g%C3%B6r%C3%BC%C5%9Fmek%20istiyorum.",
-    cta: "Görüşme Talep Et",
-  },
-  {
-    number: "02",
-    title: "Tercihlerinizi Konuşalım",
-    description:
-      "Mahalle, bütçe, zaman çizelgesi. Sizin için doğru fırsatları bulalım.",
-    href: "https://wa.me/16473913311?text=Al%C4%B1c%C4%B1%20konsültasyonu%20hakk%C4%B1nda%20g%C3%B6r%C3%BC%C5%9Fmek%20istiyorum.",
-    cta: "Konsültasyon Al",
-  },
-  {
-    number: "03",
-    title: "Piyasa Güncellemeleri",
-    description:
-      "Toronto piyasasındaki fırsatları kaçırmamak için bizden haber alın.",
-    href: "/rehber",
-    cta: "Diğer Rehberlere Göz At",
-  },
-];
-
-export default function AliciThankYou() {
+export default function AliciRehber() {
   return (
-    <ThankYouLayout
-      guideType="alici"
-      guideName="Ev Alma Rehberi"
-      guidePdfPath="/guides/ev-alma-rehberi.pdf"
-      intro="Toronto'da ev sahibi olmanın profesyonel yol haritası e-postanıza gönderildi. Bu arada, aşağıdaki adımlarla yolculuğunuza devam edebilirsiniz."
-      nextSteps={ALICI_STEPS}
-    />
+    <main>
+      <Nav />
+      <section className={styles.page}>
+        <div className="container">
+          <div className={styles.head}>
+            <span className={styles.eyebrow}>
+              <span className={styles.hairline} />
+              Alıcı Rehberi
+            </span>
+            <h1 className={styles.title}>
+              Doğru mülkü, <em>doğru fiyata.</em>
+            </h1>
+            <p className={styles.sub}>
+              Kanada&apos;da mülk satın almanın adım adım profesyonel yol haritası.
+              E-posta adresinizi bırakın, rehber anında gönderilsin.
+            </p>
+          </div>
+          <div className={styles.cardWrap}>
+            <GuideCard
+              guide="alici"
+              number="01"
+              label="Alıcı"
+              title={<>Alıcı <em>Rehberi</em></>}
+              description="Bütçe belirleme, mortgage ön onayı, mülk arama ve kapanış sürecine kadar her adımda yanınızdayız."
+            />
+          </div>
+        </div>
+      </section>
+      <Footer />
+    </main>
   );
 }

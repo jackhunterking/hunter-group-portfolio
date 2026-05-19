@@ -43,7 +43,7 @@ export default function GuideCard({
   useEffect(() => {
     if (state === "success") {
       const t = setTimeout(() => {
-        router.push(`/rehber/${guide}`);
+        router.push(`/rehber/${guide}/tesekkur`);
       }, 1400);
       return () => clearTimeout(t);
     }

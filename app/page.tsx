@@ -2,6 +2,7 @@ import Nav from "@/components/Nav";
 import HomeHero from "@/components/HomeHero";
 import AboutSection from "@/components/AboutSection";
 import ServicesSection from "@/components/ServicesSection";
+import GuidesSection from "@/components/GuidesSection";
 import PromiseSection from "@/components/PromiseSection";
 import LogoStrip from "@/components/LogoStrip";
 import ContactSection from "@/components/ContactSection";
@@ -14,6 +15,7 @@ export default function HomePage() {
       <HomeHero />
       <AboutSection />
       <ServicesSection />
+      <GuidesSection />
       <PromiseSection />
       <LogoStrip />
       <ContactSection />

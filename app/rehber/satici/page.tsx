@@ -1,46 +1,45 @@
 import type { Metadata } from "next";
-import ThankYouLayout from "@/components/ThankYouLayout";
+import Nav from "@/components/Nav";
+import GuideCard from "@/components/GuideCard";
+import Footer from "@/components/Footer";
+import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "Ev Satma Rehberi — Teşekkür Ederiz",
-  description: "Ev Satma Rehberiniz hazır. Mülkünüzü en iyi koşullarda satmak için yanınızdayız.",
+  title: "Satıcı Rehberi — Ücretsiz İndir",
+  description: "Mülkünüzü en iyi koşullarda satmanın profesyonel stratejisi. Ücretsiz rehberi indirin.",
 };
 
-const SATICI_STEPS = [
-  {
-    number: "01",
-    title: "Evinizin Değerini Öğrenin",
-    description:
-      "Profesyonel piyasa analizi ile mülkünüzün gerçek değerini birlikte belirleyelim.",
-    href: "https://wa.me/16473913311?text=Evimin%20de%C4%9Ferini%20%C3%B6%C4%9Frenmek%20istiyorum.",
-    cta: "Değer Analizi İste",
-  },
-  {
-    number: "02",
-    title: "Satış Stratejisi",
-    description:
-      "Fiyatlandırma, staging, pazarlama. Maksimum getiri için planı birlikte kuralım.",
-    href: "https://wa.me/16473913311?text=Sat%C4%B1c%C4%B1%20konsültasyonu%20hakk%C4%B1nda%20g%C3%B6r%C3%BC%C5%9Fmek%20istiyorum.",
-    cta: "Konsültasyon Al",
-  },
-  {
-    number: "03",
-    title: "Hazırlık Listesi",
-    description:
-      "Evinizi satışa hazırlamak için yapılması gerekenleri birlikte ele alalım.",
-    href: "/rehber",
-    cta: "Diğer Rehberlere Göz At",
-  },
-];
-
-export default function SaticiThankYou() {
+export default function SaticiRehber() {
   return (
-    <ThankYouLayout
-      guideType="satici"
-      guideName="Ev Satma Rehberi"
-      guidePdfPath="/guides/ev-satma-rehberi.pdf"
-      intro="Mülkünüzü en iyi koşullarda satmak için profesyonel strateji e-postanıza gönderildi. Bu arada, aşağıdaki adımlarla yolculuğunuza devam edebilirsiniz."
-      nextSteps={SATICI_STEPS}
-    />
+    <main>
+      <Nav />
+      <section className={styles.page}>
+        <div className="container">
+          <div className={styles.head}>
+            <span className={styles.eyebrow}>
+              <span className={styles.hairline} />
+              Satıcı Rehberi
+            </span>
+            <h1 className={styles.title}>
+              Mülkünüzü en iyi <em>koşullarda satın.</em>
+            </h1>
+            <p className={styles.sub}>
+              Fiyatlandırma stratejisinden kapanışa kadar profesyonel satış rehberi.
+              E-posta adresinizi bırakın, rehber anında gönderilsin.
+            </p>
+          </div>
+          <div className={styles.cardWrap}>
+            <GuideCard
+              guide="satici"
+              number="02"
+              label="Satıcı"
+              title={<>Satıcı <em>Rehberi</em></>}
+              description="Fiyatlandırma, pazarlama, müzakere ve kapanış sürecinde maksimum getiri için yanınızdayız."
+            />
+          </div>
+        </div>
+      </section>
+      <Footer />
+    </main>
   );
 }

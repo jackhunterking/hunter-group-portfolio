@@ -14,7 +14,7 @@ const LINKS = [
   { href: "/", label: "Anasayfa" },
   { href: "/#hakkimizda", label: "Hakkımızda" },
   { href: "/#hizmetler", label: "Hizmetler" },
-  { href: "/rehber", label: "Rehberler" },
+  { href: "/#rehberler", label: "Rehberler" },
   { href: "/#iletisim", label: "İletişim" },
 ];
 
