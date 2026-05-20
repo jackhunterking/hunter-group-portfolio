@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Nav from "@/components/Nav";
-import GuideCard from "@/components/GuideCard";
 import Footer from "@/components/Footer";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   title: "Alıcı Rehberi — Ücretsiz İndir",
-  description: "Kanada'da mülk satın almanın profesyonel yol haritası. Ücretsiz rehberi indirin.",
+  description: "Kanada'da mülk satın almanın profesyonel yol haritası. Ücretsiz görüntüleyin veya indirin.",
 };
+
+const GUIDE_URL =
+  "https://drive.google.com/file/d/19rJFJmGST33V_kc5H-H7Z0yA_CHXaWl8/view?usp=sharing";
 
 export default function AliciRehber() {
   return (
@@ -25,18 +28,39 @@ export default function AliciRehber() {
             </h1>
             <p className={styles.sub}>
               Kanada&apos;da mülk satın almanın adım adım profesyonel yol haritası.
-              E-posta adresinizi bırakın, rehber anında gönderilsin.
+              Ücretsiz görüntüleyin veya indirin.
             </p>
           </div>
-          <div className={styles.cardWrap}>
-            <GuideCard
-              guide="alici"
-              number="01"
-              label="Alıcı"
-              title={<>Alıcı <em>Rehberi</em></>}
-              description="Bütçe belirleme, mortgage ön onayı, mülk arama ve kapanış sürecine kadar her adımda yanınızdayız."
-              imageSrc="/alis-rehberi-mockup.png"
+
+          <div className={styles.mockupWrap}>
+            <Image
+              src="/alis-rehberi-mockup.png"
+              alt="Alıcı Rehberi önizleme"
+              width={3000}
+              height={1650}
+              className={styles.mockup}
+              priority
             />
+          </div>
+
+          <div className={styles.actions}>
+            <a
+              href={GUIDE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.btnPrimary}
+            >
+              Rehberi Görüntüle / İndir
+              <svg width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true">
+                <path
+                  d="M10 1l5 5-5 5M15 6H1"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </a>
           </div>
         </div>
       </section>

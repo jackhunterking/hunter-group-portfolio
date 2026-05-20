@@ -1,9 +1,8 @@
-import Link from "next/link";
 import styles from "./GuidesSection.module.css";
 
 const GUIDES = [
   {
-    href: "/rehber/alici",
+    href: "https://drive.google.com/file/d/19rJFJmGST33V_kc5H-H7Z0yA_CHXaWl8/view?usp=sharing",
     number: "01",
     label: "Alıcı",
     title: "Alıcı Rehberi",
@@ -12,7 +11,7 @@ const GUIDES = [
     icon: "M8 28L32 10l24 18v26H8V28z M26 54V38h12v16",
   },
   {
-    href: "/rehber/satici",
+    href: "https://drive.google.com/file/d/1Xyd0OtYB9gnF7mrFQ0cYzRAxLM8hApXu/view?usp=sharing",
     number: "02",
     label: "Satıcı",
     title: "Satıcı Rehberi",
@@ -37,13 +36,19 @@ export default function GuidesSection() {
           </h2>
           <p className={styles.sub}>
             Alım veya satım sürecinizi doğru adımlarla başlatın.
-            Rehberinizi ücretsiz indirin.
+            Rehberinizi ücretsiz görüntüleyin veya indirin.
           </p>
         </div>
 
         <div className={styles.grid}>
           {GUIDES.map((g) => (
-            <Link key={g.href} href={g.href} className={styles.card}>
+            <a
+              key={g.href}
+              href={g.href}
+              className={styles.card}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <div className={styles.cardTop}>
                 <svg
                   className={styles.icon}
@@ -67,7 +72,7 @@ export default function GuidesSection() {
               <h3 className={styles.cardTitle}>{g.title}</h3>
               <p className={styles.cardDesc}>{g.description}</p>
               <span className={styles.cta}>
-                Ücretsiz İndir
+                Görüntüle / İndir
                 <svg width="14" height="10" viewBox="0 0 16 12" fill="none" aria-hidden="true">
                   <path
                     d="M10 1l5 5-5 5M15 6H1"
@@ -78,7 +83,7 @@ export default function GuidesSection() {
                   />
                 </svg>
               </span>
-            </Link>
+            </a>
           ))}
         </div>
       </div>

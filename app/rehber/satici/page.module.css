@@ -54,7 +54,42 @@
   line-height: 1.6;
 }
 
-.cardWrap {
-  max-width: 640px;
-  margin: 0 auto;
+.mockupWrap {
+  max-width: 900px;
+  margin: 0 auto 48px;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 24px 64px -16px rgba(0, 0, 0, 0.18);
+}
+
+.mockup {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 16px;
+}
+
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--ink);
+  color: var(--white);
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 18px 36px;
+  transition: background 0.25s ease;
+}
+
+.btnPrimary:hover {
+  background: var(--navy);
 }
