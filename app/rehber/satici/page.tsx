@@ -21,7 +21,7 @@ export default function SaticiRehber() {
           <div className={styles.head}>
             <span className={styles.eyebrow}>
               <span className={styles.hairline} />
-              Satıcı Rehberi
+              Satım Rehberi
             </span>
             <h1 className={styles.title}>
               Mülkünüzü en iyi <em>koşullarda satın.</em>

@@ -4,8 +4,8 @@ const GUIDES = [
   {
     href: "https://drive.google.com/file/d/19rJFJmGST33V_kc5H-H7Z0yA_CHXaWl8/view?usp=sharing",
     number: "01",
-    label: "Alıcı",
-    title: "Alıcı Rehberi",
+    label: "Al",
+    title: "Alım Rehberi",
     description:
       "Kanada'da mülk satın almanın adım adım profesyonel yol haritası. Bütçe, mortgage, mülk arama ve kapanış.",
     icon: "M8 28L32 10l24 18v26H8V28z M26 54V38h12v16",
@@ -13,8 +13,8 @@ const GUIDES = [
   {
     href: "https://drive.google.com/file/d/1Xyd0OtYB9gnF7mrFQ0cYzRAxLM8hApXu/view?usp=sharing",
     number: "02",
-    label: "Satıcı",
-    title: "Satıcı Rehberi",
+    label: "Sat",
+    title: "Satım Rehberi",
     description:
       "Mülkünüzü en iyi koşullarda satmanın profesyonel stratejisi. Fiyatlandırma, pazarlama ve müzakere.",
     icon: "M10 22L32 10l22 12v32H10V22z M22 54V36h20v18",

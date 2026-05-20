@@ -21,7 +21,7 @@ export default function AliciRehber() {
           <div className={styles.head}>
             <span className={styles.eyebrow}>
               <span className={styles.hairline} />
-              Alıcı Rehberi
+              Alım Rehberi
             </span>
             <h1 className={styles.title}>
               Doğru mülkü, <em>doğru fiyata.</em>
