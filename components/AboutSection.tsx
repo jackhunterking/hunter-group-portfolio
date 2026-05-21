@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useT } from "@/lib/i18n/LanguageProvider";
 import styles from "./AboutSection.module.css";
 
 interface PersonProps {
@@ -6,29 +9,18 @@ interface PersonProps {
   title: string;
   positioning: string;
   credentials: string[];
-  /** Photo path — when null, shows on-brand placeholder */
   photoSrc?: string;
+  placeholderLabel: string;
 }
 
-const JACK: PersonProps = {
-  name: "Jack Hunter",
-  title: "Broker",
-  positioning:
-    "Verilerle okur, stratejiyle hareket ederim. Her işlemi finansal bir yatırım gibi değerlendiririm.",
-  credentials: ["ABR", "SRS", "Broker"],
-  photoSrc: "/jack-photo.jpg",
-};
-
-const TARA: PersonProps = {
-  name: "Tara Hunter",
-  title: "Emlak Danışmanı",
-  positioning:
-    "İnsanı dinler, detayı kaçırmam. Müşterinin hedefine ulaşması en büyük motivasyonum.",
-  credentials: ["Platinum Award", "2x Top Producer"],
-  photoSrc: "/tara-photo.jpg",
-};
-
-function PersonCard({ name, title, positioning, credentials, photoSrc }: PersonProps) {
+function PersonCard({
+  name,
+  title,
+  positioning,
+  credentials,
+  photoSrc,
+  placeholderLabel,
+}: PersonProps) {
   return (
     <article className={styles.person}>
       <div className={styles.photo}>
@@ -44,7 +36,9 @@ function PersonCard({ name, title, positioning, credentials, photoSrc }: PersonP
                 height={80}
               />
             </div>
-            <span className={styles.placeholderLabel}>▢ {name} fotoğrafı</span>
+            <span className={styles.placeholderLabel}>
+              ▢ {name} {placeholderLabel}
+            </span>
           </div>
         )}
       </div>
@@ -65,26 +59,40 @@ function PersonCard({ name, title, positioning, credentials, photoSrc }: PersonP
 }
 
 export default function AboutSection() {
+  const t = useT();
+  const a = t.about;
+
   return (
     <section className={styles.about} id="hakkimizda">
       <div className="container">
         <div className={styles.head}>
           <span className={styles.eyebrow}>
             <span className={styles.hairline} />
-            Biz Kimiz
+            {a.eyebrow}
           </span>
           <h2 className={styles.title}>
-            Birlikte, <em>daha güçlü.</em>
+            {a.title} <em>{a.titleEm}</em>
           </h2>
-          <p className={styles.subtitle}>
-            Toronto&apos;da gayrimenkulün yeni nesli. Veriyle hareket eden bir
-            broker ve insanı önceleyen bir danışman.
-          </p>
+          <p className={styles.subtitle}>{a.sub}</p>
         </div>
 
         <div className={styles.grid}>
-          <PersonCard {...JACK} />
-          <PersonCard {...TARA} />
+          <PersonCard
+            name={a.jackName}
+            title={a.jackTitle}
+            positioning={a.jackPos}
+            credentials={["ABR", "SRS", "Broker"]}
+            photoSrc="/jack-photo.jpg"
+            placeholderLabel={a.photoPlaceholder}
+          />
+          <PersonCard
+            name={a.taraName}
+            title={a.taraTitle}
+            positioning={a.taraPos}
+            credentials={["Platinum Award", "2x Top Producer"]}
+            photoSrc="/tara-photo.jpg"
+            placeholderLabel={a.photoPlaceholder}
+          />
         </div>
       </div>
     </section>

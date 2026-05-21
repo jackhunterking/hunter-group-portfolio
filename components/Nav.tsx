@@ -3,24 +3,71 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useLang } from "@/lib/i18n/LanguageProvider";
 import styles from "./Nav.module.css";
+
+/* ── Inline flag glyphs (kept small + simple so they read cleanly at 18×12px) ── */
+function FlagTR() {
+  return (
+    <svg
+      className={styles.flag}
+      viewBox="0 0 30 20"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <rect width="30" height="20" fill="#E30A17" />
+      {/* Crescent — outer white circle with inner red circle cutout */}
+      <circle cx="11" cy="10" r="4.5" fill="#fff" />
+      <circle cx="12.3" cy="10" r="3.5" fill="#E30A17" />
+      {/* 5-point star */}
+      <polygon
+        points="17.4,7.6 18.2,9.6 20.3,9.6 18.6,10.8 19.3,12.8 17.4,11.6 15.5,12.8 16.2,10.8 14.5,9.6 16.6,9.6"
+        fill="#fff"
+      />
+    </svg>
+  );
+}
+
+function FlagEN() {
+  return (
+    <svg
+      className={styles.flag}
+      viewBox="0 0 30 20"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <rect width="30" height="20" fill="#012169" />
+      {/* Diagonals (white base then red overlay) */}
+      <path d="M0,0 L30,20" stroke="#fff" strokeWidth="3" />
+      <path d="M30,0 L0,20" stroke="#fff" strokeWidth="3" />
+      <path d="M0,0 L30,20" stroke="#C8102E" strokeWidth="1.5" />
+      <path d="M30,0 L0,20" stroke="#C8102E" strokeWidth="1.5" />
+      {/* Cross (white base then red overlay) */}
+      <path d="M15,0 V20" stroke="#fff" strokeWidth="5" />
+      <path d="M0,10 H30" stroke="#fff" strokeWidth="5" />
+      <path d="M15,0 V20" stroke="#C8102E" strokeWidth="3" />
+      <path d="M0,10 H30" stroke="#C8102E" strokeWidth="3" />
+    </svg>
+  );
+}
 
 interface NavProps {
   /** Starts transparent over a dark hero and goes solid on scroll */
   overlayHero?: boolean;
 }
 
-const LINKS = [
-  { href: "/", label: "Anasayfa" },
-  { href: "/#hakkimizda", label: "Hakkımızda" },
-  { href: "/#hizmetler", label: "Hizmetler" },
-  { href: "/#rehberler", label: "Rehberler" },
-  { href: "/#iletisim", label: "İletişim" },
-];
-
 export default function Nav({ overlayHero = false }: NavProps) {
+  const { lang, setLang, t } = useLang();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+
+  const LINKS = [
+    { href: "/#hakkimizda", label: t.nav.about },
+    { href: "/#hizmetler", label: t.nav.services },
+    { href: "/hunter-x-capital", label: t.nav.capital },
+    { href: "/#rehberler", label: t.nav.guides },
+    { href: "/#iletisim", label: t.nav.contact },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -42,15 +89,17 @@ export default function Nav({ overlayHero = false }: NavProps) {
   return (
     <header className={classes}>
       <div className={styles.inner}>
-        <Link href="/" className={styles.logo} aria-label="Hunter Group Real Estate">
+        <Link href="/" className={styles.logo} aria-label={t.nav.logoAria}>
           <Image
             src="/logos/HUNTER_Brandmark_Gold.png"
-            alt="Hunter Group Real Estate"
+            alt={t.nav.logoAria}
             width={80}
             height={80}
             priority
           />
-          <span className={styles.logoText}>Hunter Group<br className={styles.logoBr} /> Real Estate</span>
+          <span className={styles.logoText}>
+            Hunter Group<br className={styles.logoBr} /> Real Estate
+          </span>
         </Link>
 
         <nav className={styles.links}>
@@ -64,13 +113,35 @@ export default function Nav({ overlayHero = false }: NavProps) {
               {link.label}
             </Link>
           ))}
+
+          <div className={styles.langToggle} role="group" aria-label="Language">
+            <button
+              type="button"
+              className={`${styles.langBtn} ${lang === "tr" ? styles.langActive : ""}`}
+              onClick={() => setLang("tr")}
+              aria-pressed={lang === "tr"}
+            >
+              <FlagTR />
+              <span>{t.nav.langTR}</span>
+            </button>
+            <span className={styles.langSep} aria-hidden="true">|</span>
+            <button
+              type="button"
+              className={`${styles.langBtn} ${lang === "en" ? styles.langActive : ""}`}
+              onClick={() => setLang("en")}
+              aria-pressed={lang === "en"}
+            >
+              <FlagEN />
+              <span>{t.nav.langEN}</span>
+            </button>
+          </div>
         </nav>
 
         <button
           type="button"
           className={styles.menuToggle}
           onClick={() => setOpen(!open)}
-          aria-label={open ? "Menüyü kapat" : "Menüyü aç"}
+          aria-label={open ? t.nav.menuClose : t.nav.menuOpen}
           aria-expanded={open}
         >
           <span />

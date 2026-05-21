@@ -1,13 +1,18 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useT } from "@/lib/i18n/LanguageProvider";
 import styles from "./HomeHero.module.css";
 
-const STATS = [
-  { value: "18+", label: "Yıl Birleşik Deneyim" },
-  { value: "Toronto", label: "& GTA Uzmanı" },
-];
-
 export default function HomeHero() {
+  const t = useT();
+  const h = t.home.hero;
+  const STATS = [
+    { value: h.stat1Value, label: h.stat1Label },
+    { value: h.stat2Value, label: h.stat2Label },
+  ];
+
   return (
     <section className={styles.hero}>
 
@@ -15,7 +20,7 @@ export default function HomeHero() {
       <div className={styles.media}>
         <Image
           src="/herobg.png"
-          alt="Jack ve Tara Hunter"
+          alt={h.photoAlt}
           fill
           priority
           className={styles.photo}
@@ -32,23 +37,18 @@ export default function HomeHero() {
 
           <p className={styles.eyebrow}>
             <span className={styles.hairline} />
-            Toronto Merkezli Türk Emlak Grubu · RE/MAX
+            {h.eyebrow}
           </p>
 
           <h1 className={styles.heading}>
-            Aile gibi yaklaşıyor, <em>varlık inşa ediyoruz.</em>
+            {h.heading} <em>{h.headingEm}</em>
           </h1>
 
-          <p className={styles.subtitle}>
-            Gayrimenkul, varlık oluşturmanın en güçlü yollarından biridir.
-            18 yılı aşkın birleşik deneyimimizle Kanada genelinde her alım
-            ve satım işleminde yanınızdayız — profesyonel bir ekip olarak
-            değil, aile gibi.
-          </p>
+          <p className={styles.subtitle}>{h.sub}</p>
 
           <div className={styles.ctas}>
             <Link href="/#rehberler" className={styles.ctaPrimary}>
-              Ücretsiz Rehberler
+              {h.ctaPrimary}
               <svg width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true">
                 <path
                   d="M10 1l5 5-5 5M15 6H1"
@@ -60,7 +60,7 @@ export default function HomeHero() {
               </svg>
             </Link>
             <a href="#hakkimizda" className={styles.ctaSecondary}>
-              Bizi Tanıyın
+              {h.ctaSecondary}
             </a>
           </div>
 
@@ -87,7 +87,7 @@ export default function HomeHero() {
         </div>
       </div>
 
-      <a href="#hakkimizda" className={styles.scroll} aria-label="Aşağı kaydır">
+      <a href="#hakkimizda" className={styles.scroll} aria-label={h.scrollAria}>
         <span className={styles.scrollLine} />
       </a>
     </section>
