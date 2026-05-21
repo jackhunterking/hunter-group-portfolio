@@ -234,7 +234,7 @@ export const tr = {
     socialHeading: "Sosyal",
     waLabel: "WhatsApp ile yazın",
   },
-} as const;
+};
 
 export type Dictionary = typeof tr;
 
