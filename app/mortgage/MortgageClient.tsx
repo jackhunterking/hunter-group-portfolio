@@ -6,12 +6,12 @@ import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import RateDisclosureModal from "@/components/RateDisclosureModal";
-import AdvisorStrip from "@/components/finansman/AdvisorStrip";
-import FinansmanDisclosure from "@/components/finansman/FinansmanDisclosure";
+import AdvisorStrip from "@/components/mortgage/AdvisorStrip";
+import MortgageDisclosure from "@/components/mortgage/MortgageDisclosure";
 import { useT } from "@/lib/i18n/LanguageProvider";
-import { HERO_RATES, heroTile, RATE_AS_OF } from "@/lib/finansman/rates";
-import { waHref } from "@/lib/finansman/wa";
-import styles from "./finansman.module.css";
+import { HERO_RATES, heroTile, RATE_AS_OF } from "@/lib/mortgage/rates";
+import { waHref } from "@/lib/mortgage/wa";
+import styles from "./mortgage.module.css";
 
 function WhatsAppIcon() {
   return (
@@ -29,9 +29,9 @@ function Arrow() {
   );
 }
 
-export default function FinansmanClient() {
+export default function MortgageClient() {
   const t = useT();
-  const f = t.finansman;
+  const f = t.mortgage;
   const [showDisclosure, setShowDisclosure] = useState(false);
 
   const tiles = [
@@ -49,7 +49,7 @@ export default function FinansmanClient() {
       <section className={styles.hero}>
         <div className={styles.heroMedia}>
           <Image
-            src="/finansman/home.jpg"
+            src="/mortgage/home.jpg"
             alt=""
             fill
             priority
@@ -142,7 +142,7 @@ export default function FinansmanClient() {
             {f.journeys.items.map((item) => (
               <Link
                 key={item.slug}
-                href={`/finansman/${item.slug}`}
+                href={`/mortgage/${item.slug}`}
                 className={styles.journeyCard}
               >
                 <h3 className={styles.journeyTitle}>{item.title}</h3>
@@ -170,7 +170,7 @@ export default function FinansmanClient() {
             {f.personas.items.map((p) => (
               <Link
                 key={p.title}
-                href={`/finansman/${p.journey}`}
+                href={`/mortgage/${p.journey}`}
                 className={styles.personaCard}
               >
                 <h3 className={styles.personaTitle}>{p.title}</h3>
@@ -184,7 +184,7 @@ export default function FinansmanClient() {
       {/* ── Primary WhatsApp CTA ── */}
       <section className={styles.cta}>
         <div className={styles.ctaMedia}>
-          <Image src="/finansman/interior.jpg" alt="" fill sizes="100vw" className={styles.ctaPhoto} />
+          <Image src="/mortgage/interior.jpg" alt="" fill sizes="100vw" className={styles.ctaPhoto} />
         </div>
         <div className={styles.ctaOverlay} aria-hidden="true" />
         <div className="container">
@@ -204,7 +204,7 @@ export default function FinansmanClient() {
         </div>
       </section>
 
-      <FinansmanDisclosure />
+      <MortgageDisclosure />
       <Footer />
 
       {showDisclosure ? (

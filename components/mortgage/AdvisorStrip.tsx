@@ -2,18 +2,18 @@
 
 import Image from "next/image";
 import { useT } from "@/lib/i18n/LanguageProvider";
-import { waHref } from "@/lib/finansman/wa";
+import { waHref } from "@/lib/mortgage/wa";
 import styles from "./AdvisorStrip.module.css";
 
 const TEAM = [
-  { src: "/finansman/jack.jpg", alt: "Jack Hunter", pos: "center 20%" },
-  { src: "/finansman/tara.jpg", alt: "Tara Hunter", pos: "center 14%" },
-  { src: "/finansman/asif.jpg", alt: "Asif Karimov", pos: "center 18%" },
+  { src: "/mortgage/jack.jpg", alt: "Jack Hunter", pos: "center 20%" },
+  { src: "/mortgage/tara.jpg", alt: "Tara Hunter", pos: "center 14%" },
+  { src: "/mortgage/asif.jpg", alt: "Asif Karimov", pos: "center 18%" },
 ];
 
 export default function AdvisorStrip() {
   const t = useT();
-  const a = t.finansman.advisor;
+  const a = t.mortgage.advisor;
 
   return (
     <section className={styles.section}>
@@ -40,7 +40,7 @@ export default function AdvisorStrip() {
 
             <div className={styles.equifax}>
               <Image
-                src="/finansman/equifax-logo.svg"
+                src="/mortgage/equifax-logo.svg"
                 alt={a.equifaxAlt}
                 width={74}
                 height={20}
@@ -50,7 +50,7 @@ export default function AdvisorStrip() {
             </div>
 
             <a
-              href={waHref(t.finansman.cta.whatsappText)}
+              href={waHref(t.mortgage.cta.whatsappText)}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.cta}

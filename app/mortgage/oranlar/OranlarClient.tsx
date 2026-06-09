@@ -5,11 +5,11 @@ import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import RateDisclosureModal from "@/components/RateDisclosureModal";
-import AdvisorStrip from "@/components/finansman/AdvisorStrip";
-import FinansmanDisclosure from "@/components/finansman/FinansmanDisclosure";
+import AdvisorStrip from "@/components/mortgage/AdvisorStrip";
+import MortgageDisclosure from "@/components/mortgage/MortgageDisclosure";
 import { useT } from "@/lib/i18n/LanguageProvider";
-import { HERO_RATES, RATE_AS_OF } from "@/lib/finansman/rates";
-import { waHref } from "@/lib/finansman/wa";
+import { HERO_RATES, RATE_AS_OF } from "@/lib/mortgage/rates";
+import { waHref } from "@/lib/mortgage/wa";
 import styles from "./oranlar.module.css";
 
 function WhatsAppIcon() {
@@ -31,7 +31,7 @@ function CalcIcon() {
 
 export default function OranlarClient() {
   const t = useT();
-  const f = t.finansman;
+  const f = t.mortgage;
   const o = f.oranlar;
   const [tab, setTab] = useState<"fixed" | "variable">("fixed");
   const [showDisclosure, setShowDisclosure] = useState(false);
@@ -47,8 +47,8 @@ export default function OranlarClient() {
       <section className={styles.hero}>
         <div className="container">
           <div className={styles.heroInner}>
-            <Link href="/finansman" className={styles.back}>
-              {f.backToFinansman}
+            <Link href="/mortgage" className={styles.back}>
+              {f.backToMortgage}
             </Link>
             <span className={styles.eyebrow}>{o.label}</span>
             <h1 className={styles.title}>{o.title}</h1>
@@ -143,7 +143,7 @@ export default function OranlarClient() {
                 <WhatsAppIcon />
                 {o.cta.whatsappBtn}
               </a>
-              <Link href="/finansman/araclar" className={styles.ghostBtn}>
+              <Link href="/mortgage/araclar" className={styles.ghostBtn}>
                 <CalcIcon />
                 {o.cta.calcBtn}
               </Link>
@@ -152,7 +152,7 @@ export default function OranlarClient() {
         </div>
       </section>
 
-      <FinansmanDisclosure />
+      <MortgageDisclosure />
       <Footer />
 
       {showDisclosure ? (

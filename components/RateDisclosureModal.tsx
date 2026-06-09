@@ -2,8 +2,8 @@
 
 import { useEffect } from "react";
 import { useT } from "@/lib/i18n/LanguageProvider";
-import { RATE_AS_OF } from "@/lib/finansman/rates";
-import { RMA } from "@/lib/finansman/identity";
+import { RATE_AS_OF } from "@/lib/mortgage/rates";
+import { RMA } from "@/lib/mortgage/identity";
 import styles from "./RateDisclosureModal.module.css";
 
 interface Props {
@@ -17,7 +17,7 @@ interface Props {
  */
 export default function RateDisclosureModal({ onClose }: Props) {
   const t = useT();
-  const d = t.finansman.disclosure;
+  const d = t.mortgage.disclosure;
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -64,7 +64,7 @@ export default function RateDisclosureModal({ onClose }: Props) {
             {d.licenceLabel}: {RMA.licenceNo}
           </span>
           <span className={styles.asOf}>
-            {t.finansman.rates.asOf}: {RATE_AS_OF}
+            {t.mortgage.rates.asOf}: {RATE_AS_OF}
           </span>
         </div>
       </div>

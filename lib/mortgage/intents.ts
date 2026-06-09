@@ -1,4 +1,4 @@
-/** The six Finansman borrowing journeys (route slugs for /finansman/[intent]). */
+/** The six Mortgage borrowing journeys (route slugs for /mortgage/[intent]). */
 export const INTENTS = [
   "ev-almak",
   "yenileme",

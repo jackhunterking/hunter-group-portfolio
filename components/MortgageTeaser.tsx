@@ -3,13 +3,13 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useT } from "@/lib/i18n/LanguageProvider";
-import { HERO_RATES, heroTile } from "@/lib/finansman/rates";
+import { HERO_RATES, heroTile } from "@/lib/mortgage/rates";
 import RateDisclosureModal from "./RateDisclosureModal";
-import styles from "./FinansmanTeaser.module.css";
+import styles from "./MortgageTeaser.module.css";
 
-export default function FinansmanTeaser() {
+export default function MortgageTeaser() {
   const t = useT();
-  const f = t.finansman;
+  const f = t.mortgage;
   const [showDisclosure, setShowDisclosure] = useState(false);
 
   const fixed = heroTile(HERO_RATES.fixed);
@@ -21,7 +21,7 @@ export default function FinansmanTeaser() {
   ];
 
   return (
-    <section className={styles.section} id="finansman-teaser">
+    <section className={styles.section} id="mortgage-teaser">
       <div className="container">
         <div className={styles.inner}>
           <span className={styles.eyebrow}>
@@ -59,7 +59,7 @@ export default function FinansmanTeaser() {
             {f.rates.disclosureLabel}
           </button>
 
-          <Link href="/finansman" className={styles.cta}>
+          <Link href="/mortgage" className={styles.cta}>
             {f.teaser.cta}
             <svg width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true">
               <path

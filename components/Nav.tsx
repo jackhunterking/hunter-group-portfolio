@@ -66,7 +66,7 @@ export default function Nav({ overlayHero = false }: NavProps) {
   const SERVICES = [
     { href: "/rehber/alici", label: t.nav.servicesMenu.buy },
     { href: "/rehber/satici", label: t.nav.servicesMenu.sell },
-    { href: "/finansman", label: t.nav.servicesMenu.finansman },
+    { href: "/mortgage", label: t.nav.servicesMenu.mortgage },
   ];
 
   useEffect(() => {

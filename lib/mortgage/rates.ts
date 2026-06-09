@@ -1,5 +1,5 @@
 /**
- * HERO_RATES — manual, source-of-truth mortgage rates for the Finansman tab.
+ * HERO_RATES — manual, source-of-truth mortgage rates for the Mortgage tab.
  *
  * FSRA discipline (see hunter-merged-site-build-spec.md §7 / CLAUDE.md guardrail 3):
  *   - These are entered manually and approved before publishing.

@@ -1,8 +1,8 @@
 /**
- * WhatsApp deep-link helper for Finansman CTAs.
+ * WhatsApp deep-link helper for Mortgage CTAs.
  *
  * The site is WhatsApp-first (see ContactSection.tsx, which links to the same
- * number). Finansman leads route here rather than the guide-only
+ * number). Mortgage leads route here rather than the guide-only
  * /api/lead-capture email route, which is scoped to alici/satici PDF guides.
  */
 

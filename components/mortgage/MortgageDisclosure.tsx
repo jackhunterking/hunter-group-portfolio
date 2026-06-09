@@ -1,17 +1,17 @@
 "use client";
 
 import { useT } from "@/lib/i18n/LanguageProvider";
-import { RMA } from "@/lib/finansman/identity";
-import styles from "./FinansmanDisclosure.module.css";
+import { RMA } from "@/lib/mortgage/identity";
+import styles from "./MortgageDisclosure.module.css";
 
 /**
  * Walled RMA Mortgage / FSRA disclosure band (spec §8).
  * Carries the mortgage-side regulated identity, separate from the RE/MAX
- * Hallmark footer. Rendered at the bottom of every Finansman page.
+ * Hallmark footer. Rendered at the bottom of every Mortgage page.
  */
-export default function FinansmanDisclosure() {
+export default function MortgageDisclosure() {
   const t = useT();
-  const c = t.finansman.compliance;
+  const c = t.mortgage.compliance;
 
   return (
     <section className={styles.band} aria-label={c.heading}>
@@ -20,7 +20,7 @@ export default function FinansmanDisclosure() {
           <div className={styles.identity}>
             <span className={styles.brokerage}>{RMA.brokerage}</span>
             <span className={styles.licence}>
-              {t.finansman.disclosure.licenceLabel}: {RMA.licenceNo}
+              {t.mortgage.disclosure.licenceLabel}: {RMA.licenceNo}
             </span>
           </div>
 

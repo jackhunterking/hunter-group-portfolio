@@ -4,11 +4,11 @@ import { useState } from "react";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import AdvisorStrip from "@/components/finansman/AdvisorStrip";
-import FinansmanDisclosure from "@/components/finansman/FinansmanDisclosure";
+import AdvisorStrip from "@/components/mortgage/AdvisorStrip";
+import MortgageDisclosure from "@/components/mortgage/MortgageDisclosure";
 import { useT } from "@/lib/i18n/LanguageProvider";
-import { HERO_RATES, heroTile } from "@/lib/finansman/rates";
-import { waHref } from "@/lib/finansman/wa";
+import { HERO_RATES, heroTile } from "@/lib/mortgage/rates";
+import { waHref } from "@/lib/mortgage/wa";
 import {
   monthlyPayment,
   affordability,
@@ -16,7 +16,7 @@ import {
   closingCosts,
   paymentDifference,
   fmtCAD,
-} from "@/lib/finansman/calculators";
+} from "@/lib/mortgage/calculators";
 import styles from "./araclar.module.css";
 
 function WhatsAppIcon() {
@@ -95,7 +95,7 @@ const DEFAULT_RATE = Number(
 
 export default function AraclarClient() {
   const t = useT();
-  const f = t.finansman;
+  const f = t.mortgage;
   const a = f.araclar;
 
   /* Payment calculator */
@@ -171,8 +171,8 @@ export default function AraclarClient() {
       <section className={styles.hero}>
         <div className="container">
           <div className={styles.heroInner}>
-            <Link href="/finansman" className={styles.back}>
-              {f.backToFinansman}
+            <Link href="/mortgage" className={styles.back}>
+              {f.backToMortgage}
             </Link>
             <span className={styles.eyebrow}>{a.label}</span>
             <h1 className={styles.title}>{a.title}</h1>
@@ -370,7 +370,7 @@ export default function AraclarClient() {
         </div>
       </section>
 
-      <FinansmanDisclosure />
+      <MortgageDisclosure />
       <Footer />
     </main>
   );

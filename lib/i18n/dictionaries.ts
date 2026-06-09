@@ -9,14 +9,14 @@ export const tr = {
     home: "Anasayfa",
     about: "Hakkımızda",
     services: "Hizmetler",
-    finansman: "Finansman",
+    mortgage: "Mortgage",
     capital: "Hunter X Capital",
     guides: "Rehberler",
     resources: "Kaynaklar",
     servicesMenu: {
       buy: "Alım",
       sell: "Satım",
-      finansman: "Finansman",
+      mortgage: "Mortgage",
     },
     contact: "İletişim",
     menuOpen: "Menüyü aç",
@@ -32,7 +32,7 @@ export const tr = {
       heading: "Aile gibi yaklaşıyor,",
       headingEm: "varlık inşa ediyoruz.",
       sub: "Gayrimenkul, varlık oluşturmanın en güçlü yollarından biridir. 18 yılı aşkın birleşik deneyimimizle Kanada genelinde her alım ve satım işleminde yanınızdayız — profesyonel bir ekip olarak değil, aile gibi.",
-      ctaPrimary: "Ücretsiz Rehberler",
+      ctaPrimary: "Hizmetlerimiz",
       ctaSecondary: "WhatsApp'tan Yazın",
       stat1Value: "18+",
       stat1Label: "Yıl Birleşik Deneyim",
@@ -45,7 +45,7 @@ export const tr = {
       eyebrow: "Hizmetlerimiz",
       title: "Tek çatı altında,",
       titleEm: "üç hizmet.",
-      sub: "Alım, satım ve finansman — her aşamada yanınızdayız.",
+      sub: "Alım, satım ve mortgage — her aşamada yanınızdayız.",
       buy: {
         tag: "RE/MAX Hallmark",
         title: "Alım",
@@ -59,11 +59,11 @@ export const tr = {
         desc: "Mülkünüzü en iyi koşullarda satmak için profesyonel pazarlama, doğru fiyatlandırma ve güçlü müzakere.",
         cta: "Satım Rehberi",
       },
-      finansman: {
+      mortgage: {
         tag: "RMA Mortgage · FSRA",
-        title: "Finansman",
+        title: "Mortgage",
         desc: "Mortgage, kredi yenileme ve ev değerinden yararlanma — Türkçe ve sade bir dille.",
-        cta: "Finansman seçenekleri",
+        cta: "Mortgage seçenekleri",
       },
     },
     guides: {
@@ -136,7 +136,7 @@ export const tr = {
       path2MinUnit: " CAD+",
       path2MinNote: "tek yatırımcı",
       path2List1:
-        "Arsa, finansman, geliştirme, kiralama — sıfırdan sona biz yöneteriz",
+        "Arsa, mortgage, geliştirme, kiralama — sıfırdan sona biz yöneteriz",
       path2List2: "%100 mülkiyet ve karar sizde",
       path2List3: "Projeye özel ekip ve raporlama",
     },
@@ -160,7 +160,7 @@ export const tr = {
       step3Title: "İşletme",
       step3Text: "Kiracı yönetimi, raporlama, getiri optimizasyonu",
       step4Title: "Çıkış",
-      step4Text: "Yeniden finansman veya satış stratejisi",
+      step4Text: "Yeniden mortgage veya satış stratejisi",
     },
     why: {
       eyebrow: "Strateji Görüşmesi",
@@ -243,19 +243,19 @@ export const tr = {
     cta: "Hunter X Capital'ı Keşfedin",
   },
 
-  finansman: {
-    metaTitle: "Finansman · Mortgage, sade ve net · RMA Mortgage",
+  mortgage: {
+    metaTitle: "Mortgage — sade ve net · RMA Mortgage",
     metaDesc:
       "Toronto ve GTA için Türkçe mortgage rehberliği. Ön onay, kredi yenileme ve ev değerinden yararlanma — sade açıklama, gerçek kişiyle WhatsApp desteği.",
     teaser: {
-      eyebrow: "Finansman · RMA Mortgage",
+      eyebrow: "Mortgage · RMA Mortgage",
       title: "Mortgage, sade ve net.",
       titleEm: "Türkçe.",
       sub: "Ön onaydan yenilemeye, ev değerinden yararlanmaya kadar; seçeneklerinizi sade bir dille görün. Gerçek kişiyle, WhatsApp'tan.",
-      cta: "Finansman seçeneklerinizi görün",
+      cta: "Mortgage seçeneklerinizi görün",
     },
     hero: {
-      eyebrow: "Finansman · RMA Mortgage",
+      eyebrow: "Mortgage · RMA Mortgage",
       heading: "Mortgage, sade ve net.",
       headingEm: "Türkçe.",
       sub: "Kanada'da mortgage sürecini Türkçe ve sade bir dille yürütün. Bugünün öne çıkan oranlarını görün, doğru yolu birlikte netleştirelim.",
@@ -300,7 +300,7 @@ export const tr = {
     },
     compliance: {
       heading: "Yasal açıklama",
-      brand: "Finansman, Kanada'daki Türk topluluğu için mortgage (konut kredisi) sürecini sadeleştiren, RMA Mortgage bünyesinde sunulan Türkçe bir mortgage deneyimidir.",
+      brand: "Mortgage, Kanada'daki Türk topluluğu için mortgage (konut kredisi) sürecini sadeleştiren, RMA Mortgage bünyesinde sunulan Türkçe bir mortgage deneyimidir.",
       disclaimer: "Mortgage aracılığı, Ontario'da faaliyet gösteren RMA Mortgage lisanslı brokerage bünyesinde sunulur. FSRA lisansı, mortgage aracılığı hizmetinin Ontario düzenlemelerine tabi olduğunu gösterir.",
       legal: "Bu sayfalar yalnızca bilgilendirme amaçlıdır; kredi onayı, oran garantisi veya lender taahhüdü oluşturmaz. Nihai oran ve onay; gelir, kredi geçmişi, mülk, peşinat, lender koşulları ve yazılı commitment aşamasında kesinleşir. Mortgage brokerage ücretleri veya lender tarafından ödenen komisyonlar, geçerli olduğunda yazılı olarak açıklanır.",
       separateNote: "Mortgage aracılığı (RMA Mortgage · FSRA) ile gayrimenkul aracılığı (RE/MAX Hallmark) ayrı düzenlemelere tabi, ayrı hizmetlerdir.",
@@ -312,7 +312,7 @@ export const tr = {
       items: [
         { slug: "ev-almak", title: "Ev almak istiyorum", desc: "Ön onay, bütçe ve peşinatla ev alımına hazırlanın." },
         { slug: "yenileme", title: "Kredimi yenilemek", desc: "Bankanızın teklifiyle yetinmeyin; seçenekleri karşılaştırın." },
-        { slug: "tadilat", title: "Tadilat için finansman", desc: "Ev değerinizi kullanarak yenileme ve tadilatı finanse edin." },
+        { slug: "tadilat", title: "Tadilat için mortgage", desc: "Ev değerinizi kullanarak yenileme ve tadilatı finanse edin." },
         { slug: "borc-toparlama", title: "Borçları toparlamak", desc: "Ödemeleri tek, daha sade bir yapıda birleştirin." },
         { slug: "ev-degeri", title: "Ev değerimden yararlanmak", desc: "Ev değerinizden para çekin; yenileme veya ikinci kredi seçeneklerini görün." },
         { slug: "heloc", title: "Ev değerinden kredi limiti (HELOC)", desc: "Esnek bir kredi limitiyle ev değerinizi ihtiyaç duydukça kullanın." },
@@ -323,7 +323,7 @@ export const tr = {
       title: "Size en yakın profili seçin.",
       items: [
         { title: "İlk ev alıcıları", text: "Bütçe · ön onay · teklif", journey: "ev-almak" },
-        { title: "Ev sahipleri", text: "Yenileme · refinansman", journey: "yenileme" },
+        { title: "Ev sahipleri", text: "Yenileme · remortgage", journey: "yenileme" },
         { title: "Yatırımcılar", text: "Kira geliri · portföy", journey: "ev-degeri" },
         { title: "Şirket sahibi / serbest meslek", text: "Gelir belgesi · şirket", journey: "ev-almak" },
         { title: "Kanada'ya yeni gelenler", text: "Yeni kredi · yeni iş", journey: "ev-almak" },
@@ -335,7 +335,7 @@ export const tr = {
       button: "WhatsApp'tan yazın",
       whatsappText: "Merhaba, mortgage konusunda yardım almak istiyorum.",
     },
-    backToFinansman: "← Finansman",
+    backToMortgage: "← Mortgage",
     oranlar: {
       metaTitle: "Mortgage Oranları — Sabit & Değişken · RMA Mortgage",
       metaDesc:
@@ -455,7 +455,7 @@ export const tr = {
     },
   },
 
-  finansmanIntents: {
+  mortgageIntents: {
     "ev-almak": {
       navLabel: "Ev almak istiyorum",
       title: "İlk ya da sonraki evinizi güvenle alın",
@@ -481,7 +481,7 @@ export const tr = {
       finalSub: "WhatsApp'tan yazın; mevcut mortgage'ınıza göre yenileme veya taşıma yolunu birlikte netleştirelim.",
     },
     "tadilat": {
-      navLabel: "Tadilat için finansman",
+      navLabel: "Tadilat için mortgage",
       title: "Evinizi yenileyin, sermayenizle finanse edin",
       sub: "Tadilat ve yenileme projelerini ev sermayenizden yararlanarak daha planlı finanse edin.",
       cards: [
@@ -489,7 +489,7 @@ export const tr = {
         { title: "Doğru yapı", text: "Kredi yenileme, ev değerinden kredi (HELOC) veya ikinci kredi seçeneklerini birlikte karşılaştırın." },
         { title: "Net bütçe", text: "Proje maliyetinizi ve ödeme planınızı baştan sade şekilde görün." },
       ],
-      finalTitle: "Tadilat finansmanınızı birlikte planlayalım.",
+      finalTitle: "Tadilat mortgage'ınızı birlikte planlayalım.",
       finalSub: "WhatsApp'tan yazın; projenizi ve ev sermayenizi değerlendirip doğru sonraki adımı belirleyelim.",
     },
     "borc-toparlama": {
@@ -552,14 +552,14 @@ export const en: Dictionary = {
     home: "Home",
     about: "About",
     services: "Services",
-    finansman: "Finansman",
+    mortgage: "Mortgage",
     capital: "Hunter X Capital",
     guides: "Guides",
     resources: "Resources",
     servicesMenu: {
       buy: "Buying",
       sell: "Selling",
-      finansman: "Financing",
+      mortgage: "Mortgage",
     },
     contact: "Contact",
     menuOpen: "Open menu",
@@ -575,7 +575,7 @@ export const en: Dictionary = {
       heading: "We treat you like family,",
       headingEm: "we build wealth together.",
       sub: "Real estate is one of the most powerful ways to build wealth. With over 18 years of combined experience, we are by your side across Canada — not just as professionals, but as family.",
-      ctaPrimary: "Free Guides",
+      ctaPrimary: "Our Services",
       ctaSecondary: "Message on WhatsApp",
       stat1Value: "18+",
       stat1Label: "Years Combined Experience",
@@ -588,7 +588,7 @@ export const en: Dictionary = {
       eyebrow: "Our Services",
       title: "One group,",
       titleEm: "three services.",
-      sub: "Buying, selling, and financing — by your side at every step.",
+      sub: "Buying, selling, and mortgages — by your side at every step.",
       buy: {
         tag: "RE/MAX Hallmark",
         title: "Buying",
@@ -602,11 +602,11 @@ export const en: Dictionary = {
         desc: "Professional marketing, the right pricing, and strong negotiation to sell your property on the best terms.",
         cta: "Seller's Guide",
       },
-      finansman: {
+      mortgage: {
         tag: "RMA Mortgage · FSRA",
-        title: "Financing",
+        title: "Mortgage",
         desc: "Mortgages, renewal, and tapping your home's value — in plain Turkish and English.",
-        cta: "Financing options",
+        cta: "Mortgage options",
       },
     },
     guides: {
@@ -679,7 +679,7 @@ export const en: Dictionary = {
       path2MinUnit: " CAD+",
       path2MinNote: "single investor",
       path2List1:
-        "Land, financing, development, leasing — we run it end-to-end",
+        "Land, mortgage, development, leasing — we run it end-to-end",
       path2List2: "100% ownership and decisions are yours",
       path2List3: "Project-dedicated team and reporting",
     },
@@ -786,19 +786,19 @@ export const en: Dictionary = {
     cta: "Explore Hunter X Capital",
   },
 
-  finansman: {
-    metaTitle: "Financing — Mortgages made simple · RMA Mortgage",
+  mortgage: {
+    metaTitle: "Mortgage — simple and clear · RMA Mortgage",
     metaDesc:
       "Turkish-first mortgage guidance for Toronto and the GTA. Pre-approval, renewal, refinance, and tapping home equity — plain explanations, real-person WhatsApp support.",
     teaser: {
-      eyebrow: "Financing · RMA Mortgage",
+      eyebrow: "Mortgage · RMA Mortgage",
       title: "Mortgages, made simple —",
       titleEm: "in Turkish.",
       sub: "From pre-approval to renewal to tapping your home's equity — see your options in plain language. With a real person, over WhatsApp.",
-      cta: "See your financing options",
+      cta: "See your mortgage options",
     },
     hero: {
-      eyebrow: "Financing · RMA Mortgage",
+      eyebrow: "Mortgage · RMA Mortgage",
       heading: "Mortgages, made simple —",
       headingEm: "in Turkish.",
       sub: "Navigate the Canadian mortgage process in plain Turkish. See today's featured rates and let's map the right path together.",
@@ -843,7 +843,7 @@ export const en: Dictionary = {
     },
     compliance: {
       heading: "Legal disclosure",
-      brand: "Financing is a Turkish-language mortgage experience for the Turkish community in Canada, offered through RMA Mortgage, that simplifies the mortgage process.",
+      brand: "Mortgage is a Turkish-language mortgage experience for the Turkish community in Canada, offered through RMA Mortgage, that simplifies the mortgage process.",
       disclaimer: "Mortgage brokering is offered through RMA Mortgage, a licensed brokerage operating in Ontario. The FSRA licence indicates the mortgage brokering service is subject to Ontario regulations.",
       legal: "These pages are for information only; they do not constitute a credit approval, rate guarantee, or lender commitment. Final rate and approval are determined at the income, credit history, property, down payment, lender conditions, and written-commitment stage. Mortgage brokerage fees or lender-paid commissions, where applicable, are disclosed in writing.",
       separateNote: "Mortgage brokering (RMA Mortgage · FSRA) and real-estate brokerage (RE/MAX Hallmark) are separate services under separate regulations.",
@@ -855,7 +855,7 @@ export const en: Dictionary = {
       items: [
         { slug: "ev-almak", title: "I want to buy a home", desc: "Get pre-approved, set a budget, and prepare your down payment." },
         { slug: "yenileme", title: "Renew my mortgage", desc: "Don't settle for your bank's offer; compare your options." },
-        { slug: "tadilat", title: "Financing for renovations", desc: "Fund renovations using your home's value." },
+        { slug: "tadilat", title: "Mortgage for renovations", desc: "Fund renovations using your home's value." },
         { slug: "borc-toparlama", title: "Consolidate debt", desc: "Combine payments into one simpler structure." },
         { slug: "ev-degeri", title: "Use my home's value", desc: "Take money out of your home's value; see renewal or second-loan options." },
         { slug: "heloc", title: "Home equity credit line (HELOC)", desc: "Use your home's value as you need it, with a flexible credit line." },
@@ -878,7 +878,7 @@ export const en: Dictionary = {
       button: "Message on WhatsApp",
       whatsappText: "Hello, I'd like help with a mortgage.",
     },
-    backToFinansman: "← Financing",
+    backToMortgage: "← Mortgage",
     oranlar: {
       metaTitle: "Mortgage Rates — Fixed & Variable · RMA Mortgage",
       metaDesc:
@@ -998,7 +998,7 @@ export const en: Dictionary = {
     },
   },
 
-  finansmanIntents: {
+  mortgageIntents: {
     "ev-almak": {
       navLabel: "I want to buy a home",
       title: "Buy your first or next home with confidence",
@@ -1024,7 +1024,7 @@ export const en: Dictionary = {
       finalSub: "Message us on WhatsApp; based on your current mortgage we'll clarify a renewal or switch path together.",
     },
     "tadilat": {
-      navLabel: "Financing for renovations",
+      navLabel: "Mortgage for renovations",
       title: "Renovate your home, financed by your equity",
       sub: "Fund renovation projects more deliberately by drawing on your home equity.",
       cards: [
@@ -1032,7 +1032,7 @@ export const en: Dictionary = {
         { title: "The right structure", text: "Compare refinance, HELOC, or second-mortgage options together." },
         { title: "Clear budget", text: "See your project cost and payment plan plainly from the start." },
       ],
-      finalTitle: "Let's plan your renovation financing together.",
+      finalTitle: "Let's plan your renovation mortgage together.",
       finalSub: "Message us on WhatsApp; we'll assess your project and equity and decide the right next step.",
     },
     "borc-toparlama": {

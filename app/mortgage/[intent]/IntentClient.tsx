@@ -6,11 +6,11 @@ import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import RateDisclosureModal from "@/components/RateDisclosureModal";
-import AdvisorStrip from "@/components/finansman/AdvisorStrip";
-import FinansmanDisclosure from "@/components/finansman/FinansmanDisclosure";
+import AdvisorStrip from "@/components/mortgage/AdvisorStrip";
+import MortgageDisclosure from "@/components/mortgage/MortgageDisclosure";
 import { useT } from "@/lib/i18n/LanguageProvider";
-import { HERO_RATES, heroTile, RATE_AS_OF } from "@/lib/finansman/rates";
-import { waHref } from "@/lib/finansman/wa";
+import { HERO_RATES, heroTile, RATE_AS_OF } from "@/lib/mortgage/rates";
+import { waHref } from "@/lib/mortgage/wa";
 import styles from "./intent.module.css";
 
 function WhatsAppIcon() {
@@ -33,8 +33,8 @@ interface Props {
 
 export default function IntentClient({ intent }: Props) {
   const t = useT();
-  const f = t.finansman;
-  const page = t.finansmanIntents[intent];
+  const f = t.mortgage;
+  const page = t.mortgageIntents[intent];
   const [showDisclosure, setShowDisclosure] = useState(false);
 
   const tiles = [
@@ -52,7 +52,7 @@ export default function IntentClient({ intent }: Props) {
       <section className={styles.hero}>
         <div className={styles.heroMedia}>
           <Image
-            src="/finansman/home.jpg"
+            src="/mortgage/home.jpg"
             alt=""
             fill
             priority
@@ -63,8 +63,8 @@ export default function IntentClient({ intent }: Props) {
         <div className={styles.heroOverlay} aria-hidden="true" />
         <div className="container">
           <div className={styles.heroInner}>
-            <Link href="/finansman" className={styles.back}>
-              {f.backToFinansman}
+            <Link href="/mortgage" className={styles.back}>
+              {f.backToMortgage}
             </Link>
             <span className={styles.eyebrow}>{f.hero.eyebrow}</span>
             <h1 className={styles.title}>{page.title}</h1>
@@ -149,7 +149,7 @@ export default function IntentClient({ intent }: Props) {
         </div>
       </section>
 
-      <FinansmanDisclosure />
+      <MortgageDisclosure />
       <Footer />
 
       {showDisclosure ? (

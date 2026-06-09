@@ -9,7 +9,7 @@ Prepared for Jack Hunter · Hunter Group Real Estate / RMA Mortgage
 ## 1. Decision summary
 
 - **One domain, one app.** Everything lives in the existing Next.js (App Router) project at `jackhunter.com`. Kredibaba's standalone brand retires; its content becomes a section.
-- **Finansman is the hero.** The mortgage/borrowing side gets a top-level tab and the bulk of the attention, because that's where the volume and the Meta/WhatsApp funnel live.
+- **Mortgage is the hero.** The mortgage/borrowing side gets a top-level tab and the bulk of the attention, because that's where the volume and the Meta/WhatsApp funnel live.
 - **Hunter X Capital is demoted** from a co-equal pillar to a single lean section (the existing `CapitalTeaser` stays; the full `/hunter-x-capital` page collapses).
 - **Two regulated identities stay walled.** Real estate (RE/MAX Hallmark, RECO) and mortgage (RMA Mortgage, FSRA) share a domain but never blur — separate disclosures, separate brokerage identity per service.
 - **The kredibaba logged-in app is parked, not merged.** Dashboard/Documents/Properties/etc. are a separate future product, not part of this site.
@@ -25,7 +25,7 @@ app/
 ├── layout.tsx                      ← global Nav + Footer (existing, extended)
 ├── page.tsx                        ← homepage (re-sequenced, see §3)
 │
-├── finansman/                      ← NEW — the hero tab (ported from kredibaba)
+├── mortgage/                      ← NEW — the hero tab (ported from kredibaba)
 │   ├── page.tsx                    ← rate-first landing + journey cards
 │   ├── [intent]/page.tsx           ← one page per borrowing journey:
 │   │                                  ev-almak · yenileme · tadilat ·
@@ -46,7 +46,7 @@ app/
 │   └── reklam-aciklamasi/page.tsx  ← Advertising / rate disclosure
 │
 └── api/
-    └── lead-capture/route.ts       ← existing Resend handler (reused for Finansman leads)
+    └── lead-capture/route.ts       ← existing Resend handler (reused for Mortgage leads)
 ```
 
 ---
@@ -61,39 +61,39 @@ app/
 Hakkımızda  ·  Hizmetler (Alım / Satım)  ·  FİNANSMAN  ·  Rehberler  ·  İletişim
 ```
 
-Hunter X Capital leaves the top nav and becomes a homepage teaser + a short section reachable from About/Footer. Finansman takes its slot and is the most prominent item.
+Hunter X Capital leaves the top nav and becomes a homepage teaser + a short section reachable from About/Footer. Mortgage takes its slot and is the most prominent item.
 
 **Homepage section order (`app/page.tsx`):** the current single-page flow stays, with one insert and one demotion:
 
 ```
-HomeHero → AboutSection → ServicesSection → [NEW] FinansmanTeaser
+HomeHero → AboutSection → ServicesSection → [NEW] MortgageTeaser
 → CapitalTeaser (shrunk) → GuidesSection → PromiseSection → LogoStrip → ContactSection → Footer
 ```
 
-`FinansmanTeaser` is a new homepage block (rate hero + "see your options" CTA) that points into `/finansman`.
+`MortgageTeaser` is a new homepage block (rate hero + "see your options" CTA) that points into `/mortgage`.
 
 ---
 
-## 4. The Finansman tab — internal structure
+## 4. The Mortgage tab — internal structure
 
 Mirrors the IA already defined in `KREDIBABA_EXPERIENCE_PLAN.md`, kept as three clean layers so the borrow-vs-invest confusion never returns.
 
-**Journeys (why they need financing)** → `/finansman/[intent]`
+**Journeys (why they need financing)** → `/mortgage/[intent]`
 - Ev almak istiyorum
 - Ev kredimi yenilemek
-- Tadilat için finansman
+- Tadilat için mortgage
 - Borç ödemelerini rahatlatmak
 - Ev değerinden yararlanmak (HELOC)
 - Mortgage seçeneklerini incelemek
 
-**Personas (who they are)** → cards within `/finansman`, linking into the relevant journey
+**Personas (who they are)** → cards within `/mortgage`, linking into the relevant journey
 - İlk ev alıcıları · Ev sahipleri · Ev sahipleri / yatırımcılar · Şirket sahibi / serbest meslek · Kanada'ya yeni gelenler
 
-**Tools (what supports the journey)** → `/finansman/araclar`
+**Tools (what supports the journey)** → `/mortgage/araclar`
 - Ön onay (kept as a tool/step, never a standalone solution)
 - Mortgage hesaplayıcı · Uygunluk hesaplayıcı · Kapanış masrafı · Tapu devir vergisi · Ödeme farkı
 
-**Rates** → `/finansman/oranlar` (Fixed / Variable, `HERO_RATES` discipline — see §7)
+**Rates** → `/mortgage/oranlar` (Fixed / Variable, `HERO_RATES` discipline — see §7)
 
 ---
 
@@ -101,10 +101,10 @@ Mirrors the IA already defined in `KREDIBABA_EXPERIENCE_PLAN.md`, kept as three 
 
 | Piece | Kredibaba source | Target in Hunter | Action |
 |---|---|---|---|
-| Rate hero | `pages/Home.jsx` | `FinansmanTeaser` + `/finansman` | **Port** (re-implement in Next) |
-| Rate cards | `components/rates/*` | `/finansman/oranlar` | **Port** (Fixed/Variable, disclosure modal) |
-| Journeys | `pages/Solutions.jsx`, `SolutionDetail.jsx` | `/finansman/[intent]` | **Port** |
-| Calculators | `pages/Tools.jsx` | `/finansman/araclar` | **Port** (see §6) |
+| Rate hero | `pages/Home.jsx` | `MortgageTeaser` + `/mortgage` | **Port** (re-implement in Next) |
+| Rate cards | `components/rates/*` | `/mortgage/oranlar` | **Port** (Fixed/Variable, disclosure modal) |
+| Journeys | `pages/Solutions.jsx`, `SolutionDetail.jsx` | `/mortgage/[intent]` | **Port** |
+| Calculators | `pages/Tools.jsx` | `/mortgage/araclar` | **Port** (see §6) |
 | Bilingual copy | `i18n/tr.js`, `i18n/en.js` | Hunter i18n layer | **Migrate as data** |
 | Learn articles | `pages/Learn.jsx` | `app/rehber/` | **Fold in** (one education hub) |
 | About / Contact | `pages/About.jsx`, `Contact.jsx` | existing Hunter sections | **Reuse Hunter's** (drop kredibaba's) |
@@ -116,7 +116,7 @@ Mirrors the IA already defined in `KREDIBABA_EXPERIENCE_PLAN.md`, kept as three 
 
 ## 6. Calculator port checklist
 
-Each becomes a section on `/finansman/araclar` with its own anchor (e.g. `/finansman/araclar#mortgage-hesaplayici`).
+Each becomes a section on `/mortgage/araclar` with its own anchor (e.g. `/mortgage/araclar#mortgage-hesaplayici`).
 
 - [ ] Mortgage hesaplayıcı (payment calculator)
 - [ ] Uygunluk hesaplayıcı (affordability / qualification)
@@ -144,7 +144,7 @@ This is the part to get right before launch, not after.
 The site now hosts **two separately regulated businesses**. Real estate brokerage (RE/MAX Hallmark, RECO/TRREB rules and franchise branding standards) and mortgage brokerage (RMA Mortgage, FSRA advertising/disclosure rules) cannot share disclosures or blur identity.
 
 Practical rules for the build:
-- **Per-service brokerage identity.** Real-estate sections carry the RE/MAX Hallmark identity; Finansman carries the RMA Mortgage identity + FSRA licence. Don't let one brand label appear on the other's content.
+- **Per-service brokerage identity.** Real-estate sections carry the RE/MAX Hallmark identity; Mortgage carries the RMA Mortgage identity + FSRA licence. Don't let one brand label appear on the other's content.
 - **Separate disclosure blocks.** Footer (and relevant pages) show both, clearly attributed to the right service — not merged into one generic statement.
 - **No bleed in CTAs.** A mortgage rate CTA shouldn't sit inside a RE/MAX-branded block, and vice versa.
 - **Investor content stays on its own page.** Hunter X Capital "raise/partner" language lives only on its section, away from the consumer mortgage funnel (different regime again).
@@ -169,8 +169,8 @@ These form a client portal — a separate product. If/when you want it, it ships
 
 Ordered so the highest-volume, revenue-driving piece ships first and your Meta → WhatsApp funnel has a landing target early.
 
-1. **Phase 1 — Finansman core.** Scaffold `/finansman`, port the rate hero + `/finansman/oranlar`, build the journey pages `[intent]`, wire the WhatsApp/lead-capture CTA. Add the FinansmanTeaser to the homepage and the nav item. *This alone makes the funnel live.*
-2. **Phase 2 — Tools.** Port the six calculators to `/finansman/araclar`. These are lead magnets and SEO surface.
+1. **Phase 1 — Mortgage core.** Scaffold `/mortgage`, port the rate hero + `/mortgage/oranlar`, build the journey pages `[intent]`, wire the WhatsApp/lead-capture CTA. Add the MortgageTeaser to the homepage and the nav item. *This alone makes the funnel live.*
+2. **Phase 2 — Tools.** Port the six calculators to `/mortgage/araclar`. These are lead magnets and SEO surface.
 3. **Phase 3 — Fold + legalize.** Migrate Learn into `rehber/`, port the three legal pages, lock the FSRA disclosures and RMA licence fields.
 4. **Phase 4 — Demote Capital.** Collapse `/hunter-x-capital` to a lean section, keep the teaser, finalize nav.
 5. **Pre-launch — Compliance pass.** RE/MAX + RMA review of identity separation and disclosures.

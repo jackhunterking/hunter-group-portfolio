@@ -1,5 +1,5 @@
 /**
- * RMA Mortgage regulated identity for the Finansman tab.
+ * RMA Mortgage regulated identity for the Mortgage tab.
  *
  * These are the launch-ready values carried over from the Kredibaba source
  * (src/theme.jsx: BROKERAGE = "RMA Mortgage", licence 10464).
@@ -10,7 +10,7 @@
  * → Confirm the exact FSRA brokerage licence number with the RMA principal
  *   broker before public launch (CLAUDE.md / spec §7).
  *
- * Compliance walling (spec §8): this identity appears ONLY on Finansman pages.
+ * Compliance walling (spec §8): this identity appears ONLY on Mortgage pages.
  * Real-estate pages keep the RE/MAX Hallmark identity. They never share a
  * disclosure block.
  */

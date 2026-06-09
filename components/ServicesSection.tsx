@@ -70,12 +70,12 @@ export default function ServicesSection() {
 
           {/* Financing — RMA Mortgage · FSRA */}
           <article className={styles.card}>
-            <span className={styles.tag}>{s.finansman.tag}</span>
-            <h3 className={styles.cardTitle}>{s.finansman.title}</h3>
-            <p className={styles.cardDesc}>{s.finansman.desc}</p>
+            <span className={styles.tag}>{s.mortgage.tag}</span>
+            <h3 className={styles.cardTitle}>{s.mortgage.title}</h3>
+            <p className={styles.cardDesc}>{s.mortgage.desc}</p>
             <div className={styles.links}>
-              <Link href="/finansman" className={styles.cardLink}>
-                {s.finansman.cta}
+              <Link href="/mortgage" className={styles.cardLink}>
+                {s.mortgage.cta}
                 <Arrow />
               </Link>
             </div>

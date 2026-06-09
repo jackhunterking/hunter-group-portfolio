@@ -1,7 +1,7 @@
 /**
- * Finansman calculator math — pure, framework-free functions.
+ * Mortgage calculator math — pure, framework-free functions.
  *
- * These power the /finansman/araclar tools. They produce ESTIMATES ONLY:
+ * These power the /mortgage/araclar tools. They produce ESTIMATES ONLY:
  * none of this is a credit approval, qualification, or rate/cost guarantee
  * (CLAUDE.md guardrail 3 / spec §6–7). Every figure a user sees is rendered
  * alongside a plain-language "estimate only" note.

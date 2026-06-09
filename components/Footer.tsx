@@ -16,7 +16,7 @@ export default function Footer() {
     { href: "/", label: n.home },
     { href: "/#hakkimizda", label: n.about },
     { href: "/#hizmetler", label: n.services },
-    { href: "/finansman", label: n.finansman },
+    { href: "/mortgage", label: n.mortgage },
     { href: "/hunter-x-capital", label: n.capital },
     { href: "/#kaynaklar", label: n.resources },
     { href: "/#iletisim", label: n.contact },

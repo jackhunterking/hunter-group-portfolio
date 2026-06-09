@@ -3,8 +3,8 @@ import { tr } from "@/lib/i18n/dictionaries";
 import AraclarClient from "./AraclarClient";
 
 export const metadata: Metadata = {
-  title: tr.finansman.araclar.metaTitle,
-  description: tr.finansman.araclar.metaDesc,
+  title: tr.mortgage.araclar.metaTitle,
+  description: tr.mortgage.araclar.metaDesc,
 };
 
 export default function AraclarPage() {
