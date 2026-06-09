@@ -33,7 +33,7 @@ export const tr = {
       headingEm: "varlık inşa ediyoruz.",
       sub: "Gayrimenkul, varlık oluşturmanın en güçlü yollarından biridir. 18 yılı aşkın birleşik deneyimimizle Kanada genelinde her alım ve satım işleminde yanınızdayız — profesyonel bir ekip olarak değil, aile gibi.",
       ctaPrimary: "Ücretsiz Rehberler",
-      ctaSecondary: "Bizi Tanıyın",
+      ctaSecondary: "WhatsApp'tan Yazın",
       stat1Value: "18+",
       stat1Label: "Yıl Birleşik Deneyim",
       stat2Value: "Toronto",
@@ -336,6 +336,25 @@ export const tr = {
       whatsappText: "Merhaba, mortgage konusunda yardım almak istiyorum.",
     },
     backToFinansman: "← Finansman",
+    oranlar: {
+      metaTitle: "Mortgage Oranları — Sabit & Değişken · RMA Mortgage",
+      metaDesc:
+        "Toronto ve GTA için bugünün öne çıkan sabit ve değişken mortgage oranları. Örnek göstergedir; kişisel oranınızı WhatsApp'tan netleştirin.",
+      label: "Oranlar",
+      title: "Bugünün öne çıkan mortgage oranları.",
+      sub: "Net koşullar. Sade açıklama. Garanti değil; başlangıç göstergesidir.",
+      cardTitle: "Kanada'daki öne çıkan mortgage oranları",
+      termHeading: "Vade",
+      rateHeading: "Oran",
+      note: "Yalnızca güçlü kredi, uygun gelir ve lender koşullarını sağlayan dosyalar için örnek gösterge oranıdır.",
+      cta: {
+        title: "Sizin oranınız ne olabilir?",
+        sub: "WhatsApp'tan yazın; dosyanıza göre hangi bilgilere ihtiyaç olduğunu birlikte netleştirelim.",
+        whatsappBtn: "WhatsApp'tan oran sorun",
+        calcBtn: "Hesaplayıcıya git",
+      },
+      whatsappText: "Merhaba, güncel mortgage oranları hakkında bilgi almak istiyorum.",
+    },
   },
 
   finansmanIntents: {
@@ -762,6 +781,25 @@ export const en: Dictionary = {
       whatsappText: "Hello, I'd like help with a mortgage.",
     },
     backToFinansman: "← Financing",
+    oranlar: {
+      metaTitle: "Mortgage Rates — Fixed & Variable · RMA Mortgage",
+      metaDesc:
+        "Today's featured fixed and variable mortgage rates for Toronto and the GTA. Example indicators only; confirm your personal rate over WhatsApp.",
+      label: "Rates",
+      title: "Today's featured mortgage rates.",
+      sub: "Clear terms. Plain explanation. Not a guarantee; a starting indicator.",
+      cardTitle: "Featured mortgage rates in Canada",
+      termHeading: "Term",
+      rateHeading: "Rate",
+      note: "An example indicator rate, only for files with strong credit, qualifying income, and lender conditions met.",
+      cta: {
+        title: "What could your rate be?",
+        sub: "Message us on WhatsApp; we'll work out together what information your file needs.",
+        whatsappBtn: "Ask about rates on WhatsApp",
+        calcBtn: "Go to calculators",
+      },
+      whatsappText: "Hello, I'd like information on current mortgage rates.",
+    },
   },
 
   finansmanIntents: {
