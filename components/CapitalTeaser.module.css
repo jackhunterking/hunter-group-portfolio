@@ -83,13 +83,11 @@
 }
 
 .title em {
-  font-style: italic;
   color: var(--gold);
 }
 
 .sub {
   font-family: var(--serif);
-  font-style: italic;
   font-size: clamp(16px, 1.7vw, 19px);
   line-height: 1.55;
   color: rgba(255, 255, 255, 0.7);
@@ -142,7 +140,6 @@
 
 .pathNum {
   font-family: var(--serif);
-  font-style: italic;
   font-size: 13px;
   color: rgba(235, 199, 107, 0.6);
   letter-spacing: 0;

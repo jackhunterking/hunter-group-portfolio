@@ -86,7 +86,6 @@
 
 .numLarge {
   font-family: var(--serif);
-  font-style: italic;
   font-size: 28px;
   color: var(--navy);
   line-height: 1;
@@ -111,7 +110,6 @@
 }
 
 .title em {
-  font-style: italic;
   color: var(--navy);
 }
 

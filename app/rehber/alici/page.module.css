@@ -42,13 +42,11 @@
 }
 
 .title em {
-  font-style: italic;
   color: var(--navy);
 }
 
 .sub {
   font-family: var(--serif);
-  font-style: italic;
   font-size: clamp(15px, 1.6vw, 18px);
   color: rgba(0, 0, 0, 0.5);
   line-height: 1.6;

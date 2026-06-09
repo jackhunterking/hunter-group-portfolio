@@ -20,7 +20,7 @@
   --wa-ink: #0a0a0a;
 
   /* Typography */
-  --serif: var(--font-serif), "Cormorant Garamond", "Times New Roman", serif;
+  --serif: var(--font-serif), "Lora", Georgia, serif;
   --sans: var(--font-sans), -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
 
   /* Layout */
@@ -62,6 +62,12 @@ a {
 
 button {
   font-family: inherit;
+}
+
+/* Emphasis is conveyed by colour, not slant — keep em/i upright */
+em,
+i {
+  font-style: normal;
 }
 
 @media (prefers-reduced-motion: reduce) {

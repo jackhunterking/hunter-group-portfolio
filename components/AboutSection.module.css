@@ -57,13 +57,11 @@
 }
 
 .title em {
-  font-style: italic;
   color: var(--navy);
 }
 
 .subtitle {
   font-family: var(--serif);
-  font-style: italic;
   font-size: clamp(18px, 2.4vw, 22px);
   font-weight: 400;
   line-height: 1.45;
@@ -188,7 +186,6 @@
 
 .personPositioning {
   font-family: var(--serif);
-  font-style: italic;
   font-size: 18px;
   line-height: 1.5;
   color: var(--text);

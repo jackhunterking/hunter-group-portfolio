@@ -121,7 +121,6 @@
 }
 
 .heading em {
-  font-style: italic;
   color: var(--gold);
   font-weight: 400;
 }
@@ -129,7 +128,6 @@
 /* ── Subtitle ── */
 .subtitle {
   font-family: var(--serif);
-  font-style: italic;
   font-size: clamp(16px, 1.6vw, 22px);
   font-weight: 400;
   line-height: 1.5;
@@ -180,33 +178,34 @@
 .ctaPrimary svg { transition: transform 0.3s ease; }
 .ctaPrimary:hover svg { transform: translateX(4px); }
 
-.ctaSecondary {
+.ctaWhatsapp {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 10px;
   font-family: var(--sans);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--white);
+  color: var(--wa-ink);
+  background: var(--wa);
   text-decoration: none;
   padding: 16px 24px;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  transition: border-color 0.3s ease, background 0.3s ease;
+  transition: background 0.3s ease, transform 0.2s ease;
   flex: 1 1 auto;
 }
 
 @media (min-width: 480px) {
-  .ctaSecondary {
+  .ctaWhatsapp {
     flex: 0 0 auto;
     padding: 18px 28px;
   }
 }
 
-.ctaSecondary:hover {
-  border-color: rgba(255, 255, 255, 0.75);
-  background: rgba(255, 255, 255, 0.06);
+.ctaWhatsapp:hover {
+  background: var(--wa-hover);
+  transform: translateY(-2px);
 }
 
 /* ── Credibility stats bar ── */
@@ -234,7 +233,6 @@
 
 .statValue {
   font-family: var(--serif);
-  font-style: italic;
   font-size: clamp(26px, 4vw, 36px);
   color: var(--gold);
   line-height: 1;

@@ -94,14 +94,12 @@
 }
 
 .heroTitle em {
-  font-style: italic;
   color: var(--gold);
   padding: 0 0.05em;
 }
 
 .heroSub {
   font-family: var(--serif);
-  font-style: italic;
   font-size: clamp(18px, 1.9vw, 24px);
   line-height: 1.45;
   color: rgba(255, 255, 255, 0.82);
@@ -110,7 +108,6 @@
 }
 
 .heroSub em {
-  font-style: italic;
   color: var(--gold);
 }
 
@@ -182,7 +179,6 @@
 
 .heroCtaNum {
   font-family: var(--serif);
-  font-style: italic;
   font-weight: 500;
   font-size: 14px;
   letter-spacing: 0;
@@ -243,7 +239,6 @@
 
 .snapText {
   font-family: var(--serif);
-  font-style: italic;
   font-size: 17px;
   line-height: 1.5;
   color: rgba(255, 255, 255, 0.78);
@@ -273,7 +268,6 @@
 }
 
 .sectionTitle em {
-  font-style: italic;
   color: var(--gold);
 }
 
@@ -340,7 +334,6 @@
 
 .pathNum {
   font-family: var(--serif);
-  font-style: italic;
   font-size: 36px;
   color: rgba(235, 199, 107, 0.35);
   line-height: 1;
@@ -369,7 +362,6 @@
 
 .pathLead {
   font-family: var(--serif);
-  font-style: italic;
   font-size: 16px;
   line-height: 1.55;
   color: rgba(255, 255, 255, 0.62);
@@ -402,7 +394,6 @@
 }
 
 .minValue em {
-  font-style: italic;
   font-size: 0.5em;
   color: rgba(235, 199, 107, 0.7);
   letter-spacing: 0;
@@ -410,7 +401,6 @@
 
 .minNote {
   font-family: var(--serif);
-  font-style: italic;
   font-size: 13px;
   color: rgba(255, 255, 255, 0.45);
 }
@@ -453,7 +443,6 @@
 }
 
 .roleName em {
-  font-style: italic;
   font-weight: 400;
   color: rgba(235, 199, 107, 0.85);
   font-size: 0.85em;
@@ -462,7 +451,6 @@
 
 .roleDesc {
   font-family: var(--serif);
-  font-style: italic;
   font-size: 15px;
   line-height: 1.55;
   color: rgba(255, 255, 255, 0.6);
@@ -479,7 +467,6 @@
 
 .soloList li {
   font-family: var(--serif);
-  font-style: italic;
   font-size: 16px;
   line-height: 1.55;
   color: rgba(255, 255, 255, 0.78);
@@ -555,7 +542,6 @@
 
 .pmQuote {
   font-family: var(--serif);
-  font-style: italic;
   font-weight: 400;
   font-size: clamp(22px, 2.8vw, 34px);
   line-height: 1.45;
@@ -564,7 +550,6 @@
 }
 
 .pmQuote em {
-  font-style: italic;
   color: var(--gold);
 }
 
@@ -617,7 +602,6 @@
 .stepNum {
   display: block;
   font-family: var(--serif);
-  font-style: italic;
   font-size: 18px;
   color: rgba(235, 199, 107, 0.55);
   margin-bottom: 10px;
@@ -635,7 +619,6 @@
 
 .stepText {
   font-family: var(--serif);
-  font-style: italic;
   font-size: 15px;
   line-height: 1.55;
   color: rgba(255, 255, 255, 0.6);
@@ -668,13 +651,11 @@
 }
 
 .whyTitle em {
-  font-style: italic;
   color: var(--gold);
 }
 
 .whyText {
   font-family: var(--serif);
-  font-style: italic;
   font-size: clamp(16px, 1.7vw, 19px);
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.7);

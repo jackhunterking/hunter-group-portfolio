@@ -52,13 +52,11 @@
 }
 
 .title em {
-  font-style: italic;
   color: var(--navy);
 }
 
 .sub {
   font-family: var(--serif);
-  font-style: italic;
   font-size: clamp(15px, 1.6vw, 18px);
   color: rgba(0, 0, 0, 0.45);
   max-width: 480px;
@@ -117,7 +115,6 @@
 
 .number {
   font-family: var(--serif);
-  font-style: italic;
   font-size: 40px;
   color: rgba(255, 255, 255, 0.08);
   line-height: 1;
@@ -144,7 +141,6 @@
 
 .cardDesc {
   font-family: var(--serif);
-  font-style: italic;
   font-size: 15px;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.6);
