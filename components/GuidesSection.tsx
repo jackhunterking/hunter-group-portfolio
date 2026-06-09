@@ -27,7 +27,7 @@ export default function GuidesSection() {
   ];
 
   return (
-    <section className={styles.section} id="rehberler">
+    <section className={styles.section} id="kaynaklar">
       <div className="container">
         <div className={styles.head}>
           <span className={styles.eyebrow}>

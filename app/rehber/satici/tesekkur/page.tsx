@@ -39,7 +39,7 @@ export default function SaticiTesekkur() {
       guideType="satici"
       guideName="Satıcı Rehberi"
       guidePdfPath="/guides/ev-satma-rehberi.pdf"
-      intro="Mülkünüzü en iyi koşullarda satmak için profesyonel strateji e-postanıza gönderildi. Bu arada, aşağıdaki adımlarla yolculuğunuza devam edebilirsiniz."
+      intro="Mülkünüzü en iyi koşullarda satmak için profesyonel strateji e-postanıza gönderildi. Bu arada, aşağıdaki adımlarla devam edebilirsiniz."
       nextSteps={SATICI_STEPS}
     />
   );

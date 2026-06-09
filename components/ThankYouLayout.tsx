@@ -96,7 +96,7 @@ export default function ThankYouLayout({
               Sırada Ne Var
             </span>
             <h2 className={styles.nextTitle}>
-              Yolculuğa <em>devam.</em>
+              Sıradaki <em>adımlar.</em>
             </h2>
           </div>
 

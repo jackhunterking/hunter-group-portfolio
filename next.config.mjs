@@ -10,7 +10,7 @@ const nextConfig = {
     return [
       {
         source: '/rehber',
-        destination: '/#rehberler',
+        destination: '/#kaynaklar',
         permanent: true,
       },
     ];

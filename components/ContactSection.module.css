@@ -88,14 +88,14 @@
   letter-spacing: 0.2em;
   text-transform: uppercase;
   text-decoration: none;
-  color: var(--ink);
-  background: #25d366;
+  color: var(--wa-ink);
+  background: var(--wa);
   padding: 18px 36px;
   transition: background 0.25s ease, transform 0.2s ease;
 }
 
 .waButton:hover {
-  background: #1ebe5d;
+  background: var(--wa-hover);
   transform: translateY(-2px);
 }
 

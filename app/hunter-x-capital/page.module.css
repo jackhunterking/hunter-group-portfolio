@@ -690,15 +690,15 @@
   font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--white);
-  background: #25d366;
+  color: var(--wa-ink);
+  background: var(--wa);
   padding: 18px 30px;
   text-decoration: none;
   transition: background 0.25s ease, transform 0.25s ease;
 }
 
 .whyCta:hover {
-  background: #20b757;
+  background: var(--wa-hover);
   transform: translateY(-2px);
 }
 

@@ -61,12 +61,12 @@ export default function Nav({ overlayHero = false }: NavProps) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
-  const LINKS = [
-    { href: "/#hakkimizda", label: t.nav.about },
-    { href: "/#hizmetler", label: t.nav.services },
-    { href: "/hunter-x-capital", label: t.nav.capital },
-    { href: "/#rehberler", label: t.nav.guides },
-    { href: "/#iletisim", label: t.nav.contact },
+  const close = () => setOpen(false);
+
+  const SERVICES = [
+    { href: "/rehber/alici", label: t.nav.servicesMenu.buy },
+    { href: "/rehber/satici", label: t.nav.servicesMenu.sell },
+    { href: "/finansman", label: t.nav.servicesMenu.finansman },
   ];
 
   useEffect(() => {
@@ -103,16 +103,55 @@ export default function Nav({ overlayHero = false }: NavProps) {
         </Link>
 
         <nav className={styles.links}>
-          {LINKS.map((link) => (
+          <Link href="/#hakkimizda" className={styles.link} onClick={close}>
+            {t.nav.about}
+          </Link>
+
+          {/* Services umbrella — dropdown listing the three service lines */}
+          <div className={styles.dropdown}>
             <Link
-              key={link.href}
-              href={link.href}
-              className={styles.link}
-              onClick={() => setOpen(false)}
+              href="/#hizmetler"
+              className={`${styles.link} ${styles.dropdownToggle}`}
+              onClick={close}
             >
-              {link.label}
+              {t.nav.services}
+              <svg
+                className={styles.caret}
+                width="9"
+                height="6"
+                viewBox="0 0 10 6"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M1 1l4 4 4-4"
+                  stroke="currentColor"
+                  strokeWidth="1.4"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             </Link>
-          ))}
+            <div className={styles.dropdownPanel}>
+              {SERVICES.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={styles.dropdownItem}
+                  onClick={close}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <Link href="/#kaynaklar" className={styles.link} onClick={close}>
+            {t.nav.resources}
+          </Link>
+          <Link href="/#iletisim" className={styles.link} onClick={close}>
+            {t.nav.contact}
+          </Link>
 
           <div className={styles.langToggle} role="group" aria-label="Language">
             <button

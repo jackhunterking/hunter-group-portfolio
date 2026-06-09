@@ -25,6 +25,9 @@
   text-align: center;
   margin-bottom: 48px;
   position: relative;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media (min-width: 768px) {
@@ -32,7 +35,7 @@
     padding: 120px 0;
   }
   .head {
-    margin-bottom: 72px;
+    margin-bottom: 64px;
   }
 }
 
@@ -58,13 +61,19 @@
   opacity: 0.6;
 }
 
+.hairlineRight {
+  margin-right: 0;
+  margin-left: 14px;
+}
+
 .title {
   font-family: var(--serif);
   font-weight: 500;
-  font-size: clamp(40px, 6.5vw, 64px);
-  line-height: 1;
+  font-size: clamp(36px, 5.5vw, 56px);
+  line-height: 1.04;
   letter-spacing: -0.025em;
   color: var(--white);
+  margin-bottom: 18px;
 }
 
 .title em {
@@ -72,104 +81,116 @@
   color: var(--gold);
 }
 
+.sub {
+  font-family: var(--sans);
+  font-size: clamp(15px, 1.5vw, 17px);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 540px;
+  margin: 0 auto;
+}
+
 .grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1px;
   background: var(--hairline);
-  margin-bottom: 64px;
   position: relative;
 }
 
-@media (min-width: 760px) {
+@media (min-width: 620px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
+@media (min-width: 940px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 .card {
+  display: flex;
+  flex-direction: column;
   background: var(--ink);
-  padding: 32px 24px;
+  padding: 36px 30px;
   transition: background 0.4s ease;
   position: relative;
 }
 
 @media (min-width: 480px) {
   .card {
-    padding: 48px 32px;
+    padding: 44px 34px;
   }
 }
 
 .card:hover {
-  background: rgba(30, 51, 120, 0.15);
+  background: rgba(30, 51, 120, 0.18);
 }
 
-.cardHead {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 32px;
-}
-
-.icon {
+.tag {
+  display: inline-block;
+  align-self: flex-start;
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
   color: var(--gold);
-}
-
-.number {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 28px;
-  color: rgba(255, 255, 255, 0.3);
-  line-height: 1;
+  border: 1px solid rgba(235, 199, 107, 0.4);
+  padding: 5px 10px;
+  margin-bottom: 22px;
 }
 
 .cardTitle {
   font-family: var(--serif);
   font-weight: 500;
-  font-size: 32px;
-  line-height: 1;
+  font-size: 30px;
+  line-height: 1.05;
   letter-spacing: -0.01em;
   color: var(--white);
   margin-bottom: 14px;
 }
 
-.cardDescription {
-  font-size: 15px;
-  line-height: 1.55;
-  color: rgba(255, 255, 255, 0.65);
-  max-width: 280px;
+.cardDesc {
+  font-family: var(--sans);
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.68);
+  margin-bottom: 26px;
+  flex: 1;
 }
 
-.cta {
-  text-align: center;
-  position: relative;
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
 }
 
-.ctaLink {
+.cardLink {
   display: inline-flex;
   align-items: center;
-  gap: 14px;
+  gap: 9px;
   font-family: var(--sans);
   font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--white);
   text-decoration: none;
-  padding: 18px 32px;
-  border: 1px solid var(--gold);
-  transition: background 0.3s ease, color 0.3s ease;
+  transition: color 0.25s ease;
 }
 
-.ctaLink:hover {
-  background: var(--gold);
-  color: var(--ink);
+.cardLink svg {
+  color: var(--gold);
+  transition: transform 0.25s ease;
 }
 
-.ctaLink svg {
-  transition: transform 0.3s ease;
+.cardLink:hover {
+  color: var(--gold);
 }
 
-.ctaLink:hover svg {
+.cardLink:hover svg {
   transform: translateX(4px);
 }

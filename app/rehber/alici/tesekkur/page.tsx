@@ -39,7 +39,7 @@ export default function AliciTesekkur() {
       guideType="alici"
       guideName="Alıcı Rehberi"
       guidePdfPath="/guides/ev-alma-rehberi.pdf"
-      intro="Kanada'da mülk sahibi olmanın profesyonel yol haritası e-postanıza gönderildi. Bu arada, aşağıdaki adımlarla yolculuğunuza devam edebilirsiniz."
+      intro="Kanada'da mülk sahibi olmanın profesyonel yol haritası e-postanıza gönderildi. Bu arada, aşağıdaki adımlarla devam edebilirsiniz."
       nextSteps={ALICI_STEPS}
     />
   );

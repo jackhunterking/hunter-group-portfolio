@@ -366,16 +366,18 @@
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--white);
+  color: var(--wa-ink);
+  background: var(--wa);
   text-decoration: none;
   padding: 16px 26px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  transition: border-color 0.3s ease, background 0.3s ease;
+  border: 1px solid var(--wa);
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .signoffBtn:hover {
-  border-color: var(--gold);
-  background: rgba(235, 199, 107, 0.05);
+  background: var(--wa-hover);
+  border-color: var(--wa-hover);
+  transform: translateY(-2px);
 }
 
 .signoffBtn:first-child {

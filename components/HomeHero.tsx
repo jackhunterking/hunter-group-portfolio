@@ -47,7 +47,7 @@ export default function HomeHero() {
           <p className={styles.subtitle}>{h.sub}</p>
 
           <div className={styles.ctas}>
-            <Link href="/#rehberler" className={styles.ctaPrimary}>
+            <Link href="/#kaynaklar" className={styles.ctaPrimary}>
               {h.ctaPrimary}
               <svg width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true">
                 <path
