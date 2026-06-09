@@ -2,15 +2,24 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useT } from "@/lib/i18n/LanguageProvider";
+import { useT, useLang } from "@/lib/i18n/LanguageProvider";
+import { LEGAL_DOCS, LEGAL_SLUGS } from "@/lib/mortgage/legal";
 import styles from "./Footer.module.css";
 
 const WA_URL = "https://wa.me/16473913311";
 
 export default function Footer() {
   const t = useT();
+  const { lang } = useLang();
   const f = t.footer;
   const n = t.nav;
+
+  const docs = LEGAL_DOCS[lang];
+  const LEGAL = [
+    { href: `/${LEGAL_SLUGS.privacy}`, label: docs.privacy.title },
+    { href: `/${LEGAL_SLUGS.terms}`, label: docs.terms.title },
+    { href: `/${LEGAL_SLUGS.advertising}`, label: docs.advertising.title },
+  ];
 
   const NAV = [
     { href: "/", label: n.home },
@@ -115,6 +124,14 @@ export default function Footer() {
               </a>
             </div>
           </div>
+        </div>
+
+        <div className={styles.legalRow}>
+          {LEGAL.map((link) => (
+            <Link key={link.href} href={link.href} className={styles.legalLink}>
+              {link.label}
+            </Link>
+          ))}
         </div>
 
         <div className={styles.bottom}>
