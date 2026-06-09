@@ -276,6 +276,37 @@
   color: var(--gold);
 }
 
+.rateLinks {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(235, 199, 107, 0.18);
+}
+
+.rateLink {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: none;
+  padding: 11px 12px;
+  border: 1px solid rgba(235, 199, 107, 0.3);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.rateLink:hover {
+  background: rgba(235, 199, 107, 0.1);
+  border-color: var(--gold);
+}
+
 /* ── Shared section heads ── */
 .sectionHead {
   text-align: center;

@@ -125,6 +125,14 @@ export default function MortgageClient() {
                   {f.rates.disclosureLabel}
                 </button>
               </div>
+              <div className={styles.rateLinks}>
+                <Link href="/mortgage/oranlar" className={styles.rateLink}>
+                  {f.oranlar.label} <Arrow />
+                </Link>
+                <Link href="/mortgage/araclar" className={styles.rateLink}>
+                  {f.araclar.label} <Arrow />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
