@@ -1,9 +1,9 @@
 /**
- * Mortgage calculator math — pure, framework-free functions.
+ * Mortgage calculator math, pure, framework-free functions.
  *
  * These power the /mortgage/araclar tools. They produce ESTIMATES ONLY:
  * none of this is a credit approval, qualification, or rate/cost guarantee
- * (CLAUDE.md guardrail 3 / spec §6–7). Every figure a user sees is rendered
+ * (CLAUDE.md guardrail 3 / spec §6-7). Every figure a user sees is rendered
  * alongside a plain-language "estimate only" note.
  *
  * ⚠️ Launch-blocking: the Ontario / Toronto land-transfer brackets, the
@@ -12,9 +12,7 @@
  * broker before public launch. They are isolated here so they are easy to audit.
  */
 
-/* ──────────────────────────────────────────────────────────────────────────
- * Mortgage payment
- * ────────────────────────────────────────────────────────────────────────── */
+/* Mortgage payment */
 
 /** Standard amortized monthly payment. annualRatePct is e.g. 4.14 (percent). */
 export function monthlyPayment(
@@ -42,17 +40,17 @@ export function mortgageFromPayment(
   return (payment * (Math.pow(1 + r, n) - 1)) / (r * Math.pow(1 + r, n));
 }
 
-/* ──────────────────────────────────────────────────────────────────────────
- * Land transfer tax — Ontario provincial + Toronto municipal (MLTT)
+/*
+ * Land transfer tax, Ontario provincial + Toronto municipal (MLTT)
  * Brackets as published; confirm before launch.
- * ────────────────────────────────────────────────────────────────────────── */
+ */
 
 interface Bracket {
   upTo: number | null; // null = no upper bound
   rate: number; // e.g. 0.005
 }
 
-/** Ontario provincial LTT (residential, 1–2 single-family residences). */
+/** Ontario provincial LTT (residential, 1-2 single-family residences). */
 const ONTARIO_BRACKETS: Bracket[] = [
   { upTo: 55000, rate: 0.005 },
   { upTo: 250000, rate: 0.01 },
@@ -128,10 +126,10 @@ export function landTransferTax(
   return { ontario, toronto, rebate, total };
 }
 
-/* ──────────────────────────────────────────────────────────────────────────
+/*
  * Closing costs estimate
  * Default flat assumptions are typical GTA figures; confirm before launch.
- * ────────────────────────────────────────────────────────────────────────── */
+ */
 
 export const CLOSING_DEFAULTS = {
   legal: 1800, // lawyer fees + disbursements
@@ -166,9 +164,7 @@ export function closingCosts(
   };
 }
 
-/* ──────────────────────────────────────────────────────────────────────────
- * Affordability estimate (GDS/TDS with stress-test qualifying rate)
- * ────────────────────────────────────────────────────────────────────────── */
+/* Affordability estimate (GDS/TDS with stress-test qualifying rate) */
 
 /** Canadian mortgage stress test: qualify at the greater of contract+2% or 5.25%. */
 export function qualifyingRate(contractRatePct: number): number {
@@ -228,9 +224,7 @@ export function affordability(input: AffordabilityInput): AffordabilityResult {
   };
 }
 
-/* ──────────────────────────────────────────────────────────────────────────
- * Payment difference — compare a current vs. a new scenario
- * ────────────────────────────────────────────────────────────────────────── */
+/* Payment difference, compare a current vs. a new scenario */
 
 export interface PaymentDiffResult {
   current: number;
@@ -256,9 +250,7 @@ export function paymentDifference(
   };
 }
 
-/* ──────────────────────────────────────────────────────────────────────────
- * Formatting helpers
- * ────────────────────────────────────────────────────────────────────────── */
+/* Formatting helpers */
 
 export function fmtCAD(n: number): string {
   return "$" + Math.round(n).toLocaleString("en-CA");

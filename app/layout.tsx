@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Lora, Manrope } from "next/font/google";
 import { LanguageProvider } from "@/lib/i18n/LanguageProvider";
+import { PostHogProvider } from "./providers";
 import "./globals.css";
 
 const lora = Lora({
@@ -20,7 +21,7 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://jackhunter.com"),
   title: {
-    default: "Hunter Group Real Estate — Toronto Merkezli Türk Emlak Grubu",
+    default: "Hunter Group Real Estate, Toronto Merkezli Türk Emlak Grubu",
     template: "%s | Hunter Group Real Estate",
   },
   description:
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: "Hunter Group Real Estate — Toronto Merkezli Türk Emlak Grubu",
+    title: "Hunter Group Real Estate, Toronto Merkezli Türk Emlak Grubu",
     description: "Toronto Merkezli Türk Emlak Grubu. Jack & Tara Hunter, RE/MAX Hallmark.",
     type: "website",
     locale: "tr_TR",
@@ -45,7 +46,9 @@ export default function RootLayout({
   return (
     <html lang="tr" className={`${lora.variable} ${manrope.variable}`}>
       <body>
-        <LanguageProvider>{children}</LanguageProvider>
+        <PostHogProvider>
+          <LanguageProvider>{children}</LanguageProvider>
+        </PostHogProvider>
       </body>
     </html>
   );

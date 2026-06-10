@@ -18,7 +18,7 @@ export default function HomeHero() {
   return (
     <section className={styles.hero}>
 
-      {/* Background collage — drop hero-collage.jpg into /public/ */}
+      {/* Background collage, drop hero-collage.jpg into /public/ */}
       <div className={styles.media}>
         <Image
           src="/herobg.png"

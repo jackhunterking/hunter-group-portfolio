@@ -9,7 +9,7 @@ import styles from "./page.module.css";
 const WA_URL =
   "https://wa.me/16473913311?text=Hunter%20X%20Capital%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum";
 
-/* ──────────────── Reusable WhatsApp logo (official mark) ──────────────── */
+/* Reusable WhatsApp logo (official mark) */
 function WhatsAppIcon({ size = 18 }: { size?: number }) {
   return (
     <svg
@@ -24,7 +24,7 @@ function WhatsAppIcon({ size = 18 }: { size?: number }) {
   );
 }
 
-/* ──────────────── Path 01 — Joint Venture diagram (4 connected nodes) ──────────────── */
+/* Path 01, Joint Venture diagram (4 connected nodes) */
 function PathDiagramJV() {
   return (
     <svg
@@ -48,7 +48,7 @@ function PathDiagramJV() {
   );
 }
 
-/* ──────────────── Path 02 — Solo diagram (single node with ring) ──────────────── */
+/* Path 02, Solo diagram (single node with ring) */
 function PathDiagramSolo() {
   return (
     <svg
@@ -66,7 +66,7 @@ function PathDiagramSolo() {
   );
 }
 
-/* ──────────────── Snapshot icons ──────────────── */
+/* Snapshot icons */
 function IconBuilding() {
   return (
     <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true">
@@ -101,7 +101,7 @@ function IconCycle() {
   );
 }
 
-/* ──────────────── Process step icons ──────────────── */
+/* Process step icons */
 function IconAcquire() {
   return (
     <svg width="34" height="34" viewBox="0 0 32 32" fill="none" aria-hidden="true">
@@ -140,7 +140,7 @@ function IconExit() {
   );
 }
 
-/* ──────────────── Partner meeting table icon ──────────────── */
+/* Partner meeting table icon */
 function IconTable() {
   return (
     <svg width="72" height="72" viewBox="0 0 80 80" fill="none" aria-hidden="true">
@@ -163,7 +163,7 @@ export default function HunterXCapitalClient() {
     <main className={styles.main}>
       <Nav overlayHero />
 
-      {/* ───────── HERO ───────── */}
+      {/* HERO */}
       <section className={styles.hero}>
         <div className={styles.heroMedia}>
           <Image
@@ -210,7 +210,7 @@ export default function HunterXCapitalClient() {
         </div>
       </section>
 
-      {/* ───────── STRATEGY SNAPSHOT ───────── */}
+      {/* STRATEGY SNAPSHOT */}
       <section className={styles.snapshot}>
         <div className="container">
           <div className={styles.snapGrid}>
@@ -233,7 +233,7 @@ export default function HunterXCapitalClient() {
         </div>
       </section>
 
-      {/* ───────── TWO PATHS ───────── */}
+      {/* TWO PATHS */}
       <section className={styles.paths} id="yatirim-yollari">
         <div className="container">
           <div className={styles.pathsHead}>
@@ -247,7 +247,7 @@ export default function HunterXCapitalClient() {
           </div>
 
           <div className={styles.pathGrid}>
-            {/* PATH 01 — JOINT VENTURE */}
+            {/* PATH 01, JOINT VENTURE */}
             <article className={styles.pathCard}>
               <div className={styles.pathDiagramWrap}>
                 <PathDiagramJV />
@@ -286,7 +286,7 @@ export default function HunterXCapitalClient() {
               </div>
             </article>
 
-            {/* PATH 02 — SOLO */}
+            {/* PATH 02, SOLO */}
             <article className={styles.pathCard}>
               <div className={styles.pathDiagramWrap}>
                 <PathDiagramSolo />
@@ -320,7 +320,7 @@ export default function HunterXCapitalClient() {
         </div>
       </section>
 
-      {/* ───────── PARTNER MEETING ───────── */}
+      {/* PARTNER MEETING */}
       <section className={styles.partnerMeet}>
         <div className="container">
           <div className={styles.pmInner}>
@@ -339,7 +339,7 @@ export default function HunterXCapitalClient() {
         </div>
       </section>
 
-      {/* ───────── HOW IT WORKS ───────── */}
+      {/* HOW IT WORKS */}
       <section className={styles.how}>
         <div className="container">
           <div className={styles.howHead}>
@@ -384,7 +384,7 @@ export default function HunterXCapitalClient() {
         </div>
       </section>
 
-      {/* ───────── WHY + CTA ───────── */}
+      {/* WHY + CTA */}
       <section className={styles.why}>
         <div className="container">
           <div className={styles.whyInner}>
@@ -409,7 +409,7 @@ export default function HunterXCapitalClient() {
         </div>
       </section>
 
-      {/* ───────── COMPLIANCE FOOTER ───────── */}
+      {/* COMPLIANCE FOOTER */}
       <section className={styles.compliance}>
         <div className="container">
           <p className={styles.compText}>{c.compliance}</p>

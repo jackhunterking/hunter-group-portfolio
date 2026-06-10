@@ -66,7 +66,7 @@ export default function ThankYouLayout({
 
           <p className={styles.intro}>{intro}</p>
 
-          {/* Direct download button — works even if email hasn't arrived yet */}
+          {/* Direct download button, works even if email hasn't arrived yet */}
           <a
             href={guidePdfPath}
             download
@@ -131,7 +131,7 @@ export default function ThankYouLayout({
             &ldquo;Yolun her adımında yanınızdayız. Sorularınız için
             doğrudan bize yazabilirsiniz.&rdquo;
           </p>
-          <p className={styles.signoffName}>— Jack &amp; Tara Hunter</p>
+          <p className={styles.signoffName}>Jack &amp; Tara Hunter</p>
           <div className={styles.signoffContact}>
             <a
               href="https://wa.me/16473913311"

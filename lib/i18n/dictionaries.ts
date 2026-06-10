@@ -31,7 +31,7 @@ export const tr = {
       eyebrow: "Toronto Merkezli Türk Emlak Grubu · RE/MAX",
       heading: "Aile gibi yaklaşıyor,",
       headingEm: "varlık inşa ediyoruz.",
-      sub: "Gayrimenkul, varlık oluşturmanın en güçlü yollarından biridir. 18 yılı aşkın birleşik deneyimimizle Kanada genelinde her alım ve satım işleminde yanınızdayız — profesyonel bir ekip olarak değil, aile gibi.",
+      sub: "Gayrimenkul, varlık oluşturmanın en güçlü yollarından biridir. 18 yılı aşkın birleşik deneyimimizle Kanada genelinde her alım ve satım işleminde yanınızdayız, profesyonel bir ekip olarak değil, aile gibi.",
       ctaPrimary: "Hizmetlerimiz",
       ctaSecondary: "WhatsApp'tan Yazın",
       stat1Value: "18+",
@@ -45,13 +45,13 @@ export const tr = {
       eyebrow: "Hizmetlerimiz",
       title: "Tek çatı altında,",
       titleEm: "üç hizmet.",
-      sub: "Alım, satım ve mortgage — her aşamada yanınızdayız.",
+      sub: "Alım, satım ve mortgage, her aşamada yanınızdayız.",
       buy: {
         tag: "RE/MAX Hallmark",
         title: "Alım",
-        desc: "Kendinize ev ya da yatırım amaçlı mülk — doğru mülkü, doğru fiyata buluyoruz. Arama sürecinden kapanışa kadar yanınızdayız.",
+        desc: "Kendinize ev ya da yatırım amaçlı mülk, doğru mülkü, doğru fiyata buluyoruz. Arama sürecinden kapanışa kadar yanınızdayız.",
         homeLabel: "Ev Alım Rehberi",
-        investLabel: "Yatırım — Hunter X Capital",
+        investLabel: "Yatırım: Hunter X Capital",
       },
       sell: {
         tag: "RE/MAX Hallmark",
@@ -62,7 +62,7 @@ export const tr = {
       mortgage: {
         tag: "RMA Mortgage · FSRA",
         title: "Mortgage",
-        desc: "Mortgage, kredi yenileme ve ev değerinden yararlanma — Türkçe ve sade bir dille.",
+        desc: "Mortgage, kredi yenileme ve ev değerinden yararlanma, Türkçe ve sade bir dille.",
         cta: "Mortgage seçenekleri",
       },
     },
@@ -84,9 +84,9 @@ export const tr = {
   },
 
   capital: {
-    metaTitle: "Hunter X Capital — Çoklu Konut Yatırım Ortaklığı",
+    metaTitle: "Hunter X Capital, Çoklu Konut Yatırım Ortaklığı",
     metaDesc:
-      "Ontario'da çoklu konut projeleri için operasyon ve geliştirme ortağı. Sermaye sizin, proje sizin — biz yürütme ekibinizyiz.",
+      "Ontario'da çoklu konut projeleri için operasyon ve geliştirme ortağı. Sermaye sizin, proje sizin, biz yürütme ekibinizyiz.",
     hero: {
       eyebrow: "Toronto Merkezli Türk Emlak Grubu · RE/MAX",
       titlePre: "Hunter ",
@@ -94,7 +94,7 @@ export const tr = {
       titlePost: " Capital",
       sub: "Ontario'da çoklu konut yatırımı için",
       subEm: "operasyon ve geliştirme ortağı.",
-      subSmall: "Sermaye sizin, proje sizin — yürütme ekibi biziz.",
+      subSmall: "Sermaye sizin, proje sizin, yürütme ekibi biziz.",
       ctaJV: "Ortaklı",
       ctaSolo: "Bireysel",
     },
@@ -104,9 +104,9 @@ export const tr = {
         "Çoklu konut: triplex, fourplex, küçük apartman binaları, kiralık konut projeleri",
       label2: "Pazar",
       text2:
-        "Ontario — Toronto, GTA ve büyüme koridorları (Hamilton, Kitchener-Waterloo, Ottawa, London)",
+        "Ontario: Toronto, GTA ve büyüme koridorları (Hamilton, Kitchener-Waterloo, Ottawa, London)",
       label3: "Yaklaşım",
-      text3: "Edinme · Geliştirme · İşletme — tek ekipten",
+      text3: "Edinme · Geliştirme · İşletme, tek ekipten",
     },
     paths: {
       eyebrow: "Yatırım Yolları",
@@ -136,7 +136,7 @@ export const tr = {
       path2MinUnit: " CAD+",
       path2MinNote: "tek yatırımcı",
       path2List1:
-        "Arsa, mortgage, geliştirme, kiralama — sıfırdan sona biz yöneteriz",
+        "Arsa, mortgage, geliştirme, kiralama, sıfırdan sona biz yöneteriz",
       path2List2: "%100 mülkiyet ve karar sizde",
       path2List3: "Projeye özel ekip ve raporlama",
     },
@@ -175,7 +175,7 @@ export const tr = {
   },
 
   alici: {
-    metaTitle: "Alım Rehberi — Ücretsiz İndir",
+    metaTitle: "Alım Rehberi, Ücretsiz İndir",
     metaDesc:
       "Kanada'da mülk satın almanın profesyonel yol haritası. Ücretsiz görüntüleyin veya indirin.",
     eyebrow: "Alım Rehberi",
@@ -188,7 +188,7 @@ export const tr = {
   },
 
   satici: {
-    metaTitle: "Satım Rehberi — Ücretsiz İndir",
+    metaTitle: "Satım Rehberi, Ücretsiz İndir",
     metaDesc:
       "Mülkünüzü en iyi koşullarda satmanın profesyonel stratejisi. Ücretsiz görüntüleyin veya indirin.",
     eyebrow: "Satım Rehberi",
@@ -203,7 +203,7 @@ export const tr = {
   contact: {
     eyebrow: "İletişim",
     heading: "Bir adım uzağınızdayız.",
-    sub: "Alım, satım veya yatırım — her sorunuz için doğrudan WhatsApp'tan yazın. Çoğunlukla birkaç dakika içinde dönüyoruz.",
+    sub: "Alım, satım veya yatırım, her sorunuz için doğrudan WhatsApp'tan yazın. Çoğunlukla birkaç dakika içinde dönüyoruz.",
     cta: "WhatsApp'tan Yazın",
     ctaAria: "WhatsApp ile iletişime geçin",
     address: "170 Merton St, Toronto, ON M4S 1A1",
@@ -228,14 +228,14 @@ export const tr = {
     quotePre: "Deneyiminiz olağanüstü olmalı. Anlık piyasa içgörüsü, isabetli kararlar ve",
     quoteEm: "size özel bir özen",
     quoteEnd: "ile birlikte, hedeflerinize en iyi koşullarda ulaşmanız için yanınızdayız.",
-    attribution: "— Jack & Tara Hunter",
+    attribution: "Jack & Tara Hunter",
   },
 
   capitalTeaser: {
     eyebrow: "Hunter X Capital",
     title: "Geliştirme yolculuğunun",
     titleEm: "bir parçası olun.",
-    sub: "Ontario'da çoklu konut yatırımı için operasyon ve geliştirme ortağı. Diğer yatırımcılarla birlikte veya tek başınıza — biz yürütme ekibinizyiz.",
+    sub: "Ontario'da çoklu konut yatırımı için operasyon ve geliştirme ortağı. Diğer yatırımcılarla birlikte veya tek başınıza, biz yürütme ekibinizyiz.",
     path1Label: "Ortaklı",
     path1Min: "Min. $500.000 CAD+",
     path2Label: "Bireysel",
@@ -244,9 +244,9 @@ export const tr = {
   },
 
   mortgage: {
-    metaTitle: "Mortgage — sade ve net · RMA Mortgage",
+    metaTitle: "Mortgage, sade ve net · RMA Mortgage",
     metaDesc:
-      "Toronto ve GTA için Türkçe mortgage rehberliği. Ön onay, kredi yenileme ve ev değerinden yararlanma — sade açıklama, gerçek kişiyle WhatsApp desteği.",
+      "Toronto ve GTA için Türkçe mortgage rehberliği. Ön onay, kredi yenileme ve ev değerinden yararlanma, sade açıklama, gerçek kişiyle WhatsApp desteği.",
     teaser: {
       eyebrow: "Mortgage · RMA Mortgage",
       title: "Mortgage, sade ve net.",
@@ -291,11 +291,11 @@ export const tr = {
     advisor: {
       eyebrow: "Gerçek kişiyle konuşun",
       title: "Arkanızda gerçek bir ekip var.",
-      body: "Mortgage sürecinin her adımında Jack, Tara ve Asif yanınızda — Türkçe ve İngilizce. Sorularınızı doğrudan WhatsApp'tan sorabilirsiniz.",
+      body: "Mortgage sürecinin her adımında Jack, Tara ve Asif yanınızda, Türkçe ve İngilizce. Sorularınızı doğrudan WhatsApp'tan sorabilirsiniz.",
       names: "Jack, Tara & Asif",
-      line: "Size yardımcı olmak için buradayız — Türkçe konuşabilirsiniz.",
+      line: "Size yardımcı olmak için buradayız, Türkçe konuşabilirsiniz.",
       cta: "WhatsApp'tan yazın",
-      equifaxNote: "Ön onay ve oran karşılaştırmasında Equifax yumuşak kredi sorgusu kullanırız — kredi skorunuza sıfır etki.",
+      equifaxNote: "Ön onay ve oran karşılaştırmasında Equifax yumuşak kredi sorgusu kullanırız, kredi skorunuza sıfır etki.",
       equifaxAlt: "Equifax",
     },
     compliance: {
@@ -337,7 +337,7 @@ export const tr = {
     },
     backToMortgage: "← Mortgage",
     oranlar: {
-      metaTitle: "Mortgage Oranları — Sabit & Değişken · RMA Mortgage",
+      metaTitle: "Mortgage Oranları, Sabit & Değişken · RMA Mortgage",
       metaDesc:
         "Toronto ve GTA için bugünün öne çıkan sabit ve değişken mortgage oranları. Örnek göstergedir; kişisel oranınızı WhatsApp'tan netleştirin.",
       label: "Oranlar",
@@ -440,7 +440,7 @@ export const tr = {
       preApproval: {
         anchor: "on-onay",
         eyebrow: "Sonraki adım",
-        title: "Ön onay — gerçek bir adım",
+        title: "Ön onay, gerçek bir adım",
         body: "Ön onay bir hesaplayıcı değil; sürecin ilk gerçek adımıdır. Equifax yumuşak kredi sorgusuyla (skorunuza etkisiz) yaklaşık alım gücünüzü netleştirir ve daha hızlı teklif vermenizi sağlar.",
         cta: "WhatsApp'tan ön onay başlatın",
       },
@@ -458,7 +458,7 @@ export const tr = {
   ogren: {
     metaTitle: "Mortgage Sözlüğü & Rehberi · RMA Mortgage",
     metaDesc:
-      "Mortgage'ı sadeleştiren kısa tanımlar, net yol haritaları ve sık sorulan sorular — Türkçe, sade bir dille.",
+      "Mortgage'ı sadeleştiren kısa tanımlar, net yol haritaları ve sık sorulan sorular, Türkçe, sade bir dille.",
     back: "← Rehberler",
     label: "Öğren",
     title: "Mortgage'ı sadeleştirelim.",
@@ -618,7 +618,7 @@ export const en: Dictionary = {
       eyebrow: "Toronto-Based Turkish Real Estate Group · RE/MAX",
       heading: "We treat you like family,",
       headingEm: "we build wealth together.",
-      sub: "Real estate is one of the most powerful ways to build wealth. With over 18 years of combined experience, we are by your side across Canada — not just as professionals, but as family.",
+      sub: "Real estate is one of the most powerful ways to build wealth. With over 18 years of combined experience, we are by your side across Canada, not just as professionals, but as family.",
       ctaPrimary: "Our Services",
       ctaSecondary: "Message on WhatsApp",
       stat1Value: "18+",
@@ -632,13 +632,13 @@ export const en: Dictionary = {
       eyebrow: "Our Services",
       title: "One group,",
       titleEm: "three services.",
-      sub: "Buying, selling, and mortgages — by your side at every step.",
+      sub: "Buying, selling, and mortgages, by your side at every step.",
       buy: {
         tag: "RE/MAX Hallmark",
         title: "Buying",
-        desc: "A home for yourself or an investment property — we find the right one at the right price, by your side from search to closing.",
+        desc: "A home for yourself or an investment property, we find the right one at the right price, by your side from search to closing.",
         homeLabel: "Buyer's Guide",
-        investLabel: "Invest — Hunter X Capital",
+        investLabel: "Invest: Hunter X Capital",
       },
       sell: {
         tag: "RE/MAX Hallmark",
@@ -649,7 +649,7 @@ export const en: Dictionary = {
       mortgage: {
         tag: "RMA Mortgage · FSRA",
         title: "Mortgage",
-        desc: "Mortgages, renewal, and tapping your home's value — in plain Turkish and English.",
+        desc: "Mortgages, renewal, and tapping your home's value, in plain Turkish and English.",
         cta: "Mortgage options",
       },
     },
@@ -671,17 +671,17 @@ export const en: Dictionary = {
   },
 
   capital: {
-    metaTitle: "Hunter X Capital — Multifamily Investment Partnership",
+    metaTitle: "Hunter X Capital, Multifamily Investment Partnership",
     metaDesc:
-      "Operations and development partner for multifamily projects in Ontario. The capital is yours, the project is yours — we're your execution team.",
+      "Operations and development partner for multifamily projects in Ontario. The capital is yours, the project is yours, we're your execution team.",
     hero: {
       eyebrow: "Toronto-Based Turkish Real Estate Group · RE/MAX",
       titlePre: "Hunter ",
       titleEm: "X",
       titlePost: " Capital",
-      sub: "For multifamily investment in Ontario —",
+      sub: "For multifamily investment in Ontario",
       subEm: "operations and development partner.",
-      subSmall: "The capital is yours, the project is yours — we're your execution team.",
+      subSmall: "The capital is yours, the project is yours, we're your execution team.",
       ctaJV: "Partnered",
       ctaSolo: "Solo",
     },
@@ -691,9 +691,9 @@ export const en: Dictionary = {
         "Multifamily: triplex, fourplex, small apartment buildings, purpose-built rentals",
       label2: "Market",
       text2:
-        "Ontario — Toronto, GTA, and growth corridors (Hamilton, Kitchener-Waterloo, Ottawa, London)",
+        "Ontario: Toronto, GTA, and growth corridors (Hamilton, Kitchener-Waterloo, Ottawa, London)",
       label3: "Approach",
-      text3: "Acquisition · Development · Operations — from one team",
+      text3: "Acquisition · Development · Operations, from one team",
     },
     paths: {
       eyebrow: "Investment Paths",
@@ -723,7 +723,7 @@ export const en: Dictionary = {
       path2MinUnit: " CAD+",
       path2MinNote: "single investor",
       path2List1:
-        "Land, mortgage, development, leasing — we run it end-to-end",
+        "Land, mortgage, development, leasing, we run it end-to-end",
       path2List2: "100% ownership and decisions are yours",
       path2List3: "Project-dedicated team and reporting",
     },
@@ -738,7 +738,7 @@ export const en: Dictionary = {
     },
     how: {
       eyebrow: "Process",
-      title: "From acquisition to exit —",
+      title: "From acquisition to exit",
       titleEm: "one team.",
       step1Title: "Acquisition",
       step1Text: "The right property from off-market and curated sources",
@@ -762,7 +762,7 @@ export const en: Dictionary = {
   },
 
   alici: {
-    metaTitle: "Buyer's Guide — Free Download",
+    metaTitle: "Buyer's Guide, Free Download",
     metaDesc:
       "Professional roadmap for buying property in Canada. View or download for free.",
     eyebrow: "Buyer's Guide",
@@ -775,7 +775,7 @@ export const en: Dictionary = {
   },
 
   satici: {
-    metaTitle: "Seller's Guide — Free Download",
+    metaTitle: "Seller's Guide, Free Download",
     metaDesc:
       "Professional strategy to sell your property on the best terms. View or download for free.",
     eyebrow: "Seller's Guide",
@@ -790,7 +790,7 @@ export const en: Dictionary = {
   contact: {
     eyebrow: "Contact",
     heading: "We're a step away.",
-    sub: "Buying, selling, or investing — for any question, message us directly on WhatsApp. We usually reply within a few minutes.",
+    sub: "Buying, selling, or investing, for any question, message us directly on WhatsApp. We usually reply within a few minutes.",
     cta: "Message on WhatsApp",
     ctaAria: "Contact via WhatsApp",
     address: "170 Merton St, Toronto, ON M4S 1A1",
@@ -815,14 +815,14 @@ export const en: Dictionary = {
     quotePre: "Your experience must be exceptional. With real-time market insight, sound decisions, and",
     quoteEm: "care that's tailored to you,",
     quoteEnd: "we're by your side to reach your goals on the best terms.",
-    attribution: "— Jack & Tara Hunter",
+    attribution: "Jack & Tara Hunter",
   },
 
   capitalTeaser: {
     eyebrow: "Hunter X Capital",
     title: "Be part of the",
     titleEm: "development journey.",
-    sub: "Operations and development partner for multifamily investment in Ontario. With other investors or solo — we're your execution team.",
+    sub: "Operations and development partner for multifamily investment in Ontario. With other investors or solo, we're your execution team.",
     path1Label: "Partnered",
     path1Min: "Min. $500,000 CAD+",
     path2Label: "Solo",
@@ -831,19 +831,19 @@ export const en: Dictionary = {
   },
 
   mortgage: {
-    metaTitle: "Mortgage — simple and clear · RMA Mortgage",
+    metaTitle: "Mortgage, simple and clear · RMA Mortgage",
     metaDesc:
-      "Turkish-first mortgage guidance for Toronto and the GTA. Pre-approval, renewal, refinance, and tapping home equity — plain explanations, real-person WhatsApp support.",
+      "Turkish-first mortgage guidance for Toronto and the GTA. Pre-approval, renewal, refinance, and tapping home equity, plain explanations, real-person WhatsApp support.",
     teaser: {
       eyebrow: "Mortgage · RMA Mortgage",
-      title: "Mortgages, made simple —",
+      title: "Mortgages, made simple",
       titleEm: "in Turkish.",
-      sub: "From pre-approval to renewal to tapping your home's equity — see your options in plain language. With a real person, over WhatsApp.",
+      sub: "From pre-approval to renewal to tapping your home's equity, see your options in plain language. With a real person, over WhatsApp.",
       cta: "See your mortgage options",
     },
     hero: {
       eyebrow: "Mortgage · RMA Mortgage",
-      heading: "Mortgages, made simple —",
+      heading: "Mortgages, made simple",
       headingEm: "in Turkish.",
       sub: "Navigate the Canadian mortgage process in plain Turkish. See today's featured rates and let's map the right path together.",
       ctaPrimary: "Message on WhatsApp",
@@ -878,11 +878,11 @@ export const en: Dictionary = {
     advisor: {
       eyebrow: "Talk to a real person",
       title: "There's a real team behind you.",
-      body: "At every step of the mortgage process, Jack, Tara, and Asif are with you — in Turkish and English. Ask your questions directly over WhatsApp.",
+      body: "At every step of the mortgage process, Jack, Tara, and Asif are with you, in Turkish and English. Ask your questions directly over WhatsApp.",
       names: "Jack, Tara & Asif",
-      line: "We're here to help — you can speak Turkish.",
+      line: "We're here to help, you can speak Turkish.",
       cta: "Message on WhatsApp",
-      equifaxNote: "For pre-approval and rate comparisons we use an Equifax soft credit check — zero impact on your credit score.",
+      equifaxNote: "For pre-approval and rate comparisons we use an Equifax soft credit check, zero impact on your credit score.",
       equifaxAlt: "Equifax",
     },
     compliance: {
@@ -924,7 +924,7 @@ export const en: Dictionary = {
     },
     backToMortgage: "← Mortgage",
     oranlar: {
-      metaTitle: "Mortgage Rates — Fixed & Variable · RMA Mortgage",
+      metaTitle: "Mortgage Rates, Fixed & Variable · RMA Mortgage",
       metaDesc:
         "Today's featured fixed and variable mortgage rates for Toronto and the GTA. Example indicators only; confirm your personal rate over WhatsApp.",
       label: "Rates",
@@ -1027,7 +1027,7 @@ export const en: Dictionary = {
       preApproval: {
         anchor: "on-onay",
         eyebrow: "Next step",
-        title: "Pre-approval — a real step",
+        title: "Pre-approval, a real step",
         body: "Pre-approval isn't a calculator; it's the first real step of the process. With an Equifax soft credit check (no impact on your score) it clarifies your approximate buying power and lets you make offers faster.",
         cta: "Start pre-approval on WhatsApp",
       },
@@ -1045,7 +1045,7 @@ export const en: Dictionary = {
   ogren: {
     metaTitle: "Mortgage Glossary & Guide · RMA Mortgage",
     metaDesc:
-      "Short definitions, clear roadmaps, and frequently asked questions that simplify mortgages — in plain language.",
+      "Short definitions, clear roadmaps, and frequently asked questions that simplify mortgages, in plain language.",
     back: "← Guides",
     label: "Learn",
     title: "Let's simplify mortgages.",
@@ -1148,7 +1148,7 @@ export const en: Dictionary = {
       finalSub: "Message us on WhatsApp; we'll clarify whether a refinance or second mortgage fits your goal.",
     },
     "heloc": {
-      navLabel: "HELOC — home equity line",
+      navLabel: "HELOC: home equity line",
       title: "Use your home's value flexibly with a HELOC",
       sub: "With a flexible credit line backed by your home equity, draw as you need and repay over time.",
       cards: [

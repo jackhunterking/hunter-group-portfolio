@@ -1,14 +1,14 @@
 /**
- * Legal page content — Privacy Policy, Terms of Use, Advertising Disclosure.
+ * Legal page content, Privacy Policy, Terms of Use, Advertising Disclosure.
  *
  * Ported and rebranded from the Kredibaba source (Kredibaba → RMA Mortgage).
  * Kept here, isolated, so the regulated copy is easy for the RMA principal
- * broker / legal counsel to audit in one place (spec §7–8; CLAUDE.md).
+ * broker / legal counsel to audit in one place (spec §7-8; CLAUDE.md).
  *
- * ⚠️ LAUNCH-BLOCKING — confirm before public launch:
+ * ⚠️ LAUNCH-BLOCKING, confirm before public launch:
  *   1. The contact email addresses in LEGAL_CONTACT (placeholders below).
  *   2. The exact RMA Mortgage authorized name + FSRA licence number
- *      (see lib/mortgage/identity.ts — currently 10464, unconfirmed).
+ *      (see lib/mortgage/identity.ts, currently 10464, unconfirmed).
  *   3. A legal/compliance review of this copy AND the Turkish translations,
  *      which were produced for this port and are not a certified legal
  *      translation.
@@ -16,7 +16,7 @@
 
 export const LEGAL_LAST_MODIFIED = "2026-06-08";
 
-/** Placeholder contact addresses — confirm real inboxes before launch. */
+/** Placeholder contact addresses, confirm real inboxes before launch. */
 export const LEGAL_CONTACT = {
   privacyEmail: "privacy@jackhunter.com", // TODO: confirm
   complaintsEmail: "complaints@jackhunter.com", // TODO: confirm
@@ -69,7 +69,6 @@ const href = {
   advertising: `/${LEGAL_SLUGS.advertising}`,
 };
 
-/* ────────────────────────────────────────────────────────────────────────── */
 
 const tr: Record<LegalKey, LegalDoc> = {
   privacy: {
@@ -172,12 +171,12 @@ const tr: Record<LegalKey, LegalDoc> = {
         ],
       },
       {
-        heading: "İletişim — Gizlilik Sorumlusu",
+        heading: "İletişim, Gizlilik Sorumlusu",
         blocks: [
           p("Gizliliğinizle ilgili sorularınız, endişeleriniz veya talepleriniz için lütfen iletişime geçin:"),
           {
             kind: "contact",
-            name: "Gizlilik Sorumlusu — RMA Mortgage",
+            name: "Gizlilik Sorumlusu, RMA Mortgage",
             lines: [
               `E-posta: ${LEGAL_CONTACT.privacyEmail}`,
               `Mortgage şikâyetleri: ${LEGAL_CONTACT.complaintsEmail}`,
@@ -216,7 +215,7 @@ const tr: Record<LegalKey, LegalDoc> = {
         heading: "RMA Mortgage Hakkında",
         blocks: [
           p(`Mortgage hizmetleri, Ontario'da Finansal Hizmetler Düzenleme Kurumu (FSRA) yetkisi altında faaliyet gösteren lisanslı bir mortgage brokerage olan RMA Mortgage bünyesinde sunulur. ${LIC}.`),
-          p("Kanadalılara — özellikle Türk topluluğuna — mortgage seçeneklerini anlamaları, dosyalarını hazırlamaları ve uygun lender'larla buluşmaları için Türkçe ve İngilizce bir mortgage danışmanlık deneyimi sunarız. Bir lender, banka veya sigortacı değiliz."),
+          p("Kanadalılara, özellikle Türk topluluğuna, mortgage seçeneklerini anlamaları, dosyalarını hazırlamaları ve uygun lender'larla buluşmaları için Türkçe ve İngilizce bir mortgage danışmanlık deneyimi sunarız. Bir lender, banka veya sigortacı değiliz."),
         ],
       },
       {
@@ -228,7 +227,7 @@ const tr: Record<LegalKey, LegalDoc> = {
       {
         heading: "Sitenin Bilgilendirme Amaçlı Niteliği",
         blocks: [
-          p("Bu web sitesindeki içerik — oranlar, hesaplayıcılar, makaleler ve rehberler dahil — yalnızca genel bilgilendirme ve eğitim amaçlıdır. Şunları oluşturmaz:"),
+          p("Bu web sitesindeki içerik, oranlar, hesaplayıcılar, makaleler ve rehberler dahil, yalnızca genel bilgilendirme ve eğitim amaçlıdır. Şunları oluşturmaz:"),
           ul([
             "Kredi onayı veya ön onay garantisi.",
             "Oran kilidi veya lender taahhüdü.",
@@ -253,7 +252,7 @@ const tr: Record<LegalKey, LegalDoc> = {
       {
         heading: "Ücret Açıklaması",
         blocks: [
-          p("RMA Mortgage, mortgage'lar fonlandığında lender'lar tarafından ödenen komisyonlarla ücretlendirilir. Bu ücretlendirme, ödediğiniz oranı veya maliyeti artırmaz — lender'lar oranlarını broker ücretinden bağımsız olarak belirler."),
+          p("RMA Mortgage, mortgage'lar fonlandığında lender'lar tarafından ödenen komisyonlarla ücretlendirilir. Bu ücretlendirme, ödediğiniz oranı veya maliyeti artırmaz, lender'lar oranlarını broker ücretinden bağımsız olarak belirler."),
           p("Borçluya bir ücretin uygulanabileceği durumlarda, herhangi bir taahhüt veya sözleşme imzalamadan önce yazılı olarak ve sade bir dille açıklanır."),
         ],
       },
@@ -280,13 +279,13 @@ const tr: Record<LegalKey, LegalDoc> = {
       {
         heading: "Fikri Mülkiyet",
         blocks: [
-          p("Bu web sitesindeki tüm içerik — metin, grafikler, logolar ve araçlar dahil — RMA Mortgage'ın mülkiyetindedir ve geçerli fikri mülkiyet yasalarıyla korunmaktadır. Bu sitedeki hiçbir şey, önceden yazılı izin olmadan fikri mülkiyetimizi kullanma lisansı vermez."),
+          p("Bu web sitesindeki tüm içerik, metin, grafikler, logolar ve araçlar dahil, RMA Mortgage'ın mülkiyetindedir ve geçerli fikri mülkiyet yasalarıyla korunmaktadır. Bu sitedeki hiçbir şey, önceden yazılı izin olmadan fikri mülkiyetimizi kullanma lisansı vermez."),
         ],
       },
       {
         heading: "Sorumluluğun Sınırlandırılması",
         blocks: [
-          p("Geçerli yasaların izin verdiği azami ölçüde, RMA Mortgage bu web sitesini veya hizmetlerimizi kullanmanızdan (veya kullanamamanızdan) kaynaklanan dolaylı, arızi, özel veya sonuçsal zararlardan — burada sağlanan oranlara, araçlara veya bilgilere güvenmek dahil — sorumlu olmayacaktır."),
+          p("Geçerli yasaların izin verdiği azami ölçüde, RMA Mortgage bu web sitesini veya hizmetlerimizi kullanmanızdan (veya kullanamamanızdan) kaynaklanan dolaylı, arızi, özel veya sonuçsal zararlardan, burada sağlanan oranlara, araçlara veya bilgilere güvenmek dahil, sorumlu olmayacaktır."),
           p("Hizmetlerimiz “olduğu gibi” ve “mevcut olduğu şekliyle” sağlanır. Bu sitedeki herhangi bir içeriğin doğruluğu, eksiksizliği veya amaca uygunluğu konusunda açık veya zımni hiçbir garanti vermeyiz."),
         ],
       },
@@ -378,7 +377,6 @@ const tr: Record<LegalKey, LegalDoc> = {
   },
 };
 
-/* ────────────────────────────────────────────────────────────────────────── */
 
 const en: Record<LegalKey, LegalDoc> = {
   privacy: {
@@ -481,12 +479,12 @@ const en: Record<LegalKey, LegalDoc> = {
         ],
       },
       {
-        heading: "Contact — Privacy Officer",
+        heading: "Contact, Privacy Officer",
         blocks: [
           p("If you have questions, concerns, or requests related to your privacy, please contact:"),
           {
             kind: "contact",
-            name: "Privacy Officer — RMA Mortgage",
+            name: "Privacy Officer, RMA Mortgage",
             lines: [
               `Email: ${LEGAL_CONTACT.privacyEmail}`,
               `Mortgage complaints: ${LEGAL_CONTACT.complaintsEmail}`,
@@ -525,7 +523,7 @@ const en: Record<LegalKey, LegalDoc> = {
         heading: "About RMA Mortgage",
         blocks: [
           p(`Mortgage services are offered through RMA Mortgage, a licensed mortgage brokerage operating in Ontario under the authority of the Financial Services Regulatory Authority of Ontario (FSRA). ${LIC_EN}.`),
-          p("We provide a bilingual (Turkish and English) mortgage advisory experience to help Canadians — particularly members of the Turkish community — understand their mortgage options, prepare their files, and connect with suitable lenders. We are not a lender, a bank, or an insurer."),
+          p("We provide a bilingual (Turkish and English) mortgage advisory experience to help Canadians, particularly members of the Turkish community, understand their mortgage options, prepare their files, and connect with suitable lenders. We are not a lender, a bank, or an insurer."),
         ],
       },
       {
@@ -537,7 +535,7 @@ const en: Record<LegalKey, LegalDoc> = {
       {
         heading: "Informational Nature of This Site",
         blocks: [
-          p("The content on this website — including rates, calculators, articles, and guides — is provided for general informational and educational purposes only. It does not constitute:"),
+          p("The content on this website, including rates, calculators, articles, and guides, is provided for general informational and educational purposes only. It does not constitute:"),
           ul([
             "A credit approval or pre-approval guarantee.",
             "A rate lock or lender commitment.",
@@ -562,14 +560,14 @@ const en: Record<LegalKey, LegalDoc> = {
       {
         heading: "Compensation Disclosure",
         blocks: [
-          p("RMA Mortgage is compensated through commissions paid by lenders when mortgages are funded. This compensation does not increase the rate or cost you pay — lenders set their rates independently of broker compensation."),
+          p("RMA Mortgage is compensated through commissions paid by lenders when mortgages are funded. This compensation does not increase the rate or cost you pay, lenders set their rates independently of broker compensation."),
           p("In circumstances where a fee to the borrower may apply, it will be disclosed to you in writing, in plain language, before you sign any commitment or agreement."),
         ],
       },
       {
         heading: "Third-Party Lenders and Services",
         blocks: [
-          p("Presenting a lender offer or product on this site does not constitute a recommendation or endorsement of that lender. All mortgage applications are submitted to lenders as an offer by you; the lender — not RMA Mortgage — makes the final credit decision."),
+          p("Presenting a lender offer or product on this site does not constitute a recommendation or endorsement of that lender. All mortgage applications are submitted to lenders as an offer by you; the lender, not RMA Mortgage, makes the final credit decision."),
           p("Links to third-party websites are provided for convenience only. We are not responsible for the content, accuracy, or privacy practices of any third-party site."),
         ],
       },
@@ -589,13 +587,13 @@ const en: Record<LegalKey, LegalDoc> = {
       {
         heading: "Intellectual Property",
         blocks: [
-          p("All content on this website — including text, graphics, logos, and tools — is the property of RMA Mortgage and is protected by applicable intellectual property laws. Nothing on this site grants you a licence to use our intellectual property without prior written consent."),
+          p("All content on this website, including text, graphics, logos, and tools, is the property of RMA Mortgage and is protected by applicable intellectual property laws. Nothing on this site grants you a licence to use our intellectual property without prior written consent."),
         ],
       },
       {
         heading: "Limitation of Liability",
         blocks: [
-          p("To the maximum extent permitted by applicable law, RMA Mortgage shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of (or inability to use) this website or our services — including reliance on any rates, tools, or information provided here."),
+          p("To the maximum extent permitted by applicable law, RMA Mortgage shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of (or inability to use) this website or our services, including reliance on any rates, tools, or information provided here."),
           p("Our services are provided “as is” and “as available.” We make no warranties, express or implied, as to the accuracy, completeness, or fitness for purpose of any content on this site."),
         ],
       },
@@ -660,7 +658,7 @@ const en: Record<LegalKey, LegalDoc> = {
             "Not every lender product or offer available in the market is displayed.",
             "All mortgage products have specific qualification criteria, including income, debt servicing ratios, credit score, property value, and property type.",
           ]),
-          p("Final rates and approval are confirmed based on your income, credit history, property details, down payment, and lender conditions — and are documented in a written commitment."),
+          p("Final rates and approval are confirmed based on your income, credit history, property details, down payment, and lender conditions, and are documented in a written commitment."),
           p("For full details, please refer to our Terms of Use."),
         ],
       },

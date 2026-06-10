@@ -38,7 +38,7 @@ export default function ServicesSection() {
         </div>
 
         <div className={styles.grid}>
-          {/* Buying — RE/MAX Hallmark; Hunter X Capital folds in as the investment option */}
+          {/* Buying, RE/MAX Hallmark; Hunter X Capital folds in as the investment option */}
           <article className={styles.card}>
             <span className={styles.tag}>{s.buy.tag}</span>
             <h3 className={styles.cardTitle}>{s.buy.title}</h3>
@@ -55,7 +55,7 @@ export default function ServicesSection() {
             </div>
           </article>
 
-          {/* Selling — RE/MAX Hallmark */}
+          {/* Selling, RE/MAX Hallmark */}
           <article className={styles.card}>
             <span className={styles.tag}>{s.sell.tag}</span>
             <h3 className={styles.cardTitle}>{s.sell.title}</h3>
@@ -68,7 +68,7 @@ export default function ServicesSection() {
             </div>
           </article>
 
-          {/* Financing — RMA Mortgage · FSRA */}
+          {/* Financing, RMA Mortgage · FSRA */}
           <article className={styles.card}>
             <span className={styles.tag}>{s.mortgage.tag}</span>
             <h3 className={styles.cardTitle}>{s.mortgage.title}</h3>

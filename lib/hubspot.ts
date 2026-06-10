@@ -7,7 +7,7 @@
  * 3. Scopes: crm.objects.contacts.read, crm.objects.contacts.write
  * 4. Copy the access token → add to .env as HUBSPOT_ACCESS_TOKEN
  *
- * Optional but recommended — create custom contact properties for clean segmentation:
+ * Optional but recommended, create custom contact properties for clean segmentation:
  *  - lead_source (single-line text)
  *  - lead_type (dropdown: buyer, seller)
  *  - guide_requested (single-line text)
@@ -32,7 +32,7 @@ export async function upsertContact(input: CreateContactInput): Promise<{
 }> {
   const token = process.env.HUBSPOT_ACCESS_TOKEN;
   if (!token) {
-    console.warn("HUBSPOT_ACCESS_TOKEN not set — skipping HubSpot write");
+    console.warn("HUBSPOT_ACCESS_TOKEN not set, skipping HubSpot write");
     return { ok: false, error: "HubSpot not configured" };
   }
 
@@ -63,7 +63,7 @@ export async function upsertContact(input: CreateContactInput): Promise<{
     }
 
     if (createRes.status === 409) {
-      // Contact exists — update by email
+      // Contact exists, update by email
       const updateRes = await fetch(
         `${HUBSPOT_API}/crm/v3/objects/contacts/${encodeURIComponent(input.email)}?idProperty=email`,
         {

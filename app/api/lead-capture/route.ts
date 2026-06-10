@@ -15,7 +15,7 @@ import { sendGuideEmail } from "@/lib/email";
  * 4. Return success or partial-success
  *
  * Note: this route returns 200 even if email send fails, as long as the lead
- * was captured in HubSpot — Jack can manually follow up. Adjust if stricter.
+ * was captured in HubSpot, Jack can manually follow up. Adjust if stricter.
  */
 
 const Body = z.object({
@@ -58,7 +58,7 @@ export async function POST(req: NextRequest) {
 
   if (!hubspot.ok) {
     console.error("HubSpot capture failed:", hubspot.error);
-    // Continue with email send — lead is more important than CRM in the moment
+    // Continue with email send, lead is more important than CRM in the moment
   }
 
   // Send the guide

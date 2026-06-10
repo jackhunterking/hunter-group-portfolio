@@ -45,7 +45,7 @@ export default function MortgageClient() {
     <main>
       <Nav overlayHero />
 
-      {/* ── Rate-first hero (photo-backed) ── */}
+      {/* Rate-first hero (photo-backed) */}
       <section className={styles.hero}>
         <div className={styles.heroMedia}>
           <Image
@@ -137,7 +137,7 @@ export default function MortgageClient() {
         </div>
       </section>
 
-      {/* ── Journey cards ── */}
+      {/* Journey cards */}
       <section className={styles.journeys} id="secenekler">
         <div className="container">
           <div className={styles.sectionHead}>
@@ -163,10 +163,10 @@ export default function MortgageClient() {
         </div>
       </section>
 
-      {/* ── Advisor strip (real team + Equifax) ── */}
+      {/* Advisor strip (real team + Equifax) */}
       <AdvisorStrip />
 
-      {/* ── Persona row ── */}
+      {/* Persona row */}
       <section className={styles.personas}>
         <div className="container">
           <div className={styles.sectionHead}>
@@ -188,7 +188,7 @@ export default function MortgageClient() {
         </div>
       </section>
 
-      {/* ── Primary WhatsApp CTA ── */}
+      {/* Primary WhatsApp CTA */}
       <section className={styles.cta}>
         <div className={styles.ctaMedia}>
           <Image src="/mortgage/interior.jpg" alt="" fill sizes="100vw" className={styles.ctaPhoto} />

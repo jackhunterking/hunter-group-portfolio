@@ -11,7 +11,7 @@ interface Props {
 }
 
 /**
- * FSRA rate disclosure modal — always available wherever rates are shown.
+ * FSRA rate disclosure modal, always available wherever rates are shown.
  * Rates are examples only; approval depends on file/lender; mortgage activity
  * is conducted through RMA Mortgage (FSRA). See CLAUDE.md guardrail 3 / spec §7.
  */

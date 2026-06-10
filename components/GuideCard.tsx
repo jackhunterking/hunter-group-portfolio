@@ -13,7 +13,7 @@ interface GuideCardProps {
   label: string;
   title: React.ReactNode;
   description: string;
-  /** Optional real image — when not provided, an on-brand placeholder is shown */
+  /** Optional real image, when not provided, an on-brand placeholder is shown */
   imageSrc?: string;
 }
 

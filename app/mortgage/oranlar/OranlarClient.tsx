@@ -34,7 +34,7 @@ export default function OranlarClient() {
     <main>
       <Nav overlayHero />
 
-      {/* ── Hero ── */}
+      {/* Hero */}
       <section className={styles.hero}>
         <div className="container">
           <div className={styles.heroInner}>
@@ -48,7 +48,7 @@ export default function OranlarClient() {
         </div>
       </section>
 
-      {/* ── Rate table ── */}
+      {/* Rate table */}
       <section className={styles.rates}>
         <div className="container">
           <div className={styles.card}>
@@ -113,10 +113,10 @@ export default function OranlarClient() {
         </div>
       </section>
 
-      {/* ── Advisor strip ── */}
+      {/* Advisor strip */}
       <AdvisorStrip />
 
-      {/* ── CTA band ── */}
+      {/* CTA band */}
       <section className={styles.cta}>
         <div className="container">
           <div className={styles.ctaInner}>

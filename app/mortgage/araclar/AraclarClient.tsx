@@ -27,7 +27,7 @@ function WhatsAppIcon() {
   );
 }
 
-/* ── Reusable slider field ── */
+/* Reusable slider field */
 interface SliderProps {
   label: string;
   value: number;
@@ -88,7 +88,7 @@ function ResultRow({ label, value }: { label: string; value: string }) {
   );
 }
 
-/* ── Default starting rate from the published HERO_RATES ── */
+/* Default starting rate from the published HERO_RATES */
 const DEFAULT_RATE = Number(
   (heroTile(HERO_RATES.fixed).rate ?? "4.14%").replace("%", ""),
 );
@@ -152,7 +152,7 @@ export default function AraclarClient() {
   const years = (v: number) => `${v} ${a.yearsSuffix}`;
 
   const whatsapp = waHref(a.whatsappText);
-  const preApprovalWa = waHref(`${a.preApproval.title} — ${a.whatsappText}`);
+  const preApprovalWa = waHref(`${a.preApproval.title}, ${a.whatsappText}`);
 
   const index = [
     { anchor: a.payment.anchor, label: a.payment.title },
@@ -167,7 +167,7 @@ export default function AraclarClient() {
     <main>
       <Nav overlayHero />
 
-      {/* ── Hero ── */}
+      {/* Hero */}
       <section className={styles.hero}>
         <div className="container">
           <div className={styles.heroInner}>
@@ -181,7 +181,7 @@ export default function AraclarClient() {
         </div>
       </section>
 
-      {/* ── Tool index ── */}
+      {/* Tool index */}
       <nav className={styles.toolIndex} aria-label={a.indexLabel}>
         <div className="container">
           <ul className={styles.indexList}>
@@ -198,7 +198,7 @@ export default function AraclarClient() {
 
       <div className={styles.tools}>
         <div className="container">
-          {/* ── Payment calculator ── */}
+          {/* Payment calculator */}
           <section id={a.payment.anchor} className={styles.tool}>
             <div className={styles.toolHead}>
               <span className={styles.toolEyebrow}>{a.payment.eyebrow}</span>
@@ -227,7 +227,7 @@ export default function AraclarClient() {
             </div>
           </section>
 
-          {/* ── Affordability ── */}
+          {/* Affordability */}
           <section id={a.affordability.anchor} className={styles.tool}>
             <div className={styles.toolHead}>
               <span className={styles.toolEyebrow}>{a.affordability.eyebrow}</span>
@@ -257,7 +257,7 @@ export default function AraclarClient() {
             </div>
           </section>
 
-          {/* ── Land transfer tax ── */}
+          {/* Land transfer tax */}
           <section id={a.ltt.anchor} className={styles.tool}>
             <div className={styles.toolHead}>
               <span className={styles.toolEyebrow}>{a.ltt.eyebrow}</span>
@@ -282,7 +282,7 @@ export default function AraclarClient() {
             </div>
           </section>
 
-          {/* ── Closing costs ── */}
+          {/* Closing costs */}
           <section id={a.closing.anchor} className={styles.tool}>
             <div className={styles.toolHead}>
               <span className={styles.toolEyebrow}>{a.closing.eyebrow}</span>
@@ -309,7 +309,7 @@ export default function AraclarClient() {
             </div>
           </section>
 
-          {/* ── Payment difference ── */}
+          {/* Payment difference */}
           <section id={a.paymentDiff.anchor} className={styles.tool}>
             <div className={styles.toolHead}>
               <span className={styles.toolEyebrow}>{a.paymentDiff.eyebrow}</span>
@@ -340,7 +340,7 @@ export default function AraclarClient() {
             </div>
           </section>
 
-          {/* ── Pre-approval (a step, not a calculator) ── */}
+          {/* Pre-approval (a step, not a calculator) */}
           <section id={a.preApproval.anchor} className={styles.preApproval}>
             <span className={styles.toolEyebrow}>{a.preApproval.eyebrow}</span>
             <h2 className={styles.toolTitle}>{a.preApproval.title}</h2>
@@ -353,10 +353,10 @@ export default function AraclarClient() {
         </div>
       </div>
 
-      {/* ── Advisor strip ── */}
+      {/* Advisor strip */}
       <AdvisorStrip />
 
-      {/* ── CTA band ── */}
+      {/* CTA band */}
       <section className={styles.cta}>
         <div className="container">
           <div className={styles.ctaInner}>

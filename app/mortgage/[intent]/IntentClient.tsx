@@ -42,13 +42,13 @@ export default function IntentClient({ intent }: Props) {
     { label: f.rates.variableLabel, tile: heroTile(HERO_RATES.variable) },
   ];
 
-  const whatsapp = waHref(`${page.navLabel} — ${f.cta.whatsappText}`);
+  const whatsapp = waHref(`${page.navLabel}, ${f.cta.whatsappText}`);
 
   return (
     <main>
       <Nav overlayHero />
 
-      {/* ── Intent hero (photo-backed) ── */}
+      {/* Intent hero (photo-backed) */}
       <section className={styles.hero}>
         <div className={styles.heroMedia}>
           <Image
@@ -82,7 +82,7 @@ export default function IntentClient({ intent }: Props) {
         </div>
       </section>
 
-      {/* ── Benefit cards ── */}
+      {/* Benefit cards */}
       <section className={styles.cards}>
         <div className="container">
           <div className={styles.cardGrid}>
@@ -127,10 +127,10 @@ export default function IntentClient({ intent }: Props) {
         </div>
       </section>
 
-      {/* ── Advisor strip (real team + Equifax) ── */}
+      {/* Advisor strip (real team + Equifax) */}
       <AdvisorStrip />
 
-      {/* ── Final CTA ── */}
+      {/* Final CTA */}
       <section className={styles.cta}>
         <div className="container">
           <div className={styles.ctaInner}>

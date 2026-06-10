@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import ThankYouLayout from "@/components/ThankYouLayout";
 
 export const metadata: Metadata = {
-  title: "Satıcı Rehberi — Teşekkür Ederiz",
+  title: "Satıcı Rehberi, Teşekkür Ederiz",
   description: "Ev Satma Rehberiniz hazır. Mülkünüzü en iyi koşullarda satmak için yanınızdayız.",
 };
 

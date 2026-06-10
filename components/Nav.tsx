@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useLang } from "@/lib/i18n/LanguageProvider";
 import styles from "./Nav.module.css";
 
-/* ── Inline flag glyphs (kept small + simple so they read cleanly at 18×12px) ── */
+/* Inline flag glyphs (kept small + simple so they read cleanly at 18×12px) */
 function FlagTR() {
   return (
     <svg
@@ -16,7 +16,7 @@ function FlagTR() {
       aria-hidden="true"
     >
       <rect width="30" height="20" fill="#E30A17" />
-      {/* Crescent — outer white circle with inner red circle cutout */}
+      {/* Crescent, outer white circle with inner red circle cutout */}
       <circle cx="11" cy="10" r="4.5" fill="#fff" />
       <circle cx="12.3" cy="10" r="3.5" fill="#E30A17" />
       {/* 5-point star */}
@@ -107,7 +107,7 @@ export default function Nav({ overlayHero = false }: NavProps) {
             {t.nav.about}
           </Link>
 
-          {/* Services umbrella — dropdown listing the three service lines */}
+          {/* Services umbrella, dropdown listing the three service lines */}
           <div className={styles.dropdown}>
             <Link
               href="/#hizmetler"

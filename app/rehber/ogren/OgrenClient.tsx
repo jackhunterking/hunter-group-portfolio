@@ -24,7 +24,7 @@ export default function OgrenClient() {
     <main>
       <Nav overlayHero />
 
-      {/* ── Hero ── */}
+      {/* Hero */}
       <section className={styles.hero}>
         <div className="container">
           <div className={styles.heroInner}>
@@ -38,7 +38,7 @@ export default function OgrenClient() {
         </div>
       </section>
 
-      {/* ── Glossary ── */}
+      {/* Glossary */}
       <section className={styles.block}>
         <div className="container">
           <div className={styles.blockHead}>
@@ -56,7 +56,7 @@ export default function OgrenClient() {
         </div>
       </section>
 
-      {/* ── Guides ── */}
+      {/* Guides */}
       <section className={styles.blockAlt}>
         <div className="container">
           <div className={styles.blockHeadCenter}>
@@ -74,7 +74,7 @@ export default function OgrenClient() {
         </div>
       </section>
 
-      {/* ── FAQ ── */}
+      {/* FAQ */}
       <section className={styles.block}>
         <div className="container">
           <div className={styles.faqLayout}>

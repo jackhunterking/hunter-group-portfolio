@@ -38,7 +38,7 @@ export async function sendGuideEmail(params: {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://jackhunter.com";
 
   if (!apiKey) {
-    console.warn("RESEND_API_KEY not set — skipping email send");
+    console.warn("RESEND_API_KEY not set, skipping email send");
     return { ok: false, error: "Email service not configured" };
   }
 
@@ -51,7 +51,7 @@ export async function sendGuideEmail(params: {
       from,
       to: params.email,
       replyTo,
-      subject: `${config.title} — Sizin için hazırladık`,
+      subject: `${config.title}, Sizin için hazırladık`,
       html: buildEmailHtml({
         guideTitle: config.title,
         guideUrl: guideAbsoluteUrl,
