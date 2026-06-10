@@ -27,7 +27,6 @@ export default function Footer() {
     { href: "/#hizmetler", label: n.services },
     { href: "/mortgage", label: n.mortgage },
     { href: "/mortgage/oranlar", label: t.mortgage.oranlar.label },
-    { href: "/mortgage/araclar", label: t.mortgage.araclar.label },
     { href: "/rehber/ogren", label: t.ogren.label },
     { href: "/hunter-x-capital", label: n.capital },
     { href: "/#kaynaklar", label: n.resources },

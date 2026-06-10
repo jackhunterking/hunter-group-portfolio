@@ -20,15 +20,6 @@ function WhatsAppIcon() {
   );
 }
 
-function CalcIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <rect x="4" y="2.5" width="16" height="19" rx="2.5" stroke="currentColor" strokeWidth="1.6" />
-      <path d="M8 7h8M8 12h2m3 0h3M8 16h2m3 0h3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-    </svg>
-  );
-}
-
 export default function OranlarClient() {
   const t = useT();
   const f = t.mortgage;
@@ -143,10 +134,6 @@ export default function OranlarClient() {
                 <WhatsAppIcon />
                 {o.cta.whatsappBtn}
               </a>
-              <Link href="/mortgage/araclar" className={styles.ghostBtn}>
-                <CalcIcon />
-                {o.cta.calcBtn}
-              </Link>
             </div>
           </div>
         </div>

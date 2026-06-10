@@ -98,12 +98,19 @@ export default function MortgageClient() {
             </div>
 
             <div className={styles.rateCard}>
-              <span className={styles.rateCardLabel}>{f.rates.eyebrow}</span>
+              <div className={styles.rateCardHead}>
+                <span className={styles.rateCardLabel}>{f.rates.eyebrow}</span>
+                <Link href="/mortgage/oranlar" className={styles.rateCardLink}>
+                  {f.oranlar.label} <Arrow />
+                </Link>
+              </div>
               <div className={styles.rateTiles}>
                 {tiles.map(({ label, tile }) => (
                   <div key={label} className={styles.rateTile}>
-                    <span className={styles.rateTerm}>{tile.term}</span>
-                    <span className={styles.rateKind}>{label}</span>
+                    <div className={styles.rateTileHead}>
+                      <span className={styles.rateTerm}>{tile.term}</span>
+                      <span className={styles.rateKind}>{label}</span>
+                    </div>
                     <span className={styles.rateValue}>
                       {tile.rate ?? f.rates.updating}
                     </span>
@@ -124,14 +131,6 @@ export default function MortgageClient() {
                 >
                   {f.rates.disclosureLabel}
                 </button>
-              </div>
-              <div className={styles.rateLinks}>
-                <Link href="/mortgage/oranlar" className={styles.rateLink}>
-                  {f.oranlar.label} <Arrow />
-                </Link>
-                <Link href="/mortgage/araclar" className={styles.rateLink}>
-                  {f.araclar.label} <Arrow />
-                </Link>
               </div>
             </div>
           </div>
