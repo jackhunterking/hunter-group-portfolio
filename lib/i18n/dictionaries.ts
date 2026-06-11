@@ -835,14 +835,14 @@ export const en: Dictionary = {
     metaDesc:
       "Turkish-first mortgage guidance for Toronto and the GTA. Pre-approval, renewal, refinance, and tapping home equity, plain explanations, real-person WhatsApp support.",
     teaser: {
-      eyebrow: "Mortgage · RMA Mortgage",
+      eyebrow: "Mortgage",
       title: "Mortgages, made simple",
       titleEm: "in Turkish.",
       sub: "From pre-approval to renewal to tapping your home's equity, see your options in plain language. With a real person, over WhatsApp.",
       cta: "See your mortgage options",
     },
     hero: {
-      eyebrow: "Mortgage · RMA Mortgage",
+      eyebrow: "Mortgage",
       heading: "Mortgages, made simple",
       headingEm: "in Turkish.",
       sub: "Navigate the Canadian mortgage process in plain Turkish. See today's featured rates and let's map the right path together.",

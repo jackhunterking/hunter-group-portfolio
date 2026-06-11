@@ -10,7 +10,7 @@ import AdvisorStrip from "@/components/mortgage/AdvisorStrip";
 import MortgageDisclosure from "@/components/mortgage/MortgageDisclosure";
 import RateTiles from "@/components/mortgage/RateTiles";
 import { useT } from "@/lib/i18n/LanguageProvider";
-import { HERO_RATES, heroTile, RATE_AS_OF } from "@/lib/mortgage/rates";
+import { HERO_RATES, heroTile } from "@/lib/mortgage/rates";
 import { waHref } from "@/lib/mortgage/wa";
 import styles from "./intent.module.css";
 
@@ -108,9 +108,6 @@ export default function IntentClient({ intent }: Props) {
               updatingLabel={f.rates.updating}
             />
             <div className={styles.rateFoot}>
-              <span className={styles.rateAsOf}>
-                {f.rates.asOf}: {RATE_AS_OF}
-              </span>
               <button
                 type="button"
                 className={styles.disclosureBtn}
