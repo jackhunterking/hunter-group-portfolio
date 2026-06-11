@@ -175,56 +175,6 @@
   margin-bottom: 18px;
 }
 
-.rateTiles {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  background: rgba(235, 199, 107, 0.16);
-  border: 1px solid rgba(235, 199, 107, 0.16);
-}
-
-.rateTile {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding: 20px;
-  background: #0a0f1c;
-}
-
-.rateTerm {
-  font-family: var(--sans);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.rateKind {
-  font-family: var(--sans);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--gold);
-}
-
-.rateValue {
-  font-family: var(--serif);
-  font-weight: 600;
-  font-size: 34px;
-  line-height: 1;
-  color: var(--white);
-  letter-spacing: -0.02em;
-  margin-top: 4px;
-}
-
-.rateDetail {
-  font-family: var(--sans);
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.6);
-}
-
 .rateFoot {
   display: flex;
   align-items: center;
