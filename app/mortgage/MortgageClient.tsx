@@ -8,8 +8,9 @@ import Footer from "@/components/Footer";
 import RateDisclosureModal from "@/components/RateDisclosureModal";
 import AdvisorStrip from "@/components/mortgage/AdvisorStrip";
 import MortgageDisclosure from "@/components/mortgage/MortgageDisclosure";
+import RateTiles from "@/components/mortgage/RateTiles";
 import { useT } from "@/lib/i18n/LanguageProvider";
-import { HERO_RATES, heroTile, RATE_AS_OF } from "@/lib/mortgage/rates";
+import { HERO_RATES, heroTile } from "@/lib/mortgage/rates";
 import { waHref } from "@/lib/mortgage/wa";
 import styles from "./mortgage.module.css";
 
@@ -104,26 +105,16 @@ export default function MortgageClient() {
                   {f.oranlar.label} <Arrow />
                 </Link>
               </div>
-              <div className={styles.rateTiles}>
-                {tiles.map(({ label, tile }) => (
-                  <div key={label} className={styles.rateTile}>
-                    <div className={styles.rateTileHead}>
-                      <span className={styles.rateTerm}>{tile.term}</span>
-                      <span className={styles.rateKind}>{label}</span>
-                    </div>
-                    <span className={styles.rateValue}>
-                      {tile.rate ?? f.rates.updating}
-                    </span>
-                    {tile.detail ? (
-                      <span className={styles.rateDetail}>{tile.detail}</span>
-                    ) : null}
-                  </div>
-                ))}
-              </div>
+              <RateTiles
+                tiles={tiles.map(({ label, tile }) => ({
+                  term: tile.term,
+                  kind: label,
+                  rate: tile.rate,
+                  detail: tile.detail,
+                }))}
+                updatingLabel={f.rates.updating}
+              />
               <div className={styles.rateFoot}>
-                <span className={styles.rateAsOf}>
-                  {f.rates.asOf}: {RATE_AS_OF}
-                </span>
                 <button
                   type="button"
                   className={styles.disclosureBtn}

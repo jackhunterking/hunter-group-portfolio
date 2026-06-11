@@ -248,14 +248,14 @@ export const tr = {
     metaDesc:
       "Toronto ve GTA için Türkçe mortgage rehberliği. Ön onay, kredi yenileme ve ev değerinden yararlanma, sade açıklama, gerçek kişiyle WhatsApp desteği.",
     teaser: {
-      eyebrow: "Mortgage · RMA Mortgage",
+      eyebrow: "Mortgage",
       title: "Mortgage, sade ve net.",
       titleEm: "Türkçe.",
       sub: "Ön onaydan yenilemeye, ev değerinden yararlanmaya kadar; seçeneklerinizi sade bir dille görün. Gerçek kişiyle, WhatsApp'tan.",
       cta: "Mortgage seçeneklerinizi görün",
     },
     hero: {
-      eyebrow: "Mortgage · RMA Mortgage",
+      eyebrow: "Mortgage",
       heading: "Mortgage, sade ve net.",
       headingEm: "Türkçe.",
       sub: "Kanada'da mortgage sürecini Türkçe ve sade bir dille yürütün. Bugünün öne çıkan oranlarını görün, doğru yolu birlikte netleştirelim.",

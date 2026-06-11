@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useT } from "@/lib/i18n/LanguageProvider";
 import { HERO_RATES, heroTile } from "@/lib/mortgage/rates";
+import RateTiles from "./mortgage/RateTiles";
 import RateDisclosureModal from "./RateDisclosureModal";
 import styles from "./MortgageTeaser.module.css";
 
@@ -36,19 +37,16 @@ export default function MortgageTeaser() {
 
           <p className={styles.sub}>{f.teaser.sub}</p>
 
-          <div className={styles.rates}>
-            {tiles.map(({ label, tile }) => (
-              <div key={label} className={styles.tile}>
-                <span className={styles.tileTerm}>{tile.term}</span>
-                <span className={styles.tileLabel}>{label}</span>
-                <span className={styles.tileRate}>
-                  {tile.rate ?? f.rates.updating}
-                </span>
-                {tile.detail ? (
-                  <span className={styles.tileDetail}>{tile.detail}</span>
-                ) : null}
-              </div>
-            ))}
+          <div className={styles.ratesWrap}>
+            <RateTiles
+              tiles={tiles.map(({ label, tile }) => ({
+                term: tile.term,
+                kind: label,
+                rate: tile.rate,
+                detail: tile.detail,
+              }))}
+              updatingLabel={f.rates.updating}
+            />
           </div>
 
           <button

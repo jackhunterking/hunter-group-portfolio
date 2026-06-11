@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import RateDisclosureModal from "@/components/RateDisclosureModal";
 import AdvisorStrip from "@/components/mortgage/AdvisorStrip";
 import MortgageDisclosure from "@/components/mortgage/MortgageDisclosure";
+import RateTiles from "@/components/mortgage/RateTiles";
 import { useT } from "@/lib/i18n/LanguageProvider";
 import { HERO_RATES, heroTile, RATE_AS_OF } from "@/lib/mortgage/rates";
 import { waHref } from "@/lib/mortgage/wa";
@@ -97,20 +98,15 @@ export default function IntentClient({ intent }: Props) {
           {/* Rate strip with disclosure */}
           <div className={styles.rateStrip}>
             <span className={styles.rateStripLabel}>{f.rates.eyebrow}</span>
-            <div className={styles.rateTiles}>
-              {tiles.map(({ label, tile }) => (
-                <div key={label} className={styles.rateTile}>
-                  <span className={styles.rateTerm}>{tile.term}</span>
-                  <span className={styles.rateKind}>{label}</span>
-                  <span className={styles.rateValue}>
-                    {tile.rate ?? f.rates.updating}
-                  </span>
-                  {tile.detail ? (
-                    <span className={styles.rateDetail}>{tile.detail}</span>
-                  ) : null}
-                </div>
-              ))}
-            </div>
+            <RateTiles
+              tiles={tiles.map(({ label, tile }) => ({
+                term: tile.term,
+                kind: label,
+                rate: tile.rate,
+                detail: tile.detail,
+              }))}
+              updatingLabel={f.rates.updating}
+            />
             <div className={styles.rateFoot}>
               <span className={styles.rateAsOf}>
                 {f.rates.asOf}: {RATE_AS_OF}

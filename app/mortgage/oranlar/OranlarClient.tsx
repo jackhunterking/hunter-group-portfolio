@@ -8,7 +8,7 @@ import RateDisclosureModal from "@/components/RateDisclosureModal";
 import AdvisorStrip from "@/components/mortgage/AdvisorStrip";
 import MortgageDisclosure from "@/components/mortgage/MortgageDisclosure";
 import { useT } from "@/lib/i18n/LanguageProvider";
-import { HERO_RATES, RATE_AS_OF } from "@/lib/mortgage/rates";
+import { HERO_RATES } from "@/lib/mortgage/rates";
 import { waHref } from "@/lib/mortgage/wa";
 import styles from "./oranlar.module.css";
 
@@ -97,9 +97,6 @@ export default function OranlarClient() {
             </ul>
 
             <div className={styles.cardFoot}>
-              <span className={styles.asOf}>
-                {f.rates.asOf}: {RATE_AS_OF}
-              </span>
               <button
                 type="button"
                 className={styles.disclosureBtn}
