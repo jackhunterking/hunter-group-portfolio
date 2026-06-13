@@ -252,6 +252,8 @@
   .menuOpen .links {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    text-align: center;
     gap: 24px;
     position: absolute;
     top: 100%;
@@ -350,40 +352,71 @@
   background: rgba(255, 255, 255, 0.04);
 }
 
-/* Mobile: expand the panel inline within the open menu column */
+/* Mobile: tap-to-expand panel, centered within the open menu column */
 @media (max-width: 919px) {
   .dropdown {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 18px;
+    align-items: center;
+    gap: 0;
     width: 100%;
   }
 
+  .dropdownToggle {
+    justify-content: center;
+  }
+
+  /* Caret reads as the expand affordance on mobile */
+  .caret {
+    display: block;
+  }
+
+  /* Collapsed by default — only the toggle shows */
   .menuOpen .dropdownPanel {
     display: flex;
     position: static;
     transform: none;
-    margin-top: 0;
     min-width: 0;
     width: 100%;
-    padding: 0 0 0 16px;
-    gap: 18px;
     background: transparent;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     border: none;
-    border-left: 1px solid rgba(255, 255, 255, 0.12);
     box-shadow: none;
+    align-items: center;
+    overflow: hidden;
+    max-height: 0;
+    margin-top: 0;
+    padding: 0;
+    gap: 0;
+    opacity: 0;
+    transition: max-height 0.3s ease, opacity 0.25s ease,
+      margin-top 0.3s ease, padding 0.3s ease, gap 0.3s ease;
     animation: none;
+  }
+
+  /* Expanded when the user taps Services */
+  .menuOpen.dropdown.servicesOpen .dropdownPanel,
+  .servicesOpen .dropdownPanel {
+    max-height: 240px;
+    margin-top: 18px;
+    padding: 4px 0 0;
+    gap: 18px;
+    opacity: 1;
+  }
+
+  /* Caret rotates only on tap (disable hover rotation on mobile) */
+  .dropdown:hover .caret,
+  .dropdown:focus-within .caret {
+    transform: none;
+  }
+
+  .servicesOpen .caret {
+    transform: rotate(180deg);
   }
 
   .menuOpen .dropdownItem {
     padding: 0;
     font-size: 12px;
     color: rgba(255, 255, 255, 0.7);
-  }
-
-  .caret {
-    display: none;
   }
 }

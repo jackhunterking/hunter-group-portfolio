@@ -60,8 +60,12 @@ export default function Nav({ overlayHero = false }: NavProps) {
   const { lang, setLang, t } = useLang();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
 
-  const close = () => setOpen(false);
+  const close = () => {
+    setOpen(false);
+    setServicesOpen(false);
+  };
 
   const SERVICES = [
     { href: "/rehber/alici", label: t.nav.servicesMenu.buy },
@@ -108,11 +112,22 @@ export default function Nav({ overlayHero = false }: NavProps) {
           </Link>
 
           {/* Services umbrella, dropdown listing the three service lines */}
-          <div className={styles.dropdown}>
+          <div
+            className={`${styles.dropdown} ${servicesOpen ? styles.servicesOpen : ""}`}
+          >
             <Link
               href="/#hizmetler"
               className={`${styles.link} ${styles.dropdownToggle}`}
-              onClick={close}
+              onClick={(e) => {
+                // On the mobile menu, tap expands the submenu instead of navigating
+                if (open) {
+                  e.preventDefault();
+                  setServicesOpen((v) => !v);
+                } else {
+                  close();
+                }
+              }}
+              aria-expanded={open ? servicesOpen : undefined}
             >
               {t.nav.services}
               <svg

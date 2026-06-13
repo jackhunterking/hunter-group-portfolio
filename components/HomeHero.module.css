@@ -35,9 +35,17 @@
   z-index: 1;
   background:
     /* bottom vignette keeps scroll indicator legible */
-    linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 28%),
+    linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 24%),
+    /* darken the centre text band, ease off top/bottom edges */
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgba(0, 0, 0, 0.82) 45%,
+      rgba(0, 0, 0, 0.82) 70%,
+      rgba(0, 0, 0, 0.7) 100%
+    ),
     /* full-screen base */
-    rgba(0, 0, 0, 0.68);
+    rgba(0, 0, 0, 0.6);
 }
 
 @media (min-width: 768px) {
