@@ -184,14 +184,6 @@
   margin-bottom: 20px;
 }
 
-.personPositioning {
-  font-family: var(--serif);
-  font-size: 18px;
-  line-height: 1.5;
-  color: var(--text);
-  margin-bottom: 24px;
-}
-
 .credentials {
   display: flex;
   flex-wrap: wrap;

@@ -7,7 +7,6 @@ import styles from "./AboutSection.module.css";
 interface PersonProps {
   name: string;
   title: string;
-  positioning: string;
   credentials: string[];
   photoSrc?: string;
   placeholderLabel: string;
@@ -16,7 +15,6 @@ interface PersonProps {
 function PersonCard({
   name,
   title,
-  positioning,
   credentials,
   photoSrc,
   placeholderLabel,
@@ -45,7 +43,6 @@ function PersonCard({
       <div className={styles.personBody}>
         <h3 className={styles.personName}>{name}</h3>
         <p className={styles.personTitle}>{title}</p>
-        <p className={styles.personPositioning}>{positioning}</p>
         <div className={styles.credentials}>
           {credentials.map((cred) => (
             <span key={cred} className={styles.credential}>
@@ -80,7 +77,6 @@ export default function AboutSection() {
           <PersonCard
             name={a.jackName}
             title={a.jackTitle}
-            positioning={a.jackPos}
             credentials={["ABR", "SRS", "Broker"]}
             photoSrc="/jack-photo.jpg"
             placeholderLabel={a.photoPlaceholder}
@@ -88,7 +84,6 @@ export default function AboutSection() {
           <PersonCard
             name={a.taraName}
             title={a.taraTitle}
-            positioning={a.taraPos}
             credentials={["Platinum Award", "2x Top Producer"]}
             photoSrc="/tara-photo.jpg"
             placeholderLabel={a.photoPlaceholder}

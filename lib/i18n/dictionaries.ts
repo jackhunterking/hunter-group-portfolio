@@ -216,10 +216,8 @@ export const tr = {
     sub: "Toronto'da gayrimenkulün yeni nesli. Veriyle hareket eden bir broker ve insanı önceleyen bir danışman.",
     jackName: "Jack Hunter",
     jackTitle: "Broker",
-    jackPos: "Verilerle okur, stratejiyle hareket ederim. Her işlemi finansal bir yatırım gibi değerlendiririm.",
     taraName: "Tara Hunter",
     taraTitle: "Emlak Danışmanı",
-    taraPos: "İnsanı dinler, detayı kaçırmam. Müşterinin hedefine ulaşması en büyük motivasyonum.",
     photoPlaceholder: "fotoğrafı",
   },
 
@@ -803,10 +801,8 @@ export const en: Dictionary = {
     sub: "The new generation of real estate in Toronto. A broker who acts on data and an advisor who puts people first.",
     jackName: "Jack Hunter",
     jackTitle: "Broker",
-    jackPos: "I read the data and act on strategy. I treat every transaction as a financial investment.",
     taraName: "Tara Hunter",
     taraTitle: "Real Estate Advisor",
-    taraPos: "I listen to people and never miss a detail. The client reaching their goal is my greatest motivation.",
     photoPlaceholder: "photo",
   },
 
