@@ -17,7 +17,7 @@ Platforms:
 ## Run Sequence
 
 1. Get the video from `inbox/ToPost` or from Jack's Drive link.
-2. Use `$social-descriptions`.
+2. Use `$jack-ve-tara-posting`.
 3. Generate Gate 1 copy for all requested platforms.
 4. Wait for Jack's edits or explicit "go".
 5. Stage the approved copy and video in the signed-in platform accounts using the Codex Chrome plugin.

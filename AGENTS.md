@@ -27,7 +27,7 @@ Brand accounts confirmed from the Claude project export dated 2026-07-05:
 
 ## Required Skills
 
-On every request related to social media content, use `$social-descriptions`. Read its `SKILL.md` and the relevant platform files under `references/`.
+On every request related to Jack ve Tara social media content, use `$jack-ve-tara-posting`. Read its `SKILL.md` and the relevant platform files under `references/`.
 
 If no platform is specified, produce copy for all seven platforms:
 
@@ -39,9 +39,9 @@ If no platform is specified, produce copy for all seven platforms:
 - Threads
 - X
 
-For short-form idea batches, scripts, hooks, FigJam prompts, or content planning, use `$short-video-ideas`.
+For diagnostic short-form idea batches, scripts, hooks, FigJam prompts, or content planning, use `$diagnostic-video-scripts`.
 
-`$clinical-vignettes` is installed only because it was present in the Claude export. It belongs to a separate Tara Housing workflow and should not be used for Jack ve Tara social posting.
+`$tara-housing-vignettes` is installed only because it was present in the Claude export. It belongs to a separate Tara Housing workflow and should not be used for Jack ve Tara social posting.
 
 ## Posting Flow
 

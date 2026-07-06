@@ -1,0 +1,4 @@
+interface:
+  display_name: "Diagnostic Video Scripts"
+  short_description: "Plan diagnostic scripts and FigJam"
+  default_prompt: "Use $diagnostic-video-scripts to create a batch of diagnostic short-form video ideas and FigJam prompts."

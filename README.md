@@ -1,13 +1,13 @@
-# Jack Ve Tara Codex Project
+# Jack ve Tara Codex Project
 
 This folder ports the Claude "Content Title & Description Generator" project into a Codex-native local project.
 
 ## What Is Included
 
 - `AGENTS.md`: durable project instructions Codex reads when this folder is opened.
-- `.agents/skills/social-descriptions`: Turkish platform copy and posting workflow for all seven Jack ve Tara accounts.
-- `.agents/skills/short-video-ideas`: diagnostic short-form video ideas, scripts, and FigJam prompts.
-- `.agents/skills/clinical-vignettes`: the separate Tara Housing vignette skill included in the Claude export.
+- `.agents/skills/jack-ve-tara-posting`: Turkish platform copy and posting workflow for all seven Jack ve Tara accounts.
+- `.agents/skills/diagnostic-video-scripts`: diagnostic short-form video ideas, scripts, and FigJam prompts.
+- `.agents/skills/tara-housing-vignettes`: the separate Tara Housing vignette skill included in the Claude export.
 - `inbox/ToPost`: local drop folder for videos Jack wants posted.
 - `batches`: place batch notes, transcripts, copy drafts, and staging summaries here.
 - `docs`: setup and posting runbooks.
@@ -27,14 +27,14 @@ This folder ports the Claude "Content Title & Description Generator" project int
    Summarize the active project instructions and available project skills.
    ```
 
-Codex should mention `AGENTS.md` and the three project skills.
+Codex should mention `AGENTS.md`, `$jack-ve-tara-posting`, `$diagnostic-video-scripts`, and `$tara-housing-vignettes`.
 
 ## Daily Posting Prompt
 
 Use this from desktop or mobile after placing a video in `inbox/ToPost` or providing a Drive link:
 
 ```text
-Use $social-descriptions for the latest video. Generate Gate 1 copy for all seven Jack ve Tara platforms.
+Use $jack-ve-tara-posting for the latest video. Generate Gate 1 copy for all seven Jack ve Tara platforms.
 ```
 
 After reviewing the copy, reply with edits or:

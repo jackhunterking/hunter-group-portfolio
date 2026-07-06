@@ -1,9 +1,9 @@
 ---
-name: short-video-ideas
-description: Generate short-form diagnostic video ideas, hooks, scripts, and FigJam diagram prompts for business owners already spending on marketing. Use when brainstorming video topics, creating short-form ideas, writing Shorts/Reels/TikTok scripts, planning a content batch, generating hooks, or preparing FigJam prompts for pre-drawn iPad diagrams.
+name: diagnostic-video-scripts
+description: Generate short-form diagnostic video ideas, hooks, scripts, and FigJam diagram prompts for business owners already spending on marketing. Use when brainstorming diagnostic video topics, creating short-form ideas, writing Shorts/Reels/TikTok scripts, planning a content batch, generating hooks, or preparing FigJam prompts for pre-drawn iPad diagrams.
 ---
 
-# Short Video Ideas
+# Diagnostic Video Scripts
 
 ## Overview
 

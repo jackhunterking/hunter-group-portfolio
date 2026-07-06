@@ -1,9 +1,9 @@
 ---
-name: clinical-vignettes
-description: Create Tara Housing social-work training clinical vignettes in the first-person voice of Maryam Ashkan, RP. Use when asked to generate a vignette, write a clinical case, make a training story, produce a case for a named woman, or create a .docx clinical observation document.
+name: tara-housing-vignettes
+description: Create Tara Housing social-work training clinical vignettes in the first-person voice of Maryam Ashkan, RP. Use when asked to generate a Tara Housing vignette, write a clinical case, make a training story, produce a case for a named woman, or create a .docx clinical observation document.
 ---
 
-# Clinical Vignettes
+# Tara Housing Vignettes
 
 ## Overview
 

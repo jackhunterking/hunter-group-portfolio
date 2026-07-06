@@ -1,9 +1,9 @@
 ---
-name: social-descriptions
-description: Generate Turkish Jack ve Tara social copy packages and posting plans from a video, transcript, topic, Drive link, or batch note. Use when asked to write YouTube titles/descriptions, Instagram captions, LinkedIn posts, Facebook captions, TikTok captions, Threads posts, X posts, social descriptions, captions, posting copy, staging summaries, or a full posting run for Jack ve Tara.
+name: jack-ve-tara-posting
+description: Generate Turkish Jack ve Tara social copy packages and posting plans from a video, transcript, topic, Drive link, or batch note. Use when asked to write YouTube titles/descriptions, Instagram captions, LinkedIn posts, Facebook captions, TikTok captions, Threads posts, X posts, social descriptions, captions, posting copy, staging summaries, or a full seven-platform posting run for Jack ve Tara.
 ---
 
-# Social Descriptions
+# Jack ve Tara Posting
 
 ## Overview
 

@@ -1,4 +1,0 @@
-interface:
-  display_name: "Short Video Ideas"
-  short_description: "Plan diagnostic short-form scripts"
-  default_prompt: "Use $short-video-ideas to create a batch of diagnostic short-form video ideas and FigJam prompts."
