@@ -43,6 +43,11 @@ type SceneHandle = {
   modules: ArcGisModules;
   clickHandle?: { remove: () => void };
   dragHandle?: { remove: () => void };
+  pointerMoveHandle?: { remove: () => void };
+  pointerLeaveCleanup?: () => void;
+  buildingHighlightHandle?: { remove: () => void };
+  animationCleanup?: () => void;
+  markInteraction?: () => void;
 };
 
 type OrbitDragState = {
@@ -51,6 +56,20 @@ type OrbitDragState = {
   heading: number;
   tilt: number;
   zoom: number;
+};
+
+type OrbitTarget = {
+  latitude: number;
+  longitude: number;
+  heading: number;
+  tilt: number;
+  zoom: number;
+};
+
+type HoverCardState = {
+  property: EquitonProperty;
+  x: number;
+  y: number;
 };
 
 declare global {
@@ -103,6 +122,10 @@ function clamp(value: number, minimum: number, maximum: number) {
 function finiteOr(value: unknown, fallback: number) {
   const number = Number(value);
   return Number.isFinite(number) ? number : fallback;
+}
+
+function normalizeHeading(heading: number) {
+  return ((heading % 360) + 360) % 360;
 }
 
 function getZoomTier(zoom: number): ZoomTier {
@@ -237,7 +260,7 @@ function getCameraTarget(property: EquitonProperty, zoomTier: ZoomTier, zoom: nu
       latitude: property.latitude,
       longitude: property.longitude,
       zoom: 17,
-      tilt: 68,
+      tilt: 64,
       heading: 328,
     };
   }
@@ -246,7 +269,7 @@ function getCameraTarget(property: EquitonProperty, zoomTier: ZoomTier, zoom: nu
     latitude: property.latitude,
     longitude: property.longitude,
     zoom: zoom > 3.6 ? 18 : 17,
-    tilt: 72,
+    tilt: 68,
     heading: 328,
   };
 }
@@ -277,16 +300,21 @@ function renderPropertyGraphics(
   handle: SceneHandle,
   selectedId: string,
   mode: InvestmentMode,
+  hoveredId?: string | null,
 ) {
   const { Graphic, Point, SimpleMarkerSymbol, TextSymbol } = handle.modules;
   handle.graphicsLayer.removeAll();
 
   equitonProperties.forEach((property) => {
     const selected = property.id === selectedId;
-    const markerOffset = selected ? 1.5 : 1;
-    const labelOffset = selected ? 4.5 : 3.5;
+    const hovered = property.id === hoveredId;
+    const emphasized = selected || hovered;
+    const markerOffset = emphasized ? 1.8 : 1;
+    const labelOffset = emphasized ? 5 : 3.5;
     const accent =
-      selected && mode === "distribution"
+      hovered
+        ? [31, 239, 161, 0.98]
+        : selected && mode === "distribution"
         ? [159, 232, 178, 0.95]
         : selected && mode === "appreciation"
           ? [159, 177, 199, 0.95]
@@ -312,10 +340,10 @@ function renderPropertyGraphics(
         symbol: new SimpleMarkerSymbol({
           style: "circle",
           color: accent,
-          size: selected ? 15 : 10,
+          size: hovered ? 18 : selected ? 15 : 10,
           outline: {
-            color: [5, 8, 14, 0.95],
-            width: selected ? 2.5 : 1.5,
+            color: hovered ? [31, 239, 161, 1] : [5, 8, 14, 0.95],
+            width: hovered ? 3.5 : selected ? 2.5 : 1.5,
           },
         }),
       }),
@@ -332,15 +360,15 @@ function renderPropertyGraphics(
         },
         symbol: new TextSymbol({
           text: property.name,
-          color: [255, 255, 255, selected ? 1 : 0.82],
+          color: hovered ? [230, 255, 245, 1] : [255, 255, 255, selected ? 1 : 0.82],
           haloColor: [5, 8, 14, 0.92],
-          haloSize: 1,
+          haloSize: hovered ? 1.6 : 1,
           horizontalAlignment: "center",
           verticalAlignment: "bottom",
-          yoffset: selected ? 8 : 6,
+          yoffset: emphasized ? 9 : 6,
           font: {
             family: "Avenir Next, Arial, sans-serif",
-            size: selected ? 12 : 10,
+            size: hovered ? 13 : selected ? 12 : 10,
             weight: "bold",
           },
         }),
@@ -355,6 +383,7 @@ function ArcGisInvestorScene({
   zoom,
   zoomTier,
   mode,
+  amount,
   onSelectProperty,
 }: {
   selectedProperty: EquitonProperty;
@@ -362,12 +391,17 @@ function ArcGisInvestorScene({
   zoom: number;
   zoomTier: ZoomTier;
   mode: InvestmentMode;
+  amount: number;
   onSelectProperty: (property: EquitonProperty) => void;
 }) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const sceneRef = useRef<SceneHandle | null>(null);
   const onSelectRef = useRef(onSelectProperty);
   const selectedPropertyRef = useRef(selectedProperty);
+  const selectedIdRef = useRef(selectedId);
+  const modeRef = useRef(mode);
+  const hoveredIdRef = useRef<string | null>(null);
+  const [hoverCard, setHoverCard] = useState<HoverCardState | null>(null);
   const [status, setStatus] = useState<SceneStatus>("loading");
 
   useEffect(() => {
@@ -377,6 +411,14 @@ function ArcGisInvestorScene({
   useEffect(() => {
     selectedPropertyRef.current = selectedProperty;
   }, [selectedProperty]);
+
+  useEffect(() => {
+    selectedIdRef.current = selectedId;
+  }, [selectedId]);
+
+  useEffect(() => {
+    modeRef.current = mode;
+  }, [mode]);
 
   useEffect(() => {
     let cancelled = false;
@@ -453,7 +495,128 @@ function ArcGisInvestorScene({
           modules,
         };
 
+        let buildingsLayerView: Record<string, any> | null = null;
+        let orbitDrag: OrbitDragState | null = null;
+        let pendingOrbit: OrbitTarget | null = null;
+        let orbitFrame: number | null = null;
+        let autoTimer: number | null = null;
+        let pointerFrame: number | null = null;
+        let latestPointerEvent: Record<string, any> | null = null;
+        let hoverSequence = 0;
+        let lastInteractionAt = performance.now();
+        let lastAutoAt = performance.now();
+
+        const markInteraction = () => {
+          lastInteractionAt = performance.now();
+          pendingOrbit = null;
+          if (orbitFrame !== null) {
+            window.cancelAnimationFrame(orbitFrame);
+            orbitFrame = null;
+          }
+          view.animation?.stop?.();
+        };
+        handle.markInteraction = markInteraction;
+
+        const applyOrbitTarget = (target: OrbitTarget) => {
+          pendingOrbit = target;
+          if (orbitFrame !== null) return;
+
+          orbitFrame = window.requestAnimationFrame(() => {
+            orbitFrame = null;
+            const nextTarget = pendingOrbit;
+            pendingOrbit = null;
+            if (!nextTarget || cancelled) return;
+
+            const targetPoint = new modules.Point({
+              latitude: nextTarget.latitude,
+              longitude: nextTarget.longitude,
+              spatialReference: { wkid: 4326 },
+            });
+
+            view
+              .goTo(
+                {
+                  target: targetPoint,
+                  zoom: nextTarget.zoom,
+                  heading: normalizeHeading(nextTarget.heading),
+                  tilt: nextTarget.tilt,
+                },
+                {
+                  animate: false,
+                },
+              )
+              .catch(() => undefined);
+          });
+        };
+
+        const orbitAroundSelectedProperty = (heading: number, tilt: number, nextZoom: number) => {
+          const orbitTarget = selectedPropertyRef.current;
+          applyOrbitTarget({
+            latitude: orbitTarget.latitude,
+            longitude: orbitTarget.longitude,
+            heading,
+            tilt,
+            zoom: nextZoom,
+          });
+        };
+
+        const clearBuildingHighlight = () => {
+          handle.buildingHighlightHandle?.remove();
+          handle.buildingHighlightHandle = undefined;
+        };
+
+        const highlightBuilding = (buildingGraphic: Record<string, any> | null) => {
+          clearBuildingHighlight();
+          if (!buildingGraphic || typeof buildingsLayerView?.highlight !== "function") return;
+          handle.buildingHighlightHandle = buildingsLayerView.highlight(buildingGraphic);
+        };
+
+        const updateHoveredProperty = (
+          property: EquitonProperty | null,
+          event?: Record<string, any>,
+        ) => {
+          const nextHoveredId = property?.id ?? null;
+          const hoverChanged = hoveredIdRef.current !== nextHoveredId;
+          hoveredIdRef.current = nextHoveredId;
+
+          if (hoverChanged) {
+            renderPropertyGraphics(
+              handle,
+              selectedIdRef.current,
+              modeRef.current,
+              hoveredIdRef.current,
+            );
+          }
+
+          if (property && event) {
+            setHoverCard({
+              property,
+              x: finiteOr(event.x, 0),
+              y: finiteOr(event.y, 0),
+            });
+            return;
+          }
+
+          setHoverCard(null);
+        };
+
+        const clearHover = () => {
+          hoverSequence += 1;
+          updateHoveredProperty(null);
+          clearBuildingHighlight();
+        };
+
+        view
+          .whenLayerView(buildingsLayer)
+          .then((layerView: Record<string, any>) => {
+            if (!cancelled) {
+              buildingsLayerView = layerView;
+            }
+          })
+          .catch(() => undefined);
+
         handle.clickHandle = view.on("click", async (event: Record<string, unknown>) => {
+          markInteraction();
           const hit = await view.hitTest(event);
           const propertyGraphic = hit.results?.find(
             (result: Record<string, any>) => result.graphic?.attributes?.propertyId,
@@ -466,8 +629,8 @@ function ArcGisInvestorScene({
           }
         });
 
-        let orbitDrag: OrbitDragState | null = null;
         handle.dragHandle = view.on("drag", (event: Record<string, any>) => {
+          markInteraction();
           const action = event.action;
           const rawButton =
             typeof event.button === "number" ? event.button : event.native?.button;
@@ -476,6 +639,7 @@ function ArcGisInvestorScene({
           if (action === "start") {
             if (!isPrimaryDrag) return;
 
+            clearHover();
             orbitDrag = {
               x: finiteOr(event.x, 0),
               y: finiteOr(event.y, 0),
@@ -492,28 +656,11 @@ function ArcGisInvestorScene({
           if (action === "update") {
             const x = finiteOr(event.x, orbitDrag.x);
             const y = finiteOr(event.y, orbitDrag.y);
-            const orbitTarget = selectedPropertyRef.current;
-            const targetPoint = new modules.Point({
-              latitude: orbitTarget.latitude,
-              longitude: orbitTarget.longitude,
-              spatialReference: { wkid: 4326 },
-            });
-            const heading = orbitDrag.heading - (x - orbitDrag.x) * 0.28;
-            const tilt = clamp(orbitDrag.tilt + (y - orbitDrag.y) * 0.14, 24, 80);
+            const heading = orbitDrag.heading + (x - orbitDrag.x) * 0.18;
+            const tilt = clamp(orbitDrag.tilt - (y - orbitDrag.y) * 0.04, 36, 64);
+            const orbitZoom = Math.min(orbitDrag.zoom, 15.4);
 
-            view
-              .goTo(
-                {
-                  target: targetPoint,
-                  zoom: orbitDrag.zoom,
-                  heading,
-                  tilt,
-                },
-                {
-                  animate: false,
-                },
-              )
-              .catch(() => undefined);
+            orbitAroundSelectedProperty(heading, tilt, orbitZoom);
             event.stopPropagation?.();
             return;
           }
@@ -524,13 +671,87 @@ function ArcGisInvestorScene({
           }
         });
 
+        handle.pointerMoveHandle = view.on("pointer-move", (event: Record<string, any>) => {
+          markInteraction();
+          latestPointerEvent = event;
+
+          if (pointerFrame !== null) return;
+
+          pointerFrame = window.requestAnimationFrame(() => {
+            pointerFrame = null;
+            const pointerEvent = latestPointerEvent;
+            if (!pointerEvent || cancelled) return;
+
+            const sequence = hoverSequence + 1;
+            hoverSequence = sequence;
+
+            view
+              .hitTest(pointerEvent)
+              .then((hit: Record<string, any>) => {
+                if (cancelled || sequence !== hoverSequence) return;
+
+                const propertyGraphic = hit.results?.find(
+                  (result: Record<string, any>) => result.graphic?.attributes?.propertyId,
+                )?.graphic;
+                const propertyId = propertyGraphic?.attributes?.propertyId;
+                const buildingGraphic =
+                  hit.results?.find(
+                    (result: Record<string, any>) => result.graphic?.layer === buildingsLayer,
+                  )?.graphic ?? null;
+                const property =
+                  equitonProperties.find((item) => item.id === propertyId) ??
+                  (buildingGraphic && finiteOr(view.zoom, 0) >= 16
+                    ? selectedPropertyRef.current
+                    : null);
+
+                updateHoveredProperty(property, pointerEvent);
+                highlightBuilding(buildingGraphic);
+              })
+              .catch(() => undefined);
+          });
+        });
+
+        const sceneContainer = containerRef.current;
+        const handlePointerLeave = () => {
+          markInteraction();
+          clearHover();
+        };
+        sceneContainer.addEventListener("pointerleave", handlePointerLeave);
+        handle.pointerLeaveCleanup = () => {
+          sceneContainer.removeEventListener("pointerleave", handlePointerLeave);
+        };
+
+        const runAutoOrbit = () => {
+          if (cancelled) return;
+
+          const now = performance.now();
+          const delta = Math.min(120, now - lastAutoAt);
+          lastAutoAt = now;
+
+          if (!orbitDrag && now - lastInteractionAt > 3400) {
+            const heading = finiteOr(view.camera.heading, 328) + delta * 0.004;
+            const tilt = clamp(finiteOr(view.camera.tilt, 60), 46, 64);
+            const nextZoom = finiteOr(view.zoom, 17);
+            orbitAroundSelectedProperty(heading, tilt, nextZoom);
+          }
+        };
+
+        handle.animationCleanup = () => {
+          if (orbitFrame !== null) window.cancelAnimationFrame(orbitFrame);
+          if (autoTimer !== null) window.clearInterval(autoTimer);
+          if (pointerFrame !== null) window.cancelAnimationFrame(pointerFrame);
+        };
+
         sceneRef.current = handle;
-        renderPropertyGraphics(handle, selectedId, mode);
+        renderPropertyGraphics(handle, selectedId, mode, hoveredIdRef.current);
         await view.when();
 
         if (!cancelled) {
           setStatus("ready");
           flyToProperty(handle, selectedProperty, zoomTier, zoom);
+          lastInteractionAt = performance.now();
+          lastAutoAt = performance.now();
+          autoTimer = window.setInterval(runAutoOrbit, 120);
         }
       } catch (error) {
         if (!cancelled) {
@@ -547,6 +768,10 @@ function ArcGisInvestorScene({
       const scene = sceneRef.current;
       scene?.clickHandle?.remove();
       scene?.dragHandle?.remove();
+      scene?.pointerMoveHandle?.remove();
+      scene?.pointerLeaveCleanup?.();
+      scene?.buildingHighlightHandle?.remove();
+      scene?.animationCleanup?.();
       scene?.view?.destroy();
       sceneRef.current = null;
     };
@@ -556,13 +781,14 @@ function ArcGisInvestorScene({
     const scene = sceneRef.current;
     if (!scene) return;
 
-    renderPropertyGraphics(scene, selectedId, mode);
+    renderPropertyGraphics(scene, selectedId, mode, hoveredIdRef.current);
   }, [selectedId, mode]);
 
   useEffect(() => {
     const scene = sceneRef.current;
     if (!scene || status !== "ready") return;
 
+    scene.markInteraction?.();
     flyToProperty(scene, selectedProperty, zoomTier, zoom);
   }, [selectedProperty, zoom, zoomTier, status]);
 
@@ -579,7 +805,67 @@ function ArcGisInvestorScene({
           </span>
         </div>
       ) : null}
+      {hoverCard && status === "ready" ? (
+        <InvestmentHoverCard hoverCard={hoverCard} amount={amount} mode={mode} />
+      ) : null}
     </>
+  );
+}
+
+function InvestmentHoverCard({
+  hoverCard,
+  amount,
+  mode,
+}: {
+  hoverCard: HoverCardState;
+  amount: number;
+  mode: InvestmentMode;
+}) {
+  const monthlyLow = (amount * equitonApartmentFund.targetAnnualNetReturn.low) / 12;
+  const monthlyHigh = (amount * equitonApartmentFund.targetAnnualNetReturn.high) / 12;
+  const x = Math.round(hoverCard.x + 18);
+  const y = Math.round(hoverCard.y - 24);
+
+  return (
+    <aside
+      className={styles.hoverCard}
+      style={{
+        left: `min(calc(100% - 250px), max(12px, ${x}px))`,
+        top: `min(calc(100% - 206px), max(12px, ${y}px))`,
+      }}
+      aria-label={`${hoverCard.property.name} investment facts`}
+    >
+      <div className={styles.hoverCardHeader}>
+        <span aria-hidden="true">{hoverCard.property.name.slice(0, 1)}</span>
+        <div>
+          <strong>{hoverCard.property.name}</strong>
+          <small>
+            {hoverCard.property.city}, {hoverCard.property.province}
+          </small>
+        </div>
+      </div>
+      <dl>
+        <div>
+          <dt>Capital</dt>
+          <dd>{formatCurrency(amount)}</dd>
+        </div>
+        <div>
+          <dt>Monthly range</dt>
+          <dd>
+            {formatCurrency(monthlyLow)}-{formatCurrency(monthlyHigh)}
+          </dd>
+        </div>
+        <div>
+          <dt>Target return</dt>
+          <dd>8-12%</dd>
+        </div>
+        <div>
+          <dt>Lens</dt>
+          <dd>{mode === "total" ? "Total" : mode === "distribution" ? "Distribution" : "Appreciation"}</dd>
+        </div>
+      </dl>
+      <p>{hoverCard.property.address}</p>
+    </aside>
   );
 }
 
@@ -806,6 +1092,7 @@ export default function InvestorMapClient() {
             zoom={zoom}
             zoomTier={zoomTier}
             mode={mode}
+            amount={amount}
             onSelectProperty={focusProperty}
           />
           <div className={styles.mapAttribution} aria-hidden="true">
