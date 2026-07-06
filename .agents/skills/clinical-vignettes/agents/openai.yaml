@@ -1,0 +1,4 @@
+interface:
+  display_name: "Clinical Vignettes"
+  short_description: "Draft Tara Housing vignettes"
+  default_prompt: "Use $clinical-vignettes to intake details and create a Tara Housing clinical vignette document."

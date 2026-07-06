@@ -1,0 +1,4 @@
+interface:
+  display_name: "Social Descriptions"
+  short_description: "Write Jack ve Tara platform copy"
+  default_prompt: "Use $social-descriptions to write a full Jack ve Tara posting package from this video or transcript."
