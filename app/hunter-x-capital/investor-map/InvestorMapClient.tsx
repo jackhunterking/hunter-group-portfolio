@@ -1,8 +1,7 @@
 "use client";
 
-import { type CSSProperties, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
-  type BuildingFootprint,
   type EquitonProperty,
   type InvestmentMode,
   equitonApartmentFund,
@@ -10,26 +9,65 @@ import {
 } from "./equitonMapData";
 import styles from "./investor-map.module.css";
 
-const bounds = equitonProperties.reduce(
-  (current, property) => ({
-    minLat: Math.min(current.minLat, property.latitude),
-    maxLat: Math.max(current.maxLat, property.latitude),
-    minLng: Math.min(current.minLng, property.longitude),
-    maxLng: Math.max(current.maxLng, property.longitude),
-  }),
-  {
-    minLat: Number.POSITIVE_INFINITY,
-    maxLat: Number.NEGATIVE_INFINITY,
-    minLng: Number.POSITIVE_INFINITY,
-    maxLng: Number.NEGATIVE_INFINITY,
-  },
-);
+const ARC_GIS_CSS_URL = "https://js.arcgis.com/4.31/esri/themes/dark/main.css";
+const ARC_GIS_SCRIPT_URL = "https://js.arcgis.com/4.31/";
+const ARC_GIS_BUILDINGS_URL =
+  "https://basemaps3d.arcgis.com/arcgis/rest/services/Open3D_Buildings_v1/SceneServer";
+const ARC_GIS_CSS_ID = "arcgis-maps-sdk-css";
+const ARC_GIS_SCRIPT_ID = "arcgis-maps-sdk-script";
+
+type ZoomTier = "portfolio" | "city" | "building" | "detail";
+type SceneStatus = "loading" | "ready" | "error";
+
+type ArcGisModule = new (options?: Record<string, unknown>) => Record<string, any>;
+type ArcGisRequire = (
+  modules: string[],
+  callback: (...loadedModules: ArcGisModule[]) => void,
+  errback?: (error: unknown) => void,
+) => void;
+
+type ArcGisModules = {
+  Map: ArcGisModule;
+  SceneView: ArcGisModule;
+  SceneLayer: ArcGisModule;
+  GraphicsLayer: ArcGisModule;
+  Graphic: ArcGisModule;
+  Point: ArcGisModule;
+  SimpleMarkerSymbol: ArcGisModule;
+  TextSymbol: ArcGisModule;
+};
+
+type SceneHandle = {
+  view: Record<string, any>;
+  graphicsLayer: Record<string, any>;
+  modules: ArcGisModules;
+  clickHandle?: { remove: () => void };
+};
+
+declare global {
+  interface Window {
+    require?: ArcGisRequire;
+  }
+}
+
+let arcGisLoader: Promise<ArcGisModules> | null = null;
 
 const currencyFormatter = new Intl.NumberFormat("en-CA", {
   style: "currency",
   currency: "CAD",
   maximumFractionDigits: 0,
 });
+
+const moduleNames = [
+  "esri/Map",
+  "esri/views/SceneView",
+  "esri/layers/SceneLayer",
+  "esri/layers/GraphicsLayer",
+  "esri/Graphic",
+  "esri/geometry/Point",
+  "esri/symbols/SimpleMarkerSymbol",
+  "esri/symbols/TextSymbol",
+];
 
 function formatCurrency(value: number) {
   return currencyFormatter.format(Math.round(value));
@@ -49,16 +87,7 @@ function formatCompactCurrency(value: number) {
   return `$${Math.round(value)}`;
 }
 
-function projectPoint(property: Pick<EquitonProperty, "latitude" | "longitude">) {
-  const x =
-    ((property.longitude - bounds.minLng) / (bounds.maxLng - bounds.minLng)) * 52 + 22;
-  const y =
-    (1 - (property.latitude - bounds.minLat) / (bounds.maxLat - bounds.minLat)) * 50 + 23;
-
-  return { x, y };
-}
-
-function getZoomTier(zoom: number) {
+function getZoomTier(zoom: number): ZoomTier {
   if (zoom < 1.45) return "portfolio";
   if (zoom < 2.35) return "city";
   if (zoom < 3.25) return "building";
@@ -71,48 +100,394 @@ function getModeLabel(mode: InvestmentMode) {
   return "Total target return lens";
 }
 
-function polygonPath(points: ReadonlyArray<readonly [number, number]>) {
-  return points
-    .map(([x, y], index) => `${index === 0 ? "M" : "L"} ${x.toFixed(2)} ${y.toFixed(2)}`)
-    .join(" ")
-    .concat(" Z");
+function loadArcGisCss() {
+  if (document.getElementById(ARC_GIS_CSS_ID)) return;
+
+  const link = document.createElement("link");
+  link.id = ARC_GIS_CSS_ID;
+  link.rel = "stylesheet";
+  link.href = ARC_GIS_CSS_URL;
+  document.head.appendChild(link);
 }
 
-function offsetPoints(points: ReadonlyArray<readonly [number, number]>, dx: number, dy: number) {
-  return points.map(([x, y]) => [x + dx, y + dy] as const);
+function loadArcGisModules() {
+  if (arcGisLoader) return arcGisLoader;
+
+  arcGisLoader = new Promise<ArcGisModules>((resolve, reject) => {
+    if (typeof window === "undefined") {
+      reject(new Error("ArcGIS can only load in the browser."));
+      return;
+    }
+
+    loadArcGisCss();
+
+    const loadModules = () => {
+      const arcGisRequire = (window as Window & { require?: ArcGisRequire }).require;
+
+      if (typeof arcGisRequire !== "function") {
+        reject(new Error("ArcGIS module loader is unavailable."));
+        return;
+      }
+
+      arcGisRequire(
+        moduleNames,
+        (
+          Map,
+          SceneView,
+          SceneLayer,
+          GraphicsLayer,
+          Graphic,
+          Point,
+          SimpleMarkerSymbol,
+          TextSymbol,
+        ) => {
+          resolve({
+            Map,
+            SceneView,
+            SceneLayer,
+            GraphicsLayer,
+            Graphic,
+            Point,
+            SimpleMarkerSymbol,
+            TextSymbol,
+          });
+        },
+        reject,
+      );
+    };
+
+    const existingRequire = (window as Window & { require?: ArcGisRequire }).require;
+
+    if (typeof existingRequire === "function") {
+      loadModules();
+      return;
+    }
+
+    const existingScript = document.getElementById(ARC_GIS_SCRIPT_ID) as HTMLScriptElement | null;
+
+    if (existingScript) {
+      existingScript.addEventListener("load", loadModules, { once: true });
+      existingScript.addEventListener("error", reject, { once: true });
+      return;
+    }
+
+    const script = document.createElement("script");
+    script.id = ARC_GIS_SCRIPT_ID;
+    script.src = ARC_GIS_SCRIPT_URL;
+    script.async = true;
+    script.addEventListener("load", loadModules, { once: true });
+    script.addEventListener("error", reject, { once: true });
+    document.body.appendChild(script);
+  });
+
+  return arcGisLoader;
 }
 
-function getCentroid(points: ReadonlyArray<readonly [number, number]>) {
-  const total = points.reduce(
-    (current, [x, y]) => ({
-      x: current.x + x,
-      y: current.y + y,
-    }),
-    { x: 0, y: 0 },
-  );
+function getPortfolioCenter() {
+  const latitude =
+    equitonProperties.reduce((total, property) => total + property.latitude, 0) /
+    equitonProperties.length;
+  const longitude =
+    equitonProperties.reduce((total, property) => total + property.longitude, 0) /
+    equitonProperties.length;
+
+  return { latitude, longitude };
+}
+
+function getCameraTarget(property: EquitonProperty, zoomTier: ZoomTier, zoom: number) {
+  if (zoomTier === "portfolio") {
+    return {
+      ...getPortfolioCenter(),
+      zoom: 7,
+      tilt: 48,
+      heading: 328,
+    };
+  }
+
+  if (zoomTier === "city") {
+    return {
+      latitude: property.latitude,
+      longitude: property.longitude,
+      zoom: 12,
+      tilt: 54,
+      heading: 328,
+    };
+  }
+
+  if (zoomTier === "building") {
+    return {
+      latitude: property.latitude,
+      longitude: property.longitude,
+      zoom: 16,
+      tilt: 64,
+      heading: 328,
+    };
+  }
 
   return {
-    x: total.x / points.length,
-    y: total.y / points.length,
+    latitude: property.latitude,
+    longitude: property.longitude,
+    zoom: zoom > 3.6 ? 18 : 17,
+    tilt: 68,
+    heading: 328,
   };
 }
 
-function getSidePolygons(footprint: BuildingFootprint) {
-  const dx = -footprint.height * 0.18;
-  const dy = -footprint.height * 0.36;
-
-  return footprint.points.map((point, index) => {
-    const nextPoint = footprint.points[(index + 1) % footprint.points.length];
-    const [x1, y1] = point;
-    const [x2, y2] = nextPoint;
-
-    return [
-      [x1, y1],
-      [x2, y2],
-      [x2 + dx, y2 + dy],
-      [x1 + dx, y1 + dy],
-    ] as const;
+function flyToProperty(handle: SceneHandle, property: EquitonProperty, zoomTier: ZoomTier, zoom: number) {
+  const target = getCameraTarget(property, zoomTier, zoom);
+  const point = new handle.modules.Point({
+    latitude: target.latitude,
+    longitude: target.longitude,
+    spatialReference: { wkid: 4326 },
   });
+
+  handle.view.goTo(
+    {
+      target: point,
+      zoom: target.zoom,
+      tilt: target.tilt,
+      heading: target.heading,
+    },
+    {
+      duration: 900,
+      easing: "ease-in-out",
+    },
+  );
+}
+
+function renderPropertyGraphics(
+  handle: SceneHandle,
+  selectedId: string,
+  mode: InvestmentMode,
+) {
+  const { Graphic, Point, SimpleMarkerSymbol, TextSymbol } = handle.modules;
+  handle.graphicsLayer.removeAll();
+
+  equitonProperties.forEach((property) => {
+    const selected = property.id === selectedId;
+    const accent =
+      selected && mode === "distribution"
+        ? [159, 232, 178, 0.95]
+        : selected && mode === "appreciation"
+          ? [159, 177, 199, 0.95]
+          : [235, 199, 107, selected ? 0.98 : 0.72];
+    const point = new Point({
+      latitude: property.latitude,
+      longitude: property.longitude,
+      z: selected ? 52 : 34,
+      spatialReference: { wkid: 4326 },
+    });
+
+    handle.graphicsLayer.addMany([
+      new Graphic({
+        geometry: point,
+        attributes: {
+          propertyId: property.id,
+          name: property.name,
+          address: property.address,
+        },
+        symbol: new SimpleMarkerSymbol({
+          style: "circle",
+          color: accent,
+          size: selected ? 15 : 10,
+          outline: {
+            color: [5, 8, 14, 0.95],
+            width: selected ? 2.5 : 1.5,
+          },
+        }),
+      }),
+      new Graphic({
+        geometry: point,
+        attributes: {
+          propertyId: property.id,
+          name: property.name,
+          address: property.address,
+        },
+        symbol: new TextSymbol({
+          text: property.name,
+          color: [255, 255, 255, selected ? 1 : 0.82],
+          haloColor: [5, 8, 14, 0.92],
+          haloSize: 1,
+          yoffset: selected ? 20 : 15,
+          font: {
+            family: "Avenir Next, Arial, sans-serif",
+            size: selected ? 12 : 10,
+            weight: "bold",
+          },
+        }),
+      }),
+    ]);
+  });
+}
+
+function ArcGisInvestorScene({
+  selectedProperty,
+  selectedId,
+  zoom,
+  zoomTier,
+  mode,
+  onSelectProperty,
+}: {
+  selectedProperty: EquitonProperty;
+  selectedId: string;
+  zoom: number;
+  zoomTier: ZoomTier;
+  mode: InvestmentMode;
+  onSelectProperty: (property: EquitonProperty) => void;
+}) {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const sceneRef = useRef<SceneHandle | null>(null);
+  const onSelectRef = useRef(onSelectProperty);
+  const [status, setStatus] = useState<SceneStatus>("loading");
+
+  useEffect(() => {
+    onSelectRef.current = onSelectProperty;
+  }, [onSelectProperty]);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function createScene() {
+      if (!containerRef.current) return;
+
+      try {
+        setStatus("loading");
+        const modules = await loadArcGisModules();
+        if (cancelled || !containerRef.current) return;
+
+        const map = new modules.Map({
+          basemap: "dark-gray-vector",
+          ground: "world-elevation",
+        });
+        const buildingsLayer = new modules.SceneLayer({
+          url: ARC_GIS_BUILDINGS_URL,
+          title: "Open 3D Buildings",
+          copyright: "Esri, Overture Maps, OpenStreetMap contributors",
+        });
+        const graphicsLayer = new modules.GraphicsLayer({
+          title: "Verified Equiton properties",
+          elevationInfo: { mode: "relative-to-ground" },
+        });
+
+        map.addMany([buildingsLayer, graphicsLayer]);
+
+        const portfolioCenter = getPortfolioCenter();
+        const view = new modules.SceneView({
+          container: containerRef.current,
+          map,
+          qualityProfile: "medium",
+          viewingMode: "global",
+          popupEnabled: false,
+          camera: {
+            position: {
+              latitude: portfolioCenter.latitude - 0.8,
+              longitude: portfolioCenter.longitude - 0.85,
+              z: 210000,
+            },
+            heading: 328,
+            tilt: 50,
+          },
+          environment: {
+            atmosphereEnabled: false,
+            starsEnabled: false,
+            background: {
+              type: "color",
+              color: [3, 5, 10, 1],
+            },
+            lighting: {
+              directShadowsEnabled: true,
+              ambientOcclusionEnabled: true,
+            },
+          },
+          constraints: {
+            altitude: {
+              min: 120,
+              max: 800000,
+            },
+            tilt: {
+              max: 74,
+            },
+          },
+          ui: {
+            components: ["attribution"],
+          },
+        });
+
+        const handle: SceneHandle = {
+          view,
+          graphicsLayer,
+          modules,
+        };
+
+        handle.clickHandle = view.on("click", async (event: Record<string, unknown>) => {
+          const hit = await view.hitTest(event);
+          const propertyGraphic = hit.results?.find(
+            (result: Record<string, any>) => result.graphic?.attributes?.propertyId,
+          )?.graphic;
+          const propertyId = propertyGraphic?.attributes?.propertyId;
+          const property = equitonProperties.find((item) => item.id === propertyId);
+
+          if (property) {
+            onSelectRef.current(property);
+          }
+        });
+
+        sceneRef.current = handle;
+        renderPropertyGraphics(handle, selectedId, mode);
+        await view.when();
+
+        if (!cancelled) {
+          setStatus("ready");
+          flyToProperty(handle, selectedProperty, zoomTier, zoom);
+        }
+      } catch (error) {
+        if (!cancelled) {
+          console.error("ArcGIS scene failed to load", error);
+          setStatus("error");
+        }
+      }
+    }
+
+    createScene();
+
+    return () => {
+      cancelled = true;
+      const scene = sceneRef.current;
+      scene?.clickHandle?.remove();
+      scene?.view?.destroy();
+      sceneRef.current = null;
+    };
+  }, []);
+
+  useEffect(() => {
+    const scene = sceneRef.current;
+    if (!scene) return;
+
+    renderPropertyGraphics(scene, selectedId, mode);
+  }, [selectedId, mode]);
+
+  useEffect(() => {
+    const scene = sceneRef.current;
+    if (!scene || status !== "ready") return;
+
+    flyToProperty(scene, selectedProperty, zoomTier, zoom);
+  }, [selectedProperty, zoom, zoomTier, status]);
+
+  return (
+    <>
+      <div ref={containerRef} className={styles.arcgisScene} />
+      {status !== "ready" ? (
+        <div className={styles.sceneStatus} role="status">
+          <strong>{status === "error" ? "3D scene unavailable" : "Loading 3D buildings"}</strong>
+          <span>
+            {status === "error"
+              ? "The investor data is still available in the property drawer."
+              : "Esri Open 3D Buildings"}
+          </span>
+        </div>
+      ) : null}
+    </>
+  );
 }
 
 function MapIcon() {
@@ -160,97 +535,6 @@ function SourceIcon() {
   );
 }
 
-function getFootprintStyle(property: EquitonProperty) {
-  const position = projectPoint(property);
-
-  return {
-    "--x": `${position.x}%`,
-    "--y": `${position.y}%`,
-    "--accent": property.buildingProfile.accent,
-  } as CSSProperties;
-}
-
-function FootprintModel({
-  property,
-}: {
-  property: EquitonProperty;
-}) {
-  return (
-    <svg className={styles.footprintSvg} viewBox="0 0 120 120" aria-hidden="true">
-      <path
-        className={styles.siteParcel}
-        d="M 12 34 L 81 18 L 108 70 L 38 101 L 10 75 Z"
-      />
-      <path className={styles.siteRoad} d="M 4 88 C 30 77 55 72 116 57" />
-      <path className={styles.siteRoadSecondary} d="M 21 18 C 42 34 78 43 111 48" />
-
-      {property.siteModel.footprints.map((footprint) => {
-        const dx = -footprint.height * 0.18;
-        const dy = -footprint.height * 0.36;
-        const roofPoints = offsetPoints(footprint.points, dx, dy);
-        const labelPoint = getCentroid(roofPoints);
-
-        return (
-          <g
-            key={footprint.id}
-            className={styles.footprintShape}
-            style={
-              {
-                "--wall-color": footprint.facade,
-                "--roof-color": footprint.roof,
-              } as CSSProperties
-            }
-          >
-            <path className={styles.footprintBase} d={polygonPath(footprint.points)} />
-            {getSidePolygons(footprint).map((side, index) => (
-              <path
-                key={`${footprint.id}-side-${index}`}
-                className={styles.footprintWall}
-                d={polygonPath(side)}
-              />
-            ))}
-            <path className={styles.footprintRoof} d={polygonPath(roofPoints)} />
-            <path className={styles.footprintRoofEdge} d={polygonPath(roofPoints)} />
-            <text className={styles.footprintText} x={labelPoint.x} y={labelPoint.y}>
-              {footprint.label}
-            </text>
-          </g>
-        );
-      })}
-    </svg>
-  );
-}
-
-function PropertyFootprint({
-  property,
-  selected,
-  onSelect,
-}: {
-  property: EquitonProperty;
-  selected: boolean;
-  onSelect: (property: EquitonProperty) => void;
-}) {
-  return (
-    <button
-      type="button"
-      className={`${styles.propertyFootprint} ${selected ? styles.propertySelected : ""}`}
-      style={getFootprintStyle(property)}
-      data-property-id={property.id}
-      onClick={() => onSelect(property)}
-      onPointerDown={() => onSelect(property)}
-      aria-label={`${property.name}, ${property.address}`}
-    >
-      <span className={styles.footprintShadow} />
-      <FootprintModel property={property} />
-      <span className={styles.pinPulse} />
-      <span className={styles.propertyLabel}>
-        <strong>{property.name}</strong>
-        <span>{property.city}</span>
-      </span>
-    </button>
-  );
-}
-
 function ScenarioBar({
   mode,
   amount,
@@ -282,35 +566,13 @@ function ScenarioBar({
 
 export default function InvestorMapClient() {
   const [selectedId, setSelectedId] = useState(equitonProperties[0].id);
-  const [zoom, setZoom] = useState(2.6);
+  const [zoom, setZoom] = useState(1.25);
   const [mode, setMode] = useState<InvestmentMode>("total");
   const [amount, setAmount] = useState(100000);
 
   const selectedProperty =
     equitonProperties.find((property) => property.id === selectedId) ?? equitonProperties[0];
   const zoomTier = getZoomTier(zoom);
-
-  const cityClusters = useMemo(() => {
-    const grouped = equitonProperties.reduce(
-      (current, property) => {
-        const existing = current.get(property.city) ?? [];
-        existing.push(property);
-        current.set(property.city, existing);
-        return current;
-      },
-      new Map<string, EquitonProperty[]>(),
-    );
-
-    return Array.from(grouped.entries()).map(([city, properties]) => {
-      const latitude =
-        properties.reduce((total, property) => total + property.latitude, 0) / properties.length;
-      const longitude =
-        properties.reduce((total, property) => total + property.longitude, 0) / properties.length;
-      const position = projectPoint({ latitude, longitude });
-
-      return { city, properties, position };
-    });
-  }, []);
 
   const scenario = useMemo(() => {
     const safeAmount = Math.max(0, amount || 0);
@@ -325,14 +587,26 @@ export default function InvestorMapClient() {
     };
   }, [amount]);
 
+  const focusProperty = useCallback((property: EquitonProperty) => {
+    setSelectedId(property.id);
+    setZoom((currentZoom) => Math.max(currentZoom, 3.25));
+  }, []);
+
   function updateAmount(value: number) {
     if (!Number.isFinite(value)) return;
     setAmount(Math.min(Math.max(value, 0), 2000000));
   }
 
-  function focusProperty(property: EquitonProperty) {
-    setSelectedId(property.id);
-    setZoom((currentZoom) => Math.max(currentZoom, 3.25));
+  function zoomIn() {
+    setZoom((currentZoom) => Math.min(4, currentZoom + 0.45));
+  }
+
+  function zoomOut() {
+    setZoom((currentZoom) => Math.max(1, currentZoom - 0.45));
+  }
+
+  function resetCamera() {
+    setZoom(1.25);
   }
 
   return (
@@ -397,75 +671,53 @@ export default function InvestorMapClient() {
               className={mode === item ? styles.modeActive : ""}
               onClick={() => setMode(item)}
             >
-              {item === "distribution" ? "Distribution" : item === "appreciation" ? "Appreciation" : "Total"}
+              {item === "distribution"
+                ? "Distribution"
+                : item === "appreciation"
+                  ? "Appreciation"
+                  : "Total"}
             </button>
           ))}
         </div>
 
         <div className={styles.zoomControls} aria-label="Map zoom controls">
-          <button
-            type="button"
-            onClick={() => setZoom((currentZoom) => Math.min(4, currentZoom + 0.45))}
-            aria-label="Zoom in"
-          >
+          <button type="button" onClick={zoomIn} aria-label="Zoom in">
             <PlusIcon />
           </button>
-          <button
-            type="button"
-            onClick={() => setZoom((currentZoom) => Math.max(1, currentZoom - 0.45))}
-            aria-label="Zoom out"
-          >
+          <button type="button" onClick={zoomOut} aria-label="Zoom out">
             <MinusIcon />
           </button>
-          <button type="button" onClick={() => setZoom(2.6)} aria-label="Reset camera">
+          <button type="button" onClick={resetCamera} aria-label="Reset camera">
             <ResetIcon />
           </button>
         </div>
 
         <div className={styles.zoomReadout}>
           <MapIcon />
-          <span>{zoomTier === "portfolio" ? "Province" : zoomTier === "city" ? "City" : zoomTier === "building" ? "Building" : "Facade"}</span>
+          <span>
+            {zoomTier === "portfolio"
+              ? "Province"
+              : zoomTier === "city"
+                ? "City"
+                : zoomTier === "building"
+                  ? "Building"
+                  : "Facade"}
+          </span>
           <strong>{zoom.toFixed(1)}x</strong>
         </div>
 
-        <div className={styles.mapViewport} aria-label="Verified Equiton property map">
+        <div className={styles.mapViewport} aria-label="Verified Equiton property 3D map">
+          <ArcGisInvestorScene
+            selectedProperty={selectedProperty}
+            selectedId={selectedId}
+            zoom={zoom}
+            zoomTier={zoomTier}
+            mode={mode}
+            onSelectProperty={focusProperty}
+          />
           <div className={styles.mapAttribution} aria-hidden="true">
-            <span>No runtime map API</span>
-            <strong>Verified addresses</strong>
-          </div>
-          <div
-            className={styles.mapWorld}
-            style={{ "--map-scale": `${1 + (zoom - 1) * 0.14}` } as CSSProperties}
-          >
-            {zoomTier === "portfolio"
-              ? cityClusters.map((cluster) => (
-                  <button
-                    key={cluster.city}
-                    type="button"
-                    className={styles.cityCluster}
-                    style={
-                      {
-                        "--x": `${cluster.position.x}%`,
-                        "--y": `${cluster.position.y}%`,
-                      } as CSSProperties
-                    }
-                    onClick={() => {
-                      setZoom(2);
-                      setSelectedId(cluster.properties[0].id);
-                    }}
-                  >
-                    <span>{cluster.properties.length}</span>
-                    <strong>{cluster.city}</strong>
-                  </button>
-                ))
-              : equitonProperties.map((property) => (
-                  <PropertyFootprint
-                    key={property.id}
-                    property={property}
-                    selected={property.id === selectedId}
-                    onSelect={focusProperty}
-                  />
-                ))}
+            <span>Open 3D Buildings</span>
+            <strong>Esri / Overture / OSM</strong>
           </div>
         </div>
 
@@ -479,7 +731,9 @@ export default function InvestorMapClient() {
           <div className={styles.drawerBody}>
             <div className={styles.propertyTitleRow}>
               <div>
-                <p>{selectedProperty.city}, {selectedProperty.province}</p>
+                <p>
+                  {selectedProperty.city}, {selectedProperty.province}
+                </p>
                 <h1>{selectedProperty.name}</h1>
               </div>
               <a
@@ -535,7 +789,7 @@ export default function InvestorMapClient() {
               </div>
               <div>
                 <span>3D model source</span>
-                <strong>No API local massing</strong>
+                <strong>Esri Open 3D Buildings</strong>
               </div>
             </div>
 
@@ -544,8 +798,11 @@ export default function InvestorMapClient() {
             <p className={styles.complianceNote}>
               Illustrative only. Target returns and monthly equivalents are not guaranteed.
             </p>
-            <p className={styles.modelStatus}>{selectedProperty.modelStatus}</p>
-            <p className={styles.modelStatus}>{selectedProperty.siteModel.attribution}</p>
+            <p className={styles.modelStatus}>
+              3D building context is rendered from Esri Open 3D Buildings, based on Overture Maps
+              and OpenStreetMap contributor data. The selected property address and coordinate come
+              from the verified Equiton listing.
+            </p>
             <p className={styles.disclaimer}>{equitonApartmentFund.disclaimer}</p>
           </div>
         </aside>

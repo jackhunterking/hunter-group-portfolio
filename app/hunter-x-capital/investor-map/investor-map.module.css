@@ -281,13 +281,15 @@
   inset: 154px 0 292px;
   z-index: 2;
   overflow: hidden;
+  background: #03050a;
 }
 
 .mapAttribution {
   position: absolute;
   z-index: 4;
   left: 16px;
-  bottom: 14px;
+  top: 14px;
+  bottom: auto;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -302,6 +304,67 @@
 
 .mapAttribution span {
   color: var(--gold);
+}
+
+.arcgisScene {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: #03050a;
+}
+
+.arcgisScene :global(.esri-view-surface) {
+  outline: none;
+}
+
+.mapViewport :global(.esri-ui) {
+  z-index: 2;
+}
+
+.mapViewport :global(.esri-attribution) {
+  max-width: min(64vw, 520px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.62);
+  background: rgba(5, 8, 14, 0.72);
+  backdrop-filter: blur(12px);
+  font-family: var(--sans);
+  font-size: 9px;
+}
+
+.sceneStatus {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: grid;
+  place-content: center;
+  gap: 8px;
+  padding: 20px;
+  color: rgba(255, 255, 255, 0.72);
+  background:
+    radial-gradient(circle at center, rgba(235, 199, 107, 0.1), transparent 36%),
+    rgba(3, 5, 10, 0.78);
+  text-align: center;
+}
+
+.sceneStatus strong,
+.sceneStatus span {
+  display: block;
+}
+
+.sceneStatus strong {
+  color: #fff;
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.sceneStatus span {
+  color: rgba(255, 255, 255, 0.56);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .mapWorld {
@@ -884,7 +947,8 @@
 
   .mapAttribution {
     left: 32px;
-    bottom: 20px;
+    top: 20px;
+    bottom: auto;
   }
 
   .drawer {
