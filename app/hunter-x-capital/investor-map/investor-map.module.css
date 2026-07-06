@@ -311,6 +311,12 @@
   inset: 0;
   z-index: 1;
   background: #03050a;
+  cursor: grab;
+  touch-action: none;
+}
+
+.arcgisScene:active {
+  cursor: grabbing;
 }
 
 .arcgisScene :global(.esri-view-surface) {

@@ -42,6 +42,15 @@ type SceneHandle = {
   graphicsLayer: Record<string, any>;
   modules: ArcGisModules;
   clickHandle?: { remove: () => void };
+  dragHandle?: { remove: () => void };
+};
+
+type OrbitDragState = {
+  x: number;
+  y: number;
+  heading: number;
+  tilt: number;
+  zoom: number;
 };
 
 declare global {
@@ -85,6 +94,15 @@ function formatCompactCurrency(value: number) {
   }
 
   return `$${Math.round(value)}`;
+}
+
+function clamp(value: number, minimum: number, maximum: number) {
+  return Math.min(Math.max(value, minimum), maximum);
+}
+
+function finiteOr(value: unknown, fallback: number) {
+  const number = Number(value);
+  return Number.isFinite(number) ? number : fallback;
 }
 
 function getZoomTier(zoom: number): ZoomTier {
@@ -218,8 +236,8 @@ function getCameraTarget(property: EquitonProperty, zoomTier: ZoomTier, zoom: nu
     return {
       latitude: property.latitude,
       longitude: property.longitude,
-      zoom: 16,
-      tilt: 64,
+      zoom: 17,
+      tilt: 68,
       heading: 328,
     };
   }
@@ -228,7 +246,7 @@ function getCameraTarget(property: EquitonProperty, zoomTier: ZoomTier, zoom: nu
     latitude: property.latitude,
     longitude: property.longitude,
     zoom: zoom > 3.6 ? 18 : 17,
-    tilt: 68,
+    tilt: 72,
     heading: 328,
   };
 }
@@ -265,6 +283,8 @@ function renderPropertyGraphics(
 
   equitonProperties.forEach((property) => {
     const selected = property.id === selectedId;
+    const markerOffset = selected ? 1.5 : 1;
+    const labelOffset = selected ? 4.5 : 3.5;
     const accent =
       selected && mode === "distribution"
         ? [159, 232, 178, 0.95]
@@ -274,13 +294,16 @@ function renderPropertyGraphics(
     const point = new Point({
       latitude: property.latitude,
       longitude: property.longitude,
-      z: selected ? 52 : 34,
       spatialReference: { wkid: 4326 },
     });
 
     handle.graphicsLayer.addMany([
       new Graphic({
         geometry: point,
+        elevationInfo: {
+          mode: "relative-to-scene",
+          offset: markerOffset,
+        },
         attributes: {
           propertyId: property.id,
           name: property.name,
@@ -298,6 +321,10 @@ function renderPropertyGraphics(
       }),
       new Graphic({
         geometry: point,
+        elevationInfo: {
+          mode: "relative-to-scene",
+          offset: labelOffset,
+        },
         attributes: {
           propertyId: property.id,
           name: property.name,
@@ -308,7 +335,9 @@ function renderPropertyGraphics(
           color: [255, 255, 255, selected ? 1 : 0.82],
           haloColor: [5, 8, 14, 0.92],
           haloSize: 1,
-          yoffset: selected ? 20 : 15,
+          horizontalAlignment: "center",
+          verticalAlignment: "bottom",
+          yoffset: selected ? 8 : 6,
           font: {
             family: "Avenir Next, Arial, sans-serif",
             size: selected ? 12 : 10,
@@ -338,11 +367,16 @@ function ArcGisInvestorScene({
   const containerRef = useRef<HTMLDivElement | null>(null);
   const sceneRef = useRef<SceneHandle | null>(null);
   const onSelectRef = useRef(onSelectProperty);
+  const selectedPropertyRef = useRef(selectedProperty);
   const [status, setStatus] = useState<SceneStatus>("loading");
 
   useEffect(() => {
     onSelectRef.current = onSelectProperty;
   }, [onSelectProperty]);
+
+  useEffect(() => {
+    selectedPropertyRef.current = selectedProperty;
+  }, [selectedProperty]);
 
   useEffect(() => {
     let cancelled = false;
@@ -366,7 +400,7 @@ function ArcGisInvestorScene({
         });
         const graphicsLayer = new modules.GraphicsLayer({
           title: "Verified Equiton properties",
-          elevationInfo: { mode: "relative-to-ground" },
+          elevationInfo: { mode: "relative-to-scene" },
         });
 
         map.addMany([buildingsLayer, graphicsLayer]);
@@ -405,7 +439,7 @@ function ArcGisInvestorScene({
               max: 800000,
             },
             tilt: {
-              max: 74,
+              max: 80,
             },
           },
           ui: {
@@ -432,6 +466,64 @@ function ArcGisInvestorScene({
           }
         });
 
+        let orbitDrag: OrbitDragState | null = null;
+        handle.dragHandle = view.on("drag", (event: Record<string, any>) => {
+          const action = event.action;
+          const rawButton =
+            typeof event.button === "number" ? event.button : event.native?.button;
+          const isPrimaryDrag = rawButton === undefined || rawButton === 0;
+
+          if (action === "start") {
+            if (!isPrimaryDrag) return;
+
+            orbitDrag = {
+              x: finiteOr(event.x, 0),
+              y: finiteOr(event.y, 0),
+              heading: finiteOr(view.camera.heading, 0),
+              tilt: finiteOr(view.camera.tilt, 68),
+              zoom: finiteOr(view.zoom, 17),
+            };
+            event.stopPropagation?.();
+            return;
+          }
+
+          if (!orbitDrag) return;
+
+          if (action === "update") {
+            const x = finiteOr(event.x, orbitDrag.x);
+            const y = finiteOr(event.y, orbitDrag.y);
+            const orbitTarget = selectedPropertyRef.current;
+            const targetPoint = new modules.Point({
+              latitude: orbitTarget.latitude,
+              longitude: orbitTarget.longitude,
+              spatialReference: { wkid: 4326 },
+            });
+            const heading = orbitDrag.heading - (x - orbitDrag.x) * 0.28;
+            const tilt = clamp(orbitDrag.tilt + (y - orbitDrag.y) * 0.14, 24, 80);
+
+            view
+              .goTo(
+                {
+                  target: targetPoint,
+                  zoom: orbitDrag.zoom,
+                  heading,
+                  tilt,
+                },
+                {
+                  animate: false,
+                },
+              )
+              .catch(() => undefined);
+            event.stopPropagation?.();
+            return;
+          }
+
+          if (action === "end") {
+            orbitDrag = null;
+            event.stopPropagation?.();
+          }
+        });
+
         sceneRef.current = handle;
         renderPropertyGraphics(handle, selectedId, mode);
         await view.when();
@@ -454,6 +546,7 @@ function ArcGisInvestorScene({
       cancelled = true;
       const scene = sceneRef.current;
       scene?.clickHandle?.remove();
+      scene?.dragHandle?.remove();
       scene?.view?.destroy();
       sceneRef.current = null;
     };
