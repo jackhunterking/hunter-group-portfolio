@@ -58,6 +58,8 @@ Prefer the already signed-in platform tabs or tab groups Jack prepared in Atlas 
 
 For public or localhost previews, use Codex's in-app browser. For signed-in social posting, use Atlas through Computer Use rather than the in-app browser.
 
+When staging Turkish copy in signed-in platform composers, prefer clipboard paste over character-by-character typing. Before posting, visually confirm that Turkish letters such as `ç`, `ğ`, `ı`, `İ`, `ö`, `ş`, and `ü` survived intact.
+
 ## Voice Rules
 
 Write from the specific video, not from the category. Infer the exact question, objection, risk, or real estate moment in the video before writing copy.

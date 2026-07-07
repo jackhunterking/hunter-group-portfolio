@@ -33,9 +33,11 @@ If no platform is specified, read every platform file and produce all seven.
 4. Generate the Gate 1 copy package in this order: YouTube, Instagram, LinkedIn, Facebook, TikTok, Threads, X.
 5. Wait for Jack's edits or explicit approval such as "go".
 6. If asked to post, stage the approved copy and video using ChatGPT Atlas through Codex Computer Use with Jack's signed-in Atlas session.
-7. Show Gate 2 staging summary and wait for explicit "publish all".
-8. Publish only after Gate 2 approval. Space publish actions 1 to 2 minutes apart.
-9. Report live links.
+7. When entering Turkish copy into platform composers, prefer clipboard paste over character-by-character typing so Turkish letters such as `ç`, `ğ`, `ı`, `İ`, `ö`, `ş`, and `ü` survive intact.
+8. Before staging is considered complete, visually verify that the rendered draft still preserves Turkish characters exactly as approved. If the platform has already mangled them, stop and correct the draft before showing Gate 2.
+9. Show Gate 2 staging summary and wait for explicit "publish all".
+10. Publish only after Gate 2 approval. Space publish actions 1 to 2 minutes apart.
+11. Report live links.
 
 ## Approval Gates
 

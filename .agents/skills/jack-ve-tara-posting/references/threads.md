@@ -21,3 +21,5 @@ Keep each post around 500 characters or less.
 - May end on one soft, genuine question.
 - Use Turkish except accepted English real estate terms.
 - No dashes in generated copy.
+- When staging in Threads, paste Turkish text from the clipboard instead of typing it character by character.
+- Before publishing, visually confirm that Turkish letters such as `ç`, `ğ`, `ı`, `İ`, `ö`, `ş`, and `ü` still display correctly in the live draft.
