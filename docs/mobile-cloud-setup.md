@@ -13,8 +13,8 @@ Requirements:
 - Same ChatGPT account and workspace on both devices
 - This Mac awake, online, and signed in
 - This project opened in Codex
-- Chrome open and signed in when posting to social platforms
-- Codex Chrome plugin installed and connected for signed-in websites
+- ChatGPT Atlas open and signed in when posting to social platforms
+- Codex Computer Use enabled for ChatGPT Atlas
 
 Setup:
 
@@ -34,7 +34,7 @@ What mobile can do:
 
 Important limitation:
 
-Mobile control still uses this Mac as the host. If the Mac sleeps, loses internet, closes Codex, or loses Chrome access, remote posting stops until the host is available again.
+Mobile control still uses this Mac as the host. If the Mac sleeps, loses internet, closes Codex, or loses Atlas access, remote posting stops until the host is available again.
 
 ## Codex Cloud And Web
 
@@ -56,11 +56,11 @@ Cloud can:
 Cloud cannot automatically use:
 
 - This Mac's local files unless they are committed and pushed
-- This Mac's Chrome tabs
-- Jack's local browser login state
+- This Mac's Atlas tabs
+- Jack's local Atlas login state
 - Desktop apps running on this Mac
 
 Practical recommendation:
 
 - Use Codex cloud for writing, maintaining the project, and preparing reusable templates.
-- Use local Codex or mobile-controlled local Codex for actual social posting because it needs Jack's signed-in Chrome profile.
+- Use local Codex or mobile-controlled local Codex for actual social posting because it needs Jack's signed-in Atlas session.

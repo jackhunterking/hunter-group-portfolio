@@ -20,7 +20,7 @@ Platforms:
 2. Use `$jack-ve-tara-posting`.
 3. Generate Gate 1 copy for all requested platforms.
 4. Wait for Jack's edits or explicit "go".
-5. Stage the approved copy and video in the signed-in platform accounts using the Codex Chrome plugin.
+5. Stage the approved copy and video in the signed-in platform accounts using ChatGPT Atlas through Codex Computer Use.
 6. Show a staging summary as Gate 2.
 7. Wait for explicit "publish all".
 8. Publish with 1 to 2 minutes between publish actions.

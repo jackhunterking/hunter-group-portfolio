@@ -17,7 +17,7 @@ This folder ports the Claude "Content Title & Description Generator" project int
 
 1. In the Codex desktop app, add or open this folder as a project:
 
-   `/Users/metinhakanokuyucu/Documents/Codex/2026-07-05/files-mentioned-by-the-user-project/jack-ve-tara-codex`
+   `/Users/metinhakanokuyucu/Desktop/Social Media Poster/jack-ve-tara-codex`
 
 2. Start a new Local thread in this project.
 
@@ -55,4 +55,4 @@ See `docs/mobile-cloud-setup.md`. Mobile control is possible through the ChatGPT
 
 ## Codex Cloud Access
 
-Codex cloud/web requires this folder to be in a GitHub repository. Cloud tasks can edit files and prepare copy, but they cannot use this Mac's Chrome login state. Browser posting to logged-in accounts should be done from the local or mobile-controlled Mac host with the Codex Chrome plugin enabled.
+Codex cloud/web requires this folder to be in a GitHub repository. Cloud tasks can edit files and prepare copy, but they cannot use this Mac's Atlas login state. Browser posting to logged-in accounts should be done from the local or mobile-controlled Mac host with ChatGPT Atlas open and Codex Computer Use available.

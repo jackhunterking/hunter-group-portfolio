@@ -32,7 +32,7 @@ If no platform is specified, read every platform file and produce all seven.
 3. Extract the exact hook, problem, objection, real estate risk, and value from the specific video.
 4. Generate the Gate 1 copy package in this order: YouTube, Instagram, LinkedIn, Facebook, TikTok, Threads, X.
 5. Wait for Jack's edits or explicit approval such as "go".
-6. If asked to post, stage the approved copy and video using the Codex Chrome plugin with Jack's signed-in Chrome profile.
+6. If asked to post, stage the approved copy and video using ChatGPT Atlas through Codex Computer Use with Jack's signed-in Atlas session.
 7. Show Gate 2 staging summary and wait for explicit "publish all".
 8. Publish only after Gate 2 approval. Space publish actions 1 to 2 minutes apart.
 9. Report live links.
@@ -48,7 +48,7 @@ Do not treat "go" as "publish all". "Go" approves staging. "Publish all" approve
 
 ## Browser Safety
 
-Use signed-in Chrome for social platforms. Prefer existing signed-in social media tabs or tab groups. Avoid opening duplicate platform tabs when existing tabs are accessible.
+Use signed-in Atlas for social platforms through Codex Computer Use. Prefer existing signed-in social media tabs or tab groups. Avoid opening duplicate platform tabs when existing tabs are accessible.
 
 Stop and ask Jack if a password, two-factor prompt, passkey, CAPTCHA, or account checkpoint appears.
 

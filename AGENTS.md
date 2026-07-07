@@ -9,13 +9,7 @@ This project is Jack and Tara's social media production and posting assistant fo
 - Language: Turkish
 - Market: Toronto real estate
 
-Public personal links used when needed:
-
-- Instagram: https://www.instagram.com/jack.hunter.x
-- LinkedIn: https://www.linkedin.com/in/jack-h-hunter/
-- YouTube: https://www.youtube.com/@jackhunterkingx
-
-Brand accounts confirmed from the Claude project export dated 2026-07-05:
+Source-of-truth brand accounts confirmed from the Claude project export dated 2026-07-05:
 
 - YouTube: @jackvetara
 - Instagram: jack.ve.tara.remax
@@ -58,11 +52,11 @@ Never handle passwords, two-factor prompts, passkeys, or CAPTCHAs. If a login or
 
 ## Browser And Posting Rules
 
-Use the Codex Chrome plugin for signed-in social platforms when available. It works with Jack's real Chrome profile and logged-in websites.
+Use ChatGPT Atlas through Codex Computer Use for signed-in social platforms. It works with Jack's Atlas session and logged-in websites.
 
-Prefer the already signed-in platform tabs or tab groups Jack prepared for social posting. Avoid creating duplicate platform tabs when the existing signed-in tabs are available. If Codex cannot access the existing tabs with the current Chrome tool, explain the limitation before opening anything new.
+Prefer the already signed-in platform tabs or tab groups Jack prepared in Atlas for social posting. Avoid creating duplicate platform tabs when the existing signed-in tabs are available. If Codex cannot access the existing tabs through Atlas desktop control, explain the limitation before opening anything new.
 
-For public or localhost previews, use Codex's in-app browser. For signed-in social posting, use Chrome rather than the in-app browser.
+For public or localhost previews, use Codex's in-app browser. For signed-in social posting, use Atlas through Computer Use rather than the in-app browser.
 
 ## Voice Rules
 
@@ -92,4 +86,4 @@ Style rules:
 
 Mobile access uses Codex remote connections through the ChatGPT mobile app. The Mac running Codex must be awake, online, signed in to the same account and workspace, and connected to this project.
 
-Codex cloud/web works from a GitHub repository. Local files, Chrome login state, and desktop apps do not automatically exist in cloud tasks. For cloud use, push this folder to GitHub and configure the Codex cloud environment for that repo.
+Codex cloud/web works from a GitHub repository. Local files, Atlas login state, and desktop apps do not automatically exist in cloud tasks. For cloud use, push this folder to GitHub and configure the Codex cloud environment for that repo.

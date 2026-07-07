@@ -12,12 +12,7 @@ This project is a **social-media production + posting assistant for "Jack ve Tar
 - **User:** Jack — jack@jackhunter.com
 - **Brand voice:** Turkish, real estate, Toronto / RE/MAX.
 
-### Public links (Jack Hunter personal — used in some skills)
-- Instagram: https://www.instagram.com/jack.hunter.x
-- LinkedIn: https://www.linkedin.com/in/jack-h-hunter/
-- YouTube: https://www.youtube.com/@jackhunterkingx
-
-### Brand accounts (Jack ve Tara — all confirmed logged in 2026-07-05)
+### Source-of-truth brand accounts (Jack ve Tara — all confirmed logged in 2026-07-05)
 - YouTube — @jackvetara
 - Instagram — jack.ve.tara.remax
 - LinkedIn — company/jackvetara
@@ -44,13 +39,13 @@ This project is a **social-media production + posting assistant for "Jack ve Tar
 
 ### 3.1 MEMORY.md (index)
 
-- **Posting flow default** — post Jack's videos to all 7 platforms via the chrome-control extension (use his existing "Social Media Tabs", never open new tabs); two approval gates; Turkish real estate voice.
+- **Posting flow default** - post Jack's videos to all 7 platforms through ChatGPT Atlas via Codex Computer Use, using his existing signed-in social tabs whenever accessible; two approval gates; Turkish real estate voice.
 - User email: jack@jackhunter.com
 - Current date reference: 2026-07-05
 
 ### 3.2 Memory: `posting-flow-default` (type: feedback)
 
-Jack ve Tara is a Turkish-language real estate content brand (Toronto, RE/MAX). This project is the social-media posting agent: take a video Jack provides, generate Turkish platform copy, and post it to all his accounts via the Chrome browser.
+Jack ve Tara is a Turkish-language real estate content brand (Toronto, RE/MAX). This project is the social-media posting agent: take a video Jack provides, generate Turkish platform copy, and post it to all his accounts via ChatGPT Atlas on the local Mac.
 
 **Default scope.** When Jack sends a video, post it to ALL 7 platforms unless he explicitly excludes some for that video (opt-out, not opt-in). Platforms (all confirmed logged in 2026-07-05): YouTube @jackvetara, Instagram jack.ve.tara.remax, LinkedIn company/jackvetara, Facebook facebook.com/jack.ve.tara.remax, TikTok @jack.ve.tara.remax, Threads @jack.ve.tara.remax, X x.com/jackvetara.
 
@@ -60,11 +55,11 @@ Jack ve Tara is a Turkish-language real estate content brand (Toronto, RE/MAX). 
 
 Never publish without both gates. Never handle passwords or CAPTCHAs — if a login/verification appears, stop that tab and ask Jack.
 
-**How to drive Chrome — use the "chrome-control" extension.** Jack enabled a desktop-app extension called **chrome-control** (tools: Get Current Tab, List Tabs, Get Page Content, Open URL, Close Tab, Switch to Tab, Reload Tab, Go Back). These operate on his ACTUAL open Chrome tabs. At session start, call List Tabs to find his **"Social Media Tabs"** group (all 7 platforms open and logged in), then Switch to Tab / Get Page Content / Open URL to drive those existing tabs.
+**How to drive Atlas - use Codex Computer Use.** Jack uses ChatGPT Atlas for the signed-in posting environment. At session start, inspect the visible Atlas window and use the existing signed-in social platform tabs whenever they are accessible. Use desktop control to switch tabs, stage copy, upload videos, and verify each platform state.
 
-**Jack's firm rule: NEVER open new tabs.** Use his already-open, already-logged-in tabs. Do not create driver tabs or new tab groups.
+**Jack's firm rule: avoid unnecessary new tabs.** Use his already-open, already-logged-in tabs whenever they are accessible. Do not create duplicate platform tabs or extra tab groups unless the current Atlas state makes it necessary and the limitation is explained first.
 
-**Note:** chrome-control tools only load in a NEW conversation after being enabled. If List Tabs isn't callable, tell Jack to start a fresh chat in this project. Avoid the older Claude-in-Chrome extension for this project (it only drives its own isolated tab group and cannot see Jack's real tabs, causing new-tab clutter). Only fall back to it if chrome-control is truly unavailable, and if so reuse ONE dedicated tab.
+**Note:** Atlas is controlled through Codex Computer Use, not through a structured browser plugin. If Atlas is not visible or Codex cannot reach its controls, ask Jack to open Atlas, keep the signed-in platform tabs available, and confirm that Codex has Screen Recording and Accessibility permissions.
 
 **Voice rules (all platforms).** Turkish. Only English RE terms Jack uses: mortgage, condo, townhouse, detached, closing, pre-approval, black mold. NO dashes of any kind (split sentences / use commas; ellipsis … ok; hyphens only in URLs). Address one person as "sen". Always "biz/bize/bizimle", never singular first person. Write from the SPECIFIC video, not the category. Asymmetric rhythm (short sentence then longer). No hype words, no heavy CTA ("DM at", "kaçırma", "hemen tıkla", "bize ulaşın"). Posts end on their own.
 
@@ -77,48 +72,21 @@ Never publish without both gates. Never handle passwords or CAPTCHAs — if a lo
 - **Threads:** caption in a code block; casual/text-first, first line does the work; usually one post (short 2–3 post thread only if needed, first post stands alone); ❌ list ok; no hashtags or one topic tag max; may end on one soft genuine question; ~500 char/post.
 - **X:** caption in a code block; 280 char/post, hook-first, first post stands alone; optional 2–4 post thread; 0–2 hashtags only if they fit; no CTA.
 
-**Notes.** Threads and X had legacy English marketing content from Jack's prior use; being replaced with the Turkish real estate voice. Jack may trigger runs via dispatch from mobile; the Mac must be awake, online, Chrome open with chrome-control connected. Provide the video via ~/JackVeTara/ToPost/ or a Drive link; provide Gate 1/Gate 2 approvals from the phone. Cleanup done 2026-07-05: keep only one Chrome extension connected (disconnect the extra "Browser 2" Claude-in-Chrome) to avoid session ambiguity.
+**Notes.** Threads and X had legacy English marketing content from Jack's prior use; being replaced with the Turkish real estate voice. Jack may trigger runs via dispatch from mobile; the Mac must be awake, online, and Atlas must be open with the signed-in social tabs available. Provide the video via ~/JackVeTara/ToPost/ or a Drive link; provide Gate 1/Gate 2 approvals from the phone. Current posting default: use ChatGPT Atlas through Codex Computer Use to avoid session ambiguity.
 
 ---
 
 ## 4. Skills
 
-Three project-relevant skills are installed. Each is reproduced in full below.
+Two active project-relevant skills are installed. One retired legacy workflow is noted below only to prevent reuse.
 
 ---
 
-### 4.1 Skill: `social-descriptions`
+### 4.1 Retired legacy skill: `social-descriptions`
 
-**Description / triggers:** Generate platform-specific social media descriptions for YouTube Shorts, Instagram, and LinkedIn from video transcripts or topics. Triggers whenever Jack asks to write a YouTube description, Instagram caption, or LinkedIn post from a video/transcript/topic; also "generate descriptions", "write a caption", "make a post", "create descriptions for my video". Always apply all three platform templates unless told otherwise.
+This older three-platform workflow is no longer used. Jack ve Tara social work now uses the seven source-of-truth brand accounts above through `$jack-ve-tara-posting`.
 
-**Full SKILL.md:**
-
-Generate descriptions for YouTube Shorts, Instagram, and LinkedIn that match Jack's personal style. Each platform has its own file, its own structure, and its own rules. Never mix them up. Never use hyphens between words as fillers. Never sound like AI.
-
-Jack's links:
-- Instagram: https://www.instagram.com/jack.hunter.x
-- LinkedIn: https://www.linkedin.com/in/jack-h-hunter/
-- YouTube: https://www.youtube.com/@jackhunterkingx
-
-Each platform template lives in its own file inside `references/`:
-- `references/youtube.md` — YouTube Shorts descriptions
-- `references/instagram.md` — Instagram captions
-- `references/linkedin.md` — LinkedIn posts
-
-**Workflow**
-1. Read all three platform files in references/ before generating anything
-2. Identify the core hook, problem, and value from the video/transcript
-3. Generate all three descriptions using the exact templates
-4. Never deviate from spacing, line breaks, or structure
-5. Connect block links are always stacked vertically, never side by side
-6. LinkedIn posts must always end with this exact footer:
-
-```
-__
-Enjoy this? ♻️ Repost it to your network and follow @Jack Hunter for more.
-```
-
-> **Note:** The `references/youtube.md`, `references/instagram.md`, and `references/linkedin.md` files referenced above are NOT present in the current skill directory — only `SKILL.md` exists. Those per-platform template files would need to be created/restored for the workflow to run as written.
+Do not use the old account links or three-platform copy templates for new content, account audits, posting runs, or missing-video checks.
 
 ---
 
@@ -204,7 +172,7 @@ These general-purpose skills are also available: `docx`, `pdf`, `pptx`, `xlsx` (
 1. Jack provides a video (via ~/JackVeTara/ToPost/ or a Drive link).
 2. Read `SKILL.md` and per-platform files; generate Turkish copy for all 7 platforms (opt-out, not opt-in) using the voice rules above.
 3. **Gate 1:** show full copy package → wait for edits or "go".
-4. Stage everything via the chrome-control extension using Jack's existing "Social Media Tabs" (never open new tabs).
+4. Stage everything through ChatGPT Atlas using Jack's existing signed-in social tabs whenever they are accessible.
 5. **Gate 2:** show summary → wait for explicit "publish all".
 6. Publish, spacing clicks 1–2 min apart. Report all live links.
 7. Never touch passwords/CAPTCHAs — stop and ask Jack.
