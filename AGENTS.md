@@ -56,6 +56,16 @@ Use ChatGPT Atlas through Codex Computer Use for signed-in social platforms. It 
 
 Prefer the already signed-in platform tabs or tab groups Jack prepared in Atlas for social posting. Avoid creating duplicate platform tabs when the existing signed-in tabs are available. If Codex cannot access the existing tabs through Atlas desktop control, explain the limitation before opening anything new.
 
+For staged social posts with local video files, prefer the validated Atlas flow:
+
+1. Use the existing signed-in Atlas tab for the platform.
+2. Use Atlas desktop control and the native macOS file picker for video selection from Downloads or the requested folder.
+3. Use clipboard paste or browser `insertText` for Turkish captions, never simulated character typing.
+4. Read the draft text back from the page and compare it to the approved copy before publishing.
+5. Confirm the video preview or upload state is loaded, such as Ready, Uploaded, or an on-page video preview.
+
+Chrome browser automation can be used as a verification helper for reading page state, clipboard paste, and exact Turkish-character checks. Do not rely on Chrome extension file upload for local videos when Atlas native file selection is available, because native picker selection has been more reliable for X, Threads, and TikTok Studio.
+
 For public or localhost previews, use Codex's in-app browser. For signed-in social posting, use Atlas through Computer Use rather than the in-app browser.
 
 ### Turkish Character Integrity (non-negotiable)

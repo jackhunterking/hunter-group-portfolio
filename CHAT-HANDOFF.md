@@ -47,7 +47,15 @@ Mobile control uses the Codex desktop app on this Mac as the host. The Mac must 
 
 Codex cloud/web requires pushing the project to GitHub. Cloud can prepare and edit files, but actual social posting needs the local Mac because it depends on Jack's signed-in Atlas session.
 
+For signed-in local video posting, use Atlas desktop control and the native macOS file picker as the primary flow. Keep Chrome automation as a verification helper only, unless Atlas cannot complete the task or Jack explicitly asks for Chrome.
+
 ## GitHub Sync
+
+Online repository:
+
+```text
+https://github.com/jackhunterking/jack-ve-tara-codex.git
+```
 
 The GitHub repo should use:
 

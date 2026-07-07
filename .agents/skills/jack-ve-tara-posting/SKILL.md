@@ -34,12 +34,14 @@ If no platform is specified, read every platform file and produce all seven.
 3. Extract the exact hook, problem, objection, real estate risk, and value from the specific video.
 4. Generate the Gate 1 copy package in this order: YouTube, Instagram, LinkedIn, Facebook, TikTok, Threads, X.
 5. Wait for Jack's edits or explicit approval such as "go".
-6. If asked to post, stage the approved copy and video using ChatGPT Atlas through Codex Computer Use with Jack's signed-in Atlas session.
-7. Enter Turkish copy ONLY by clipboard paste (Cmd+V, UTF-8 clipboard) or, in a browser field, `document.execCommand("insertText", false, TEXT)`. NEVER type Turkish character by character: simulated keystrokes silently drop letters the active keyboard layout cannot emit (confirmed dropped: `ş ğ ö ü`). See `references/turkish-characters.md`.
-8. After entering text, READ THE FIELD BACK and compare it character-for-character to the approved copy. Every `ç Ç ğ Ğ ı İ ö Ö ş Ş ü Ü` in the copy must be present and intact. If anything mangled, clear the field and re-enter once; if it still fails, STOP, do not proceed to Gate 2, and tell Jack which characters broke on which platform.
-9. Show Gate 2 staging summary and wait for explicit "publish all".
-10. Publish only after Gate 2 approval. Space publish actions 1 to 2 minutes apart.
-11. Report live links.
+6. If asked to post, stage the approved copy and video using ChatGPT Atlas through Codex Computer Use with Jack's signed-in Atlas session. Prefer Jack's existing signed-in Atlas tab for each platform.
+7. For local video files, use Atlas desktop control and the native macOS file picker from Downloads or the requested folder. Do not rely on Chrome extension file upload for local videos when Atlas native file selection is available. Chrome browser automation may be used only as a helper for reading page state, clipboard paste, and exact Turkish-character checks.
+8. Confirm the selected platform account, selected local file, and an on-page upload state such as Ready, Uploaded, or a visible video preview before Gate 2.
+9. Enter Turkish copy ONLY by clipboard paste (Cmd+V, UTF-8 clipboard) or, in a browser field, `document.execCommand("insertText", false, TEXT)`. NEVER type Turkish character by character: simulated keystrokes silently drop letters the active keyboard layout cannot emit (confirmed dropped: `ş ğ ö ü`). See `references/turkish-characters.md`.
+10. After entering text, READ THE FIELD BACK and compare it character-for-character to the approved copy. Every `ç Ç ğ Ğ ı İ ö Ö ş Ş ü Ü` in the copy must be present and intact. If anything mangled, clear the field and re-enter once; if it still fails, STOP, do not proceed to Gate 2, and tell Jack which characters broke on which platform.
+11. Show Gate 2 staging summary and wait for explicit "publish all".
+12. Publish only after Gate 2 approval. Space publish actions 1 to 2 minutes apart.
+13. Report live links.
 
 ## Approval Gates
 
@@ -53,6 +55,8 @@ Do not treat "go" as "publish all". "Go" approves staging. "Publish all" approve
 ## Browser Safety
 
 Use signed-in Atlas for social platforms through Codex Computer Use. Prefer existing signed-in social media tabs or tab groups. Avoid opening duplicate platform tabs when existing tabs are accessible.
+
+For local-video posting, Atlas plus the native macOS file picker is the canonical path. Keep Chrome or extension-driven control as verification support only unless Jack explicitly asks for it or Atlas cannot complete the task.
 
 Stop and ask Jack if a password, two-factor prompt, passkey, CAPTCHA, or account checkpoint appears.
 
