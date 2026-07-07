@@ -50,3 +50,7 @@ Avoid hype words and hard CTAs. Do not use:
 Generated social copy must not use dashes of any kind. Split sentences, use commas, or use an ellipsis. Hyphens are allowed only in URLs.
 
 Posts should end on their own. Do not force an end question unless the platform file explicitly allows it.
+
+## Turkish Character Integrity
+
+The copy you write contains `ç ğ ı İ ö ş ü`. These letters get silently dropped if the copy is entered into a composer by simulated typing. When staging or posting, follow `references/turkish-characters.md`: paste or `insertText` only, never type, and read the field back to confirm every Turkish letter survived before publishing.

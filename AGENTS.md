@@ -58,7 +58,13 @@ Prefer the already signed-in platform tabs or tab groups Jack prepared in Atlas 
 
 For public or localhost previews, use Codex's in-app browser. For signed-in social posting, use Atlas through Computer Use rather than the in-app browser.
 
-When staging Turkish copy in signed-in platform composers, prefer clipboard paste over character-by-character typing. Before posting, visually confirm that Turkish letters such as `ç`, `ğ`, `ı`, `İ`, `ö`, `ş`, and `ü` survived intact.
+### Turkish Character Integrity (non-negotiable)
+
+Turkish copy must NEVER be entered by simulated typing / keystrokes. Character-by-character typing silently drops letters the active keyboard layout cannot emit (confirmed dropped: `ş ğ ö ü`; survived: `ç ı`). This is a key-input bug, not an encoding bug, so the only reliable fix is to bypass the keyboard entirely.
+
+Always enter Turkish copy by clipboard paste (Cmd+V, UTF-8 clipboard) or, in a browser field, `document.execCommand("insertText", false, TEXT)`. After entering, READ THE FIELD BACK and compare it character-for-character to the approved copy. Publish only on an exact match. If any of `ç Ç ğ Ğ ı İ ö Ö ş Ş ü Ü` is mangled or missing, clear the field, re-enter once, and if it still fails STOP and tell Jack. Never publish text you have not read back and confirmed.
+
+Full protocol: read `.agents/skills/jack-ve-tara-posting/references/turkish-characters.md` before staging any post.
 
 ## Voice Rules
 

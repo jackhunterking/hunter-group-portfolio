@@ -13,6 +13,8 @@ Generate platform-specific Turkish copy for Jack ve Tara and enforce the approva
 
 Always read `references/voice.md` before writing copy.
 
+Before staging or posting anything, always read `references/turkish-characters.md`. It is mandatory and prevents the recurring broken-Turkish bug.
+
 Read the relevant platform files:
 
 - `references/youtube.md`
@@ -33,8 +35,8 @@ If no platform is specified, read every platform file and produce all seven.
 4. Generate the Gate 1 copy package in this order: YouTube, Instagram, LinkedIn, Facebook, TikTok, Threads, X.
 5. Wait for Jack's edits or explicit approval such as "go".
 6. If asked to post, stage the approved copy and video using ChatGPT Atlas through Codex Computer Use with Jack's signed-in Atlas session.
-7. When entering Turkish copy into platform composers, prefer clipboard paste over character-by-character typing so Turkish letters such as `ç`, `ğ`, `ı`, `İ`, `ö`, `ş`, and `ü` survive intact.
-8. Before staging is considered complete, visually verify that the rendered draft still preserves Turkish characters exactly as approved. If the platform has already mangled them, stop and correct the draft before showing Gate 2.
+7. Enter Turkish copy ONLY by clipboard paste (Cmd+V, UTF-8 clipboard) or, in a browser field, `document.execCommand("insertText", false, TEXT)`. NEVER type Turkish character by character: simulated keystrokes silently drop letters the active keyboard layout cannot emit (confirmed dropped: `ş ğ ö ü`). See `references/turkish-characters.md`.
+8. After entering text, READ THE FIELD BACK and compare it character-for-character to the approved copy. Every `ç Ç ğ Ğ ı İ ö Ö ş Ş ü Ü` in the copy must be present and intact. If anything mangled, clear the field and re-enter once; if it still fails, STOP, do not proceed to Gate 2, and tell Jack which characters broke on which platform.
 9. Show Gate 2 staging summary and wait for explicit "publish all".
 10. Publish only after Gate 2 approval. Space publish actions 1 to 2 minutes apart.
 11. Report live links.
