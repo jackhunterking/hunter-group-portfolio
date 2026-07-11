@@ -38,7 +38,7 @@ export default function ServicesSection() {
         </div>
 
         <div className={styles.grid}>
-          {/* Buying, RE/MAX Hallmark; Hunter X Capital folds in as the investment option */}
+          {/* Buying, RE/MAX Hallmark; Hunter Group Capital folds in as the investment option */}
           <article className={styles.card}>
             <span className={styles.tag}>{s.buy.tag}</span>
             <h3 className={styles.cardTitle}>{s.buy.title}</h3>
@@ -48,7 +48,7 @@ export default function ServicesSection() {
                 {s.buy.homeLabel}
                 <Arrow />
               </Link>
-              <Link href="/hunter-x-capital" className={styles.cardLink}>
+              <Link href="/hunter-group-capital" className={styles.cardLink}>
                 {s.buy.investLabel}
                 <Arrow />
               </Link>

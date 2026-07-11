@@ -72,6 +72,117 @@ export async function sendGuideEmail(params: {
   }
 }
 
+export async function sendCapitalIntakeNotification(params: {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone?: string;
+  city: string;
+  country: string;
+  meetingPreference: string;
+  preferredLanguage: string;
+  investableRange: string;
+  timeline: string;
+  objective: string;
+  riskComfort: string;
+  investorStatus: string;
+  interestedProducts: string[];
+  message?: string;
+}): Promise<{ ok: boolean; error?: string }> {
+  const apiKey = process.env.RESEND_API_KEY;
+  const from = process.env.RESEND_FROM_EMAIL ?? "Jack Hunter <hello@jackhunter.com>";
+  const to = process.env.CAPITAL_INTAKE_TO_EMAIL ?? process.env.RESEND_REPLY_TO ?? "hello@jackhunter.com";
+  const replyTo = params.email;
+
+  if (!apiKey) {
+    console.warn("RESEND_API_KEY not set, skipping capital intake notification");
+    return { ok: false, error: "Email service not configured" };
+  }
+
+  const resend = new Resend(apiKey);
+
+  try {
+    const result = await resend.emails.send({
+      from,
+      to,
+      replyTo,
+      subject: `Hunter Group Capital intake: ${params.firstName} ${params.lastName}`,
+      html: buildCapitalIntakeHtml(params),
+    });
+
+    if (result.error) {
+      return { ok: false, error: result.error.message };
+    }
+
+    return { ok: true };
+  } catch (err) {
+    return {
+      ok: false,
+      error: err instanceof Error ? err.message : "Unknown email error",
+    };
+  }
+}
+
+function buildCapitalIntakeHtml(params: {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone?: string;
+  city: string;
+  country: string;
+  meetingPreference: string;
+  preferredLanguage: string;
+  investableRange: string;
+  timeline: string;
+  objective: string;
+  riskComfort: string;
+  investorStatus: string;
+  interestedProducts: string[];
+  message?: string;
+}): string {
+  const rows = [
+    ["Name", `${params.firstName} ${params.lastName}`],
+    ["Email", params.email],
+    ["Phone", params.phone ?? ""],
+    ["Location", `${params.city}, ${params.country}`],
+    ["Meeting preference", params.meetingPreference],
+    ["Preferred language", params.preferredLanguage],
+    ["Investable range", params.investableRange],
+    ["Timeline", params.timeline],
+    ["Objective", params.objective],
+    ["Risk comfort", params.riskComfort],
+    ["Investor status", params.investorStatus],
+    ["Products", params.interestedProducts.join(", ")],
+    ["Message", params.message ?? ""],
+  ];
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<body style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;color:#111827;">
+  <h1 style="font-size:24px;">Hunter Group Capital Intake</h1>
+  <table cellpadding="8" cellspacing="0" border="0" style="border-collapse:collapse;width:100%;max-width:720px;">
+    ${rows
+      .map(
+        ([label, value]) => `<tr>
+          <td style="border:1px solid #e5e7eb;font-weight:700;width:210px;">${label}</td>
+          <td style="border:1px solid #e5e7eb;">${value || "-"}</td>
+        </tr>`
+      )
+      .join("")}
+  </table>
+  <h2 style="font-size:18px;margin-top:28px;">Internal checklist</h2>
+  <ul>
+    <li>KYC complete: pending</li>
+    <li>KYP/product match reviewed: pending</li>
+    <li>Suitability reviewed: pending</li>
+    <li>Risk acknowledgement received: yes</li>
+    <li>Offering documents delivered: pending</li>
+    <li>Subscription status tracked: pending</li>
+  </ul>
+</body>
+</html>`;
+}
+
 function buildEmailHtml({
   guideTitle,
   guideUrl,

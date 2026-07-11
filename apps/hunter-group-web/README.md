@@ -14,7 +14,7 @@ Production Next.js platform for Jack & Tara Hunter, built for Vercel deployment 
 
 - Keep real estate and capital in this single app unless there is a clear operational need to split them later.
 - Reuse the existing lead capture, analytics, content, and deployment setup across both business lines.
-- Treat `app/hunter-x-capital/` as the starting point for the capital section rather than building a new sibling app.
+- Treat `app/hunter-group-capital/` as the canonical capital section rather than building a new sibling app.
 
 ## Project structure
 

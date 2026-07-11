@@ -195,7 +195,7 @@ export default function InvestorMapClient() {
         {isMobile ? (
           <>
             <header className={styles.topBar} data-variant="mobile">
-              <a href="/hunter-x-capital" className={styles.brandLockup} aria-label="Hunter X Capital">
+              <a href="/hunter-group-capital" className={styles.brandLockup} aria-label="Hunter Group Capital">
                 <span className={styles.brandMark}>H</span>
                 <span>
                   <strong>Investor Map</strong>
@@ -237,7 +237,7 @@ export default function InvestorMapClient() {
         ) : (
           <>
             <header className={styles.topBar}>
-              <a href="/hunter-x-capital" className={styles.brandLockup} aria-label="Hunter X Capital">
+              <a href="/hunter-group-capital" className={styles.brandLockup} aria-label="Hunter Group Capital">
                 <span className={styles.brandMark}>H</span>
                 <span>
                   <strong>Investor Map</strong>

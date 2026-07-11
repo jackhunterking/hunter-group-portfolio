@@ -10,7 +10,7 @@ export const tr = {
     about: "Hakkımızda",
     services: "Hizmetler",
     mortgage: "Mortgage",
-    capital: "Hunter X Capital",
+    capital: "Capital",
     guides: "Rehberler",
     resources: "Kaynaklar",
     servicesMenu: {
@@ -51,7 +51,7 @@ export const tr = {
         title: "Alım",
         desc: "Kendinize ev ya da yatırım amaçlı mülk, doğru mülkü, doğru fiyata buluyoruz. Arama sürecinden kapanışa kadar yanınızdayız.",
         homeLabel: "Ev Alım Rehberi",
-        investLabel: "Yatırım: Hunter X Capital",
+        investLabel: "Yatırım: Hunter Group Capital",
       },
       sell: {
         tag: "RE/MAX Hallmark",
@@ -84,7 +84,7 @@ export const tr = {
   },
 
   capital: {
-    metaTitle: "Hunter X Capital, Çoklu Konut Yatırım Ortaklığı",
+    metaTitle: "Hunter Group Capital, Exempt-Market Multifamily",
     metaDesc:
       "Ontario'da çoklu konut projeleri için operasyon ve geliştirme ortağı. Sermaye sizin, proje sizin, biz yürütme ekibinizyiz.",
     hero: {
@@ -171,7 +171,7 @@ export const tr = {
       cta: "WhatsApp ile Yazın",
     },
     compliance:
-      "Hunter X Capital, Hunter Group Real Estate'in operasyon ve geliştirme hizmet birimidir. Bir yatırım fonu, sermaye toplama aracı veya tescilli yatırım kuruluşu değildir. Yatırım kararları ve hukuki yapılandırma yatırımcıların kendi sorumluluğundadır. Tüm yatırımcıların bağımsız hukuki ve mali danışmanlık alması önerilir.",
+      "Hunter Group Capital, exempt-market ürünler ve Canadian multifamily yatırım seçenekleri hakkında eğitim, uygunluk değerlendirmesi ve lisanslı süreç koordinasyonu sağlar. Hedeflenen getiriler garanti değildir; resmi offering dokümanları, uygunluk ve suitability süreci esastır.",
   },
 
   alici: {
@@ -230,15 +230,15 @@ export const tr = {
   },
 
   capitalTeaser: {
-    eyebrow: "Hunter X Capital",
-    title: "Geliştirme yolculuğunun",
-    titleEm: "bir parçası olun.",
-    sub: "Ontario'da çoklu konut yatırımı için operasyon ve geliştirme ortağı. Diğer yatırımcılarla birlikte veya tek başınıza, biz yürütme ekibinizyiz.",
-    path1Label: "Ortaklı",
-    path1Min: "Min. $500.000 CAD+",
-    path2Label: "Bireysel",
-    path2Min: "Min. $2.000.000 CAD+",
-    cta: "Hunter X Capital'ı Keşfedin",
+    eyebrow: "Hunter Group Capital",
+    title: "Kanada apartman portföylerini",
+    titleEm: "Türkçe anlayın.",
+    sub: "Toronto ve Istanbul arasında, exempt-market ürünleri, private REIT'ler ve gelir odaklı multifamily yatırım fırsatları için lisanslı süreç desteği.",
+    path1Label: "Legacy / Epiphany",
+    path1Min: "Western Canada REIT",
+    path2Label: "Lankin Apartment REIT",
+    path2Min: "Canadian multifamily",
+    cta: "Hunter Group Capital'ı Keşfedin",
   },
 
   mortgage: {
@@ -595,7 +595,7 @@ export const en: Dictionary = {
     about: "About",
     services: "Services",
     mortgage: "Mortgage",
-    capital: "Hunter X Capital",
+    capital: "Capital",
     guides: "Guides",
     resources: "Resources",
     servicesMenu: {
@@ -636,7 +636,7 @@ export const en: Dictionary = {
         title: "Buying",
         desc: "A home for yourself or an investment property, we find the right one at the right price, by your side from search to closing.",
         homeLabel: "Buyer's Guide",
-        investLabel: "Invest: Hunter X Capital",
+        investLabel: "Invest: Hunter Group Capital",
       },
       sell: {
         tag: "RE/MAX Hallmark",
@@ -669,7 +669,7 @@ export const en: Dictionary = {
   },
 
   capital: {
-    metaTitle: "Hunter X Capital, Multifamily Investment Partnership",
+    metaTitle: "Hunter Group Capital, Exempt-Market Multifamily",
     metaDesc:
       "Operations and development partner for multifamily projects in Ontario. The capital is yours, the project is yours, we're your execution team.",
     hero: {
@@ -756,7 +756,7 @@ export const en: Dictionary = {
       cta: "Message on WhatsApp",
     },
     compliance:
-      "Hunter X Capital is the operations and development service arm of Hunter Group Real Estate. It is not an investment fund, capital-raising vehicle, or registered investment dealer. All investment decisions and legal structuring are the responsibility of the investors. Independent legal and financial advice is recommended for all investors.",
+      "Hunter Group Capital provides education, eligibility review, and licensed-process coordination for exempt-market products and Canadian multifamily investment opportunities. Targeted returns are not guaranteed; official offering documents, eligibility, and suitability review control the process.",
   },
 
   alici: {
@@ -815,15 +815,15 @@ export const en: Dictionary = {
   },
 
   capitalTeaser: {
-    eyebrow: "Hunter X Capital",
-    title: "Be part of the",
-    titleEm: "development journey.",
-    sub: "Operations and development partner for multifamily investment in Ontario. With other investors or solo, we're your execution team.",
-    path1Label: "Partnered",
-    path1Min: "Min. $500,000 CAD+",
-    path2Label: "Solo",
-    path2Min: "Min. $2,000,000 CAD+",
-    cta: "Explore Hunter X Capital",
+    eyebrow: "Hunter Group Capital",
+    title: "Understand Canadian apartment portfolios",
+    titleEm: "in Turkish.",
+    sub: "Toronto and Istanbul connected for licensed-process support around exempt-market products, private REITs, and income-focused multifamily opportunities.",
+    path1Label: "Legacy / Epiphany",
+    path1Min: "Western Canada REIT",
+    path2Label: "Lankin Apartment REIT",
+    path2Min: "Canadian multifamily",
+    cta: "Explore Hunter Group Capital",
   },
 
   mortgage: {
