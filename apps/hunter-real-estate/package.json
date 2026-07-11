@@ -1,0 +1,29 @@
+{
+  "name": "jackhunter",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "next": "15.5.18",
+    "posthog-js": "^1.386.1",
+    "posthog-node": "^5.36.15",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "resend": "^4.0.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.5.18",
+    "typescript": "^5.6.3"
+  }
+}
