@@ -1,6 +1,6 @@
 # Claude Code — Phase 1 kickoff prompt
 
-Paste everything below into Claude Code once you're inside the `hunter-real-estate` repo.
+Paste everything below into Claude Code once you're inside the `hunter-group-web` repo.
 
 ---
 

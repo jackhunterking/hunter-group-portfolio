@@ -1,6 +1,6 @@
-# Jack Hunter Real Estate — jackhunter.com
+# Hunter Group Web — jackhunter.com
 
-Production Next.js site for Jack & Tara Hunter, built for Vercel deployment with HubSpot lead capture and Resend email delivery.
+Production Next.js platform for Jack & Tara Hunter, built for Vercel deployment with HubSpot lead capture and Resend email delivery. This app now serves as the shared home for real estate and Hunter Group Capital experiences.
 
 ## Stack
 
@@ -9,6 +9,12 @@ Production Next.js site for Jack & Tara Hunter, built for Vercel deployment with
 - **HubSpot** for lead capture (`lib/hubspot.ts`)
 - **Resend** for transactional email (`lib/email.ts`)
 - **Vercel** for hosting
+
+## Product direction
+
+- Keep real estate and capital in this single app unless there is a clear operational need to split them later.
+- Reuse the existing lead capture, analytics, content, and deployment setup across both business lines.
+- Treat `app/hunter-x-capital/` as the starting point for the capital section rather than building a new sibling app.
 
 ## Project structure
 
