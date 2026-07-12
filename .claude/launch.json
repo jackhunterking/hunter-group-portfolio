@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "hunter",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "apps/hunter-group-web", "run", "dev"],
+      "port": 3000
+    }
+  ]
+}

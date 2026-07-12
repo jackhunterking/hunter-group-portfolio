@@ -1,13 +1,9 @@
 import type { Metadata } from "next";
-import HunterGroupCapitalClient from "./HunterGroupCapitalClient";
+import { getOfferings } from "@/lib/capital/repository";
+import { Dashboard } from "./Dashboard";
 
-export const metadata: Metadata = {
-  title:
-    "Hunter Group Capital | Canadian Multifamily Investment Access for Turkish Investors",
-  description:
-    "Toronto and Istanbul based exempt-market education and access for Turkish-speaking investors exploring Canadian income-generating rental apartment portfolios.",
-};
+export const metadata: Metadata = { title: "Hunter Group Capital", description: "Own part of a portfolio of real Canadian apartment buildings and communities." };
 
-export default function HunterGroupCapitalPage() {
-  return <HunterGroupCapitalClient />;
+export default function CapitalPage() {
+  return <Dashboard offerings={getOfferings()} />;
 }

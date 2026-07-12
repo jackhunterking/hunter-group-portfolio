@@ -1,0 +1,343 @@
+/* Dashboard + offering cards + catalogue. Consumes --hgc-* tokens from .shell. */
+
+/* ---- Dashboard / list header ---- */
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.dashHead,
+.listHead {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--hgc-green);
+}
+
+.dashTitle,
+.listTitle {
+  font-family: var(--serif);
+  font-size: clamp(26px, 3.4vw, 40px);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--hgc-ink);
+  max-width: 20ch;
+}
+
+.dashIntro {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--hgc-muted);
+  max-width: 62ch;
+}
+
+.statStrip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  margin-top: 8px;
+  padding-top: 18px;
+  border-top: 1px solid var(--hgc-hairline);
+}
+
+.statStrip div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.statStrip dt {
+  font-family: var(--serif);
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--hgc-navy);
+}
+
+.statStrip dd {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--hgc-muted);
+}
+
+/* ---- Grid ---- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+/* ---- Card ---- */
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--hgc-surface);
+  border: 1px solid var(--hgc-hairline);
+  border-radius: var(--hgc-radius);
+  box-shadow: var(--hgc-shadow-sm);
+  overflow: hidden;
+  transition: box-shadow 0.18s ease, transform 0.18s ease, border-color 0.18s ease;
+}
+
+.card:hover {
+  box-shadow: var(--hgc-shadow);
+  transform: translateY(-2px);
+  border-color: #d7dbe1;
+}
+
+.card:focus-within {
+  border-color: var(--hgc-green);
+}
+
+.cardMedia {
+  position: relative;
+  aspect-ratio: 16 / 8;
+  background-size: cover;
+  background-position: center;
+  display: grid;
+  place-items: center;
+}
+
+.cardMedia img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cardInitials {
+  font-family: var(--serif);
+  font-size: 40px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 0.04em;
+}
+
+.strategyChip {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 4px 10px;
+  border-radius: var(--hgc-radius-pill);
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--hgc-ink);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px 18px 16px;
+}
+
+.cardManager {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--hgc-muted);
+}
+
+.cardName {
+  font-family: var(--serif);
+  font-size: 21px;
+  line-height: 1.15;
+  color: var(--hgc-ink);
+  font-weight: 600;
+}
+
+/* Stretched-link pattern: whole card navigates to the fund, map link stays live */
+.stretched::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.stretched:focus-visible {
+  outline: 2px solid var(--hgc-green);
+  outline-offset: 3px;
+}
+
+.cardSummary {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--hgc-muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.chip {
+  padding: 3px 9px;
+  border-radius: var(--hgc-radius-pill);
+  background: var(--hgc-green-soft);
+  color: var(--hgc-green);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.metricRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 10px;
+  padding-top: 14px;
+  border-top: 1px solid var(--hgc-hairline);
+}
+
+.metricLabel {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--hgc-faint);
+  margin-bottom: 3px;
+}
+
+.metricValue {
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--hgc-ink);
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+
+.propCount {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--hgc-muted);
+}
+
+.cardMapLink {
+  position: relative;
+  z-index: 2;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--hgc-green);
+}
+
+.cardMapLink:hover {
+  color: var(--hgc-green-hover);
+}
+
+.dashFooterLink a {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--hgc-green);
+}
+
+.dashFooterLink a:hover {
+  color: var(--hgc-green-hover);
+}
+
+/* ---- Catalogue filters ---- */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 16px;
+  margin: 22px 0 20px;
+}
+
+.filterField {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.filterField span {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--hgc-muted);
+}
+
+.filterField input,
+.filterField select {
+  height: 40px;
+  padding: 0 12px;
+  min-width: 220px;
+  border: 1px solid var(--hgc-hairline);
+  border-radius: var(--hgc-radius-sm);
+  background: var(--hgc-surface);
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--hgc-ink);
+}
+
+.filterField input:focus,
+.filterField select:focus {
+  outline: none;
+  border-color: var(--hgc-green);
+}
+
+.resultCount {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-left: auto;
+  color: var(--hgc-muted);
+}
+
+.resultCount strong {
+  font-family: var(--serif);
+  font-size: 22px;
+  color: var(--hgc-ink);
+}
+
+.resultCount span {
+  font-size: 13px;
+}
+
+.empty {
+  padding: 40px 0;
+  text-align: center;
+  color: var(--hgc-muted);
+  font-size: 15px;
+}
+
+@media (max-width: 560px) {
+  .filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filterField input,
+  .filterField select {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .resultCount {
+    margin-left: 0;
+  }
+}
