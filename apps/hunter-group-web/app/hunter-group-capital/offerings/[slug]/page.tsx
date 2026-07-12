@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { getOfferingBySlug, getOfferings } from "@/lib/capital/repository";
 import { OfferingDetail } from "./OfferingDetail";
@@ -8,5 +9,9 @@ export default async function OfferingPage({ params }: { params: Promise<{ slug:
   const { slug } = await params;
   const offering = getOfferingBySlug(slug);
   if (!offering) notFound();
-  return <OfferingDetail offering={offering} />;
+  return (
+    <Suspense>
+      <OfferingDetail offering={offering} />
+    </Suspense>
+  );
 }
