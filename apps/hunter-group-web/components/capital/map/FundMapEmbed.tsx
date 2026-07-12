@@ -1,19 +1,25 @@
 "use client";
 
+import { useState } from "react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useLang } from "@/lib/i18n/LanguageProvider";
 import { buildMapProperties } from "@/lib/capital/present";
 import type { OfferingBundle } from "@/lib/capital/types";
 import styles from "./fund-map.module.css";
 
-/**
- * Placeholder embed for the fund's portfolio map (Phase 4).
- * Phase 5 replaces the body with the lazy-loaded 3D buildings map.
- */
+// Lazy-load the 3D map so the ArcGIS CDN + WebGL cost is paid only when the
+// Map tab is opened.
+const FundMap = dynamic(() => import("./FundMap").then((m) => m.FundMap), {
+  ssr: false,
+  loading: () => null,
+});
+
 export function FundMapEmbed({ offering }: { offering: OfferingBundle }) {
   const { lang, t } = useLang();
   const m = t.capitalApp.map;
   const buildings = buildMapProperties(offering, lang);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
 
   return (
     <div className={styles.embed}>
@@ -26,18 +32,7 @@ export function FundMapEmbed({ offering }: { offering: OfferingBundle }) {
           {m.title} →
         </Link>
       </div>
-      <ul className={styles.buildingList}>
-        {buildings.map((b) => (
-          <li key={b.id}>
-            <span className={styles.dot} style={{ background: b.accent }} aria-hidden />
-            <span className={styles.buildingName}>{b.name}</span>
-            <span className={styles.buildingMeta}>
-              {b.city}, {b.province}
-              {b.detail ? ` · ${b.detail}` : ""}
-            </span>
-          </li>
-        ))}
-      </ul>
+      <FundMap properties={buildings} selectedId={selectedId} onSelect={setSelectedId} variant="embed" />
     </div>
   );
 }
