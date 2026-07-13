@@ -293,7 +293,7 @@ export type MapProperty = {
   assetClass: string;
 };
 
-/** Portfolio buildings for the 3D map, sourced from real lat/lng. */
+/** Portfolio buildings for the map, sourced from real lat/lng. */
 export function buildMapProperties(bundle: OfferingBundle, lang: Lang): MapProperty[] {
   return bundle.properties.map((p) => ({
     id: p.id,
@@ -308,4 +308,114 @@ export function buildMapProperties(bundle: OfferingBundle, lang: Lang): MapPrope
     verification: VERIFICATION[p.verificationStatus][lang],
     assetClass: taxonomyLabel(assetClasses, p.assetClassId, lang),
   }));
+}
+
+/* ------------------------------------------------------------------ */
+/* Compact money + dates                                              */
+/* ------------------------------------------------------------------ */
+
+function compact(value: number): string {
+  const abs = Math.abs(value);
+  if (abs >= 1e9) return `${(value / 1e9).toFixed(2).replace(/\.?0+$/, "")}B`;
+  if (abs >= 1e6) return `${(value / 1e6).toFixed(2).replace(/\.?0+$/, "")}M`;
+  if (abs >= 1e3) return `${Math.round(value / 1e3)}K`;
+  return String(value);
+}
+
+/** 38160000 -> "$38.16M CAD" / "38,16M CAD" */
+export function formatMoneyCompact(value: number, lang: Lang): string {
+  const c = lang === "tr" ? compact(value).replace(".", ",") : compact(value);
+  return lang === "tr" ? `${c} CAD` : `$${c} CAD`;
+}
+
+const MONTHS: Record<Lang, string[]> = {
+  en: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+  tr: ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"],
+};
+
+/** Accepts "YYYY", "YYYY-MM", or "YYYY-MM-DD". */
+export function formatDate(iso: string, lang: Lang): string {
+  const parts = iso.split("-");
+  const year = parts[0];
+  if (parts.length === 1) return year;
+  const month = MONTHS[lang][Math.max(0, Math.min(11, parseInt(parts[1], 10) - 1))];
+  if (parts.length === 2) return `${month} ${year}`;
+  const day = parseInt(parts[2], 10);
+  return lang === "tr" ? `${day} ${month} ${year}` : `${month} ${day}, ${year}`;
+}
+
+/* ------------------------------------------------------------------ */
+/* Fund detail view model                                             */
+/* ------------------------------------------------------------------ */
+
+export type LabeledRow = { key: string; value: string };
+
+export type FundDetailViewModel = {
+  bannerImage: ResolvedImage;
+  logo: ResolvedImage;
+  headline: string | null; // offering size or AUM
+  fundingPercent: number | null;
+  summaryTiles: MetricTile[];
+  fundDetails: LabeledRow[];
+  highlights: string[];
+  trailingReturns: { period: string; value: string; note: string | null }[];
+  providers: LabeledRow[];
+  lastUpdated: string | null;
+};
+
+/** Headline figure for a card/banner: offering size, else AUM, else null. */
+export function fundHeadline(bundle: OfferingBundle, lang: Lang): string | null {
+  if (bundle.offeringSize) return formatMoneyCompact(Number(bundle.offeringSize.value), lang);
+  if (bundle.aum) return String(bundle.aum.value);
+  return null;
+}
+
+export function buildFundDetailViewModel(bundle: OfferingBundle, lang: Lang): FundDetailViewModel {
+  const sc = primaryShareClass(bundle);
+
+  const bannerImage = resolveImage(bundle.media?.banner, `${bundle.slug}-banner`, bundle.shortName[lang], lang);
+  const logo = resolveImage(bundle.media?.logo, `${bundle.slug}-logo`, bundle.shortName[lang], lang);
+
+  // Summary tiles: target return, distribution, AUM
+  const summaryTiles: MetricTile[] = [];
+  const L = (en: string, tr: string) => (lang === "tr" ? tr : en);
+  if (sc?.targetReturn) summaryTiles.push({ key: "return", label: L("Target return", "Hedef getiri"), value: formatReturnPhrase(sc.targetReturn.value, lang), source: null });
+  if (sc?.targetDistribution) summaryTiles.push({ key: "distribution", label: L("Target distribution", "Hedef dağıtım"), value: formatReturnPhrase(sc.targetDistribution.value, lang), source: null });
+  if (bundle.aum) summaryTiles.push({ key: "aum", label: L("Assets under management", "Yönetilen varlıklar"), value: String(bundle.aum.value), source: null });
+
+  // Fund details rows (only those with data)
+  const fundDetails: LabeledRow[] = [];
+  const row = (key: string, value?: string | null) => { if (value) fundDetails.push({ key, value }); };
+  row("riskProfile", bundle.riskProfile?.[lang]);
+  row("projectedReturn", sc?.targetReturn ? formatReturnPhrase(sc.targetReturn.value, lang) : null);
+  row("investmentTerm", sc?.term ? formatReturnPhrase(sc.term.value, lang) : null);
+  row("minimum", sc?.minimumInvestment ? formatCurrencyCad(sc.minimumInvestment.value, lang) : null);
+  row("unitPrice", sc?.unitPrice ? formatCurrencyCad(sc.unitPrice.value, lang) : null);
+  row("startDate", bundle.inceptionDate ? formatDate(bundle.inceptionDate, lang) : null);
+  row("distribution", sc?.distributionPerUnit ? formatReturnPhrase(sc.distributionPerUnit.value, lang) : null);
+  row("fundType", bundle.fundType?.[lang]);
+  row("fundStatus", bundle.fundStatus?.[lang]);
+  row("managementFee", bundle.managementFee?.[lang]);
+  row("valuation", bundle.valuationFrequency?.[lang]);
+  row("distributionFrequency", bundle.distributionFrequency?.[lang]);
+  row("registered", sc && sc.registeredAccountTypes.length ? sc.registeredAccountTypes.join(", ") : null);
+  row("redemption", sc?.redemptionTerms?.[lang]);
+
+  const providers: LabeledRow[] = [];
+  if (bundle.serviceProviders?.auditor) providers.push({ key: "auditor", value: bundle.serviceProviders.auditor });
+  if (bundle.serviceProviders?.legalCounsel) providers.push({ key: "legalCounsel", value: bundle.serviceProviders.legalCounsel });
+  if (bundle.serviceProviders?.appraiser) providers.push({ key: "appraiser", value: bundle.serviceProviders.appraiser });
+
+  return {
+    bannerImage,
+    logo,
+    headline: fundHeadline(bundle, lang),
+    fundingPercent: typeof bundle.fundingPercent === "number" ? bundle.fundingPercent : null,
+    summaryTiles,
+    fundDetails,
+    highlights: (bundle.highlights ?? []).map((h) => h[lang]),
+    trailingReturns: (bundle.trailingReturns ?? []).map((t) => ({ period: t.period[lang], value: t.value, note: t.note?.[lang] ?? null })),
+    providers,
+    lastUpdated: bundle.lastUpdated ? formatDate(bundle.lastUpdated, lang) : bundle.verifiedAt ? formatDate(bundle.verifiedAt, lang) : null,
+  };
 }

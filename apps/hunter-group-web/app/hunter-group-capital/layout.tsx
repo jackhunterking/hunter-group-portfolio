@@ -1,7 +1,7 @@
-import { CapitalAppShell } from "@/components/capital/CapitalAppShell";
+import { CapitalTopbar } from "@/components/capital/CapitalTopbar";
 
 export default function HunterGroupCapitalLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  return <CapitalAppShell>{children}</CapitalAppShell>;
+  return <CapitalTopbar>{children}</CapitalTopbar>;
 }

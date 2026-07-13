@@ -14,6 +14,11 @@ const sourced = z.object({
 const imageSlot = z.object({ src: z.string().min(1).optional(), alt: localized.optional() });
 const mediaSet = z.object({ card: imageSlot.optional(), banner: imageSlot.optional(), logo: imageSlot.optional() });
 
+const trailingReturn = z.object({ period: localized, value: z.string().min(1), note: localized.optional() });
+const serviceProviders = z.object({
+  auditor: z.string().optional(), legalCounsel: z.string().optional(), appraiser: z.string().optional(),
+});
+
 const offeringSchema = z.object({
   id: z.string().min(1), slug: z.string().min(1), managerId: z.string().min(1),
   name: localized, shortName: localized, summary: localized, thesis: localized,
@@ -22,6 +27,12 @@ const offeringSchema = z.object({
   shareClassIds: z.array(z.string()), propertyIds: z.array(z.string()), documentIds: z.array(z.string()),
   featured: z.boolean(), portfolioFacts: z.array(sourced), risks: z.array(localized),
   media: mediaSet.optional(), offeringSize: sourced.optional(), unitsTotal: sourced.optional(),
+  fundType: localized.optional(), fundStatus: localized.optional(), inceptionDate: z.string().optional(),
+  aum: sourced.optional(), amountRaised: sourced.optional(), fundingPercent: z.number().optional(),
+  managementFee: localized.optional(), valuationFrequency: localized.optional(), distributionFrequency: localized.optional(),
+  riskProfile: localized.optional(), highlights: z.array(localized).optional(),
+  trailingReturns: z.array(trailingReturn).optional(), serviceProviders: serviceProviders.optional(),
+  lastUpdated: z.string().optional(),
   verifiedAt: z.string().min(10),
 });
 

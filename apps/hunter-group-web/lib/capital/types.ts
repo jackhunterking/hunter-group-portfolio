@@ -51,7 +51,10 @@ export type ShareClass = {
   unitPrice?: SourcedValue<number>;
   targetReturn?: SourcedValue<string>;
   targetDistribution?: SourcedValue<string>;
+  distributionPerUnit?: SourcedValue<string>;
   term?: SourcedValue<string>;
+  redemptionTerms?: LocalizedText;
+  drip?: LocalizedText;
   registeredAccountTypes: string[];
 };
 
@@ -78,11 +81,24 @@ export type OfferingDocument = {
   id: string;
   offeringId: string;
   title: LocalizedText;
-  type: "fact-sheet" | "presentation" | "offering-memorandum" | "term-sheet";
+  description?: LocalizedText;
+  type: "fact-sheet" | "presentation" | "offering-memorandum" | "term-sheet" | "subscription-agreement" | "report";
   effectiveDate: string;
   version: string;
   visibility: "public" | "approved-investor" | "private";
   href?: string;
+};
+
+export type TrailingReturn = {
+  period: LocalizedText;
+  value: string;
+  note?: LocalizedText;
+};
+
+export type ServiceProviders = {
+  auditor?: string;
+  legalCounsel?: string;
+  appraiser?: string;
 };
 
 export type Offering = {
@@ -106,6 +122,21 @@ export type Offering = {
   media?: MediaSet;
   offeringSize?: SourcedValue<number>;
   unitsTotal?: SourcedValue<number>;
+  // Fact-sheet fields (all optional)
+  fundType?: LocalizedText;
+  fundStatus?: LocalizedText;
+  inceptionDate?: string;
+  aum?: SourcedValue<string>;
+  amountRaised?: SourcedValue<number>;
+  fundingPercent?: number;
+  managementFee?: LocalizedText;
+  valuationFrequency?: LocalizedText;
+  distributionFrequency?: LocalizedText;
+  riskProfile?: LocalizedText;
+  highlights?: LocalizedText[];
+  trailingReturns?: TrailingReturn[];
+  serviceProviders?: ServiceProviders;
+  lastUpdated?: string;
   verifiedAt: string;
 };
 
