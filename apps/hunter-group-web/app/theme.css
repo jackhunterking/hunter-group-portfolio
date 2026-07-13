@@ -24,6 +24,35 @@
     border-style: solid;
     border-color: var(--border);
   }
+  /* Subset of Tailwind preflight that shadcn relies on (full preflight is
+     deferred during the migration). Legacy components set their own styles
+     and override these safely. */
+  button,
+  [type="button"],
+  [type="reset"],
+  [type="submit"] {
+    -webkit-appearance: button;
+    appearance: button;
+    background-color: transparent;
+    background-image: none;
+    cursor: pointer;
+  }
+  button:disabled,
+  [type="button"]:disabled,
+  [type="submit"]:disabled {
+    cursor: default;
+  }
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+  }
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--muted-foreground);
+    opacity: 1;
+  }
 }
 
 :root {
