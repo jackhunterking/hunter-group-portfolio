@@ -3,6 +3,7 @@ import { Lora, Manrope } from "next/font/google";
 import { LanguageProvider } from "@/lib/i18n/LanguageProvider";
 import { PostHogProvider } from "./providers";
 import "./globals.css";
+import "./theme.css";
 
 const lora = Lora({
   subsets: ["latin", "latin-ext"],

@@ -28,6 +28,10 @@
   --gutter: 24px;
 }
 
+/* Legacy CSS-Modules reset — kept in a low cascade layer during the shadcn
+   migration so Tailwind utilities win. Removed in the finalize phase. */
+@layer legacy {
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -87,6 +91,7 @@ i {
   padding: 0 var(--gutter);
 }
 
+}
 /* Shared keyframes */
 @keyframes fadeUp {
   from {
