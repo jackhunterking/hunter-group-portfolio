@@ -1,0 +1,422 @@
+/* ── Base: always fixed, full-width ── */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  transition:
+    background 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    backdrop-filter 0.35s ease;
+}
+
+/* Transparent state — over hero at page top */
+.transparent {
+  background: transparent;
+  border-bottom: 1px solid transparent;
+}
+
+/* Solid state — after scroll or on non-hero pages */
+.solid {
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  animation: slideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Only animate the first time it goes solid (not on every render) */
+@keyframes slideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+
+/* Inner row */
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px var(--gutter);
+  gap: 24px;
+  max-width: var(--container);
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  height: 34px;
+  width: auto;
+  display: block;
+  flex-shrink: 0;
+  transition: opacity 0.2s ease;
+}
+
+.logo:hover img {
+  opacity: 0.75;
+}
+
+.logoText {
+  font-family: var(--sans);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--white);
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+/* Hide text on small mobile, show from 480px */
+@media (max-width: 479px) {
+  .logoText {
+    display: none;
+  }
+}
+
+.logoBr {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .logo img {
+    height: 40px;
+  }
+
+  .logoText {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+  }
+
+  .logoBr {
+    display: block;
+  }
+}
+
+/* Desktop links */
+.links {
+  display: none;
+  align-items: center;
+  gap: 36px;
+}
+
+@media (min-width: 920px) {
+  .links {
+    display: flex;
+  }
+}
+
+.link {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+  text-decoration: none;
+  position: relative;
+  padding: 6px 0;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+
+/* Gold underline on hover */
+.link::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  right: 100%;
+  height: 1px;
+  background: var(--gold);
+  transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.link:hover {
+  color: var(--gold);
+}
+
+.link:hover::after {
+  right: 0;
+}
+
+/* Language toggle */
+.langToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 8px;
+  padding-left: 24px;
+  border-left: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.langBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.4);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px 2px;
+  transition: color 0.2s ease;
+  line-height: 1;
+}
+
+.langBtn:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.langBtn:hover .flag {
+  opacity: 1;
+}
+
+.langActive {
+  color: var(--gold);
+}
+
+.langActive .flag {
+  opacity: 1;
+  box-shadow: 0 0 0 1px rgba(235, 199, 107, 0.45);
+}
+
+.flag {
+  width: 18px;
+  height: 12px;
+  display: block;
+  flex-shrink: 0;
+  opacity: 0.55;
+  border-radius: 1px;
+  transition: opacity 0.2s ease, box-shadow 0.2s ease;
+}
+
+.langSep {
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 11px;
+  user-select: none;
+}
+
+/* Mobile hamburger */
+.menuToggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.menuToggle span {
+  display: block;
+  width: 24px;
+  height: 1.5px;
+  background: rgba(255, 255, 255, 0.85);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  border-radius: 1px;
+}
+
+.menuOpen .menuToggle span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+.menuOpen .menuToggle span:nth-child(2) {
+  opacity: 0;
+}
+.menuOpen .menuToggle span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+@media (min-width: 920px) {
+  .menuToggle {
+    display: none;
+  }
+}
+
+/* Mobile dropdown menu */
+@media (max-width: 919px) {
+  .menuOpen .links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 32px var(--gutter);
+    background: rgba(0, 0, 0, 0.96);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    animation: fadeDown 0.25s ease both;
+  }
+
+  .menuOpen .link {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.82);
+  }
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Services dropdown ── */
+.dropdown {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.dropdownToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.caret {
+  transition: transform 0.25s ease;
+  opacity: 0.8;
+}
+
+.dropdown:hover .caret,
+.dropdown:focus-within .caret {
+  transform: rotate(180deg);
+}
+
+.dropdownPanel {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 14px;
+  min-width: 240px;
+  padding: 10px 0;
+  background: rgba(0, 0, 0, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.4);
+}
+
+/* Bridge the gap so hover doesn't drop while moving to the panel */
+.dropdownPanel::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  height: 14px;
+}
+
+.dropdown:hover .dropdownPanel,
+.dropdown:focus-within .dropdownPanel {
+  display: flex;
+  animation: fadeDown 0.2s ease both;
+}
+
+.dropdownItem {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+  text-decoration: none;
+  padding: 11px 22px;
+  white-space: nowrap;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.dropdownItem:hover {
+  color: var(--gold);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* Mobile: tap-to-expand panel, centered within the open menu column */
+@media (max-width: 919px) {
+  .dropdown {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    width: 100%;
+  }
+
+  .dropdownToggle {
+    justify-content: center;
+  }
+
+  /* Caret reads as the expand affordance on mobile */
+  .caret {
+    display: block;
+  }
+
+  /* Collapsed by default — only the toggle shows */
+  .menuOpen .dropdownPanel {
+    display: flex;
+    position: static;
+    transform: none;
+    min-width: 0;
+    width: 100%;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: none;
+    box-shadow: none;
+    align-items: center;
+    overflow: hidden;
+    max-height: 0;
+    margin-top: 0;
+    padding: 0;
+    gap: 0;
+    opacity: 0;
+    transition: max-height 0.3s ease, opacity 0.25s ease,
+      margin-top 0.3s ease, padding 0.3s ease, gap 0.3s ease;
+    animation: none;
+  }
+
+  /* Expanded when the user taps Services */
+  .menuOpen.dropdown.servicesOpen .dropdownPanel,
+  .servicesOpen .dropdownPanel {
+    max-height: 240px;
+    margin-top: 18px;
+    padding: 4px 0 0;
+    gap: 18px;
+    opacity: 1;
+  }
+
+  /* Caret rotates only on tap (disable hover rotation on mobile) */
+  .dropdown:hover .caret,
+  .dropdown:focus-within .caret {
+    transform: none;
+  }
+
+  .servicesOpen .caret {
+    transform: rotate(180deg);
+  }
+
+  .menuOpen .dropdownItem {
+    padding: 0;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+  }
+}

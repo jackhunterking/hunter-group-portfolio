@@ -1,20 +1,23 @@
 import type { Metadata } from "next";
-import { Lora, Manrope } from "next/font/google";
+import localFont from "next/font/local";
 import { LanguageProvider } from "@/lib/i18n/LanguageProvider";
 import { PostHogProvider } from "./providers";
 import "./globals.css";
 import "./theme.css";
 
-const lora = Lora({
-  subsets: ["latin", "latin-ext"],
-  weight: ["400", "500", "600", "700"],
+// Vendored locally (variable fonts) so compile needs no network — see app/fonts/.
+const lora = localFont({
+  src: "./fonts/Lora.woff2",
+  weight: "400 700",
+  style: "normal",
   variable: "--font-serif",
   display: "swap",
 });
 
-const manrope = Manrope({
-  subsets: ["latin", "latin-ext"],
-  weight: ["300", "400", "500", "600", "700"],
+const manrope = localFont({
+  src: "./fonts/Manrope.woff2",
+  weight: "300 700",
+  style: "normal",
   variable: "--font-sans",
   display: "swap",
 });
