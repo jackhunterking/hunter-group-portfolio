@@ -15,10 +15,20 @@ pnpm-debug.log*
 
 # Node / Next.js
 node_modules/
+.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
 .next/
 out/
 dist/
 coverage/
+build/
+*.tsbuildinfo
+next-env.d.ts
 
 # Python
 __pycache__/
@@ -30,3 +40,7 @@ __pycache__/
 .turbo/
 .cache/
 work/
+*.pem
+
+# Retired Kredibaba source, if restored locally for reference only.
+/_kredibaba-source

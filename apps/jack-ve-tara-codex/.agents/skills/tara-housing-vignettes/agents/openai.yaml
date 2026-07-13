@@ -1,4 +1,0 @@
-interface:
-  display_name: "Tara Housing Vignettes"
-  short_description: "Create Tara Housing DOCX vignettes"
-  default_prompt: "Use $tara-housing-vignettes to intake details and create a Tara Housing clinical vignette document."

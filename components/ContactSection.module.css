@@ -1,0 +1,112 @@
+.contact {
+  background: var(--ink);
+  padding: 96px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  height: 700px;
+  background-image: url("/logos/HUNTER_Brandmark_Gold.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.04;
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .contact {
+    padding: 140px 0;
+  }
+}
+
+.inner {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+
+/* Eyebrow */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
+}
+
+.hairline {
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background: currentColor;
+  margin-right: 14px;
+  opacity: 0.6;
+}
+
+/* Heading */
+.heading {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1;
+  letter-spacing: -0.025em;
+  color: var(--white);
+  margin-bottom: 20px;
+}
+
+/* Subtitle */
+.sub {
+  font-family: var(--serif);
+  font-size: clamp(16px, 1.8vw, 20px);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 48px;
+}
+
+/* WhatsApp button */
+.waButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--wa-ink);
+  background: var(--wa);
+  padding: 18px 36px;
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.waButton:hover {
+  background: var(--wa-hover);
+  transform: translateY(-2px);
+}
+
+.waIcon {
+  flex-shrink: 0;
+}
+
+/* Phone number shown below button */
+.number {
+  margin-top: 20px;
+  font-family: var(--sans);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.35);
+}

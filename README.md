@@ -1,29 +1,62 @@
-# Hunter Group Portfolio
+# Hunter Group Web
 
-This repository consolidates related Hunter Group properties into one master repo while preserving the original project histories.
+Production Next.js platform for Jack & Tara Hunter at `jackhunter.com`.
 
-## Repository layout
+This repository is now one deployable app at the repo root. It contains the real estate, mortgage, guide, and Hunter Group Capital experiences together.
 
-- `apps/jack-ve-tara-codex/`: content operations, posting workflows, shared agent assets, and Python helper scripts.
-- `apps/hunter-group-web/`: the main Hunter web platform containing real estate and capital-facing experiences in one Next.js app.
-- `docs/`: consolidation notes and overlap analysis used to guide the next build phase.
+## Stack
 
-## Workspace strategy
+- Next.js 15 App Router, React 19, TypeScript
+- CSS Modules plus the existing design tokens in `app/globals.css`
+- HubSpot lead capture in `lib/hubspot.ts`
+- Resend email delivery in `lib/email.ts`
+- Vercel hosting
 
-The imported projects use different stacks and serve different purposes, so they remain isolated inside `apps/` for now.
+## Core Routes
 
-- `hunter-group-web` keeps its own Node.js dependencies and build flow.
-- `jack-ve-tara-codex` keeps its own documentation, skills, and Python-based utilities.
-- Shared packages are intentionally deferred until reusable code is identified from working implementations.
-- Hunter Group Capital should be built inside `hunter-group-web` rather than as a separate sibling app unless a later split becomes necessary.
+- `/` - homepage
+- `/rehber/alici` and `/rehber/satici` - buyer/seller guide funnels
+- `/rehber/ogren` - education hub
+- `/mortgage` - mortgage landing
+- `/mortgage/oranlar` - manual mortgage rates
+- `/mortgage/araclar` - mortgage tools
+- `/hunter-group-capital` - canonical Capital experience
+- `/hunter-x-capital` - legacy redirect to `/hunter-group-capital`
+- `/gizlilik`, `/kullanim-kosullari`, `/reklam-aciklamasi` - legal pages
 
-## Imported source repositories
+## Local Development
 
-- `jackhunterking/jack-ve-tara-codex` -> `apps/jack-ve-tara-codex/`
-- `jackhunterking/hunter-real-estate` -> `apps/hunter-group-web/`
+```bash
+npm install
+npm run dev
+```
 
-Both histories were preserved during import. The source repositories remain standalone and unchanged.
+Open `http://localhost:3000`.
 
-## Next step
+## Environment
 
-Use the overlap notes in `docs/overlap-matrix.md` and `MIGRATION_NOTES.md` to scope the first Hunter Group Capital implementation inside `apps/hunter-group-web/`.
+Copy `.env.example` to `.env.local` and fill in the production/service values.
+
+Required integrations:
+
+- `HUBSPOT_ACCESS_TOKEN`
+- `RESEND_API_KEY`
+- `RESEND_FROM_EMAIL`
+- `RESEND_REPLY_TO`
+- `NEXT_PUBLIC_SITE_URL`
+- PostHog values if analytics/session replay should be enabled
+
+## Guide PDFs
+
+The guide email and thank-you pages expect:
+
+- `public/guides/ev-alma-rehberi.pdf`
+- `public/guides/ev-satma-rehberi.pdf`
+
+Both are present from the approved HUNTER guide Pages PDFs.
+
+## Notes
+
+- Mortgage services are disclosed through Real Mortgage Associates, with Jack Hunter FSRA Licence `M26001258`.
+- Real estate brokerage identity remains separate from mortgage identity.
+- Historical consolidation notes and archived content-ops materials live under `docs/archive/`.

@@ -1,4 +1,0 @@
-interface:
-  display_name: "Jack ve Tara Posting"
-  short_description: "Create and stage 7-platform posts"
-  default_prompt: "Use $jack-ve-tara-posting to write a full Jack ve Tara posting package from this video or transcript."
