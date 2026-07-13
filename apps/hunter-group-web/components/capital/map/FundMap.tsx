@@ -3,13 +3,14 @@
 import { useEffect, useRef, useState } from "react";
 import { useLang } from "@/lib/i18n/LanguageProvider";
 import type { MapProperty } from "@/lib/capital/present";
+import { cn } from "@/lib/utils";
 import { loadLeaflet } from "./leaflet-loader";
-import styles from "./fund-map.module.css";
 
 type Status = "loading" | "ready" | "error";
 
 const TILE_URL = "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png";
 const TILE_ATTR = "© OpenStreetMap contributors © CARTO";
+const SELECTED = "#1e3378"; // navy
 
 export function FundMap({
   properties,
@@ -33,7 +34,6 @@ export function FundMap({
   onSelectRef.current = onSelect;
   const [status, setStatus] = useState<Status>("loading");
 
-  // Init map once
   useEffect(() => {
     let cancelled = false;
     loadLeaflet()
@@ -63,7 +63,6 @@ export function FundMap({
     };
   }, []);
 
-  // (Re)build markers when the fund changes
   useEffect(() => {
     const L = leafletRef.current;
     const map = mapRef.current;
@@ -94,7 +93,6 @@ export function FundMap({
     setTimeout(() => map.invalidateSize(), 0);
   }, [status, properties]);
 
-  // Emphasise + pan to selection
   useEffect(() => {
     const map = mapRef.current;
     if (status !== "ready") return;
@@ -102,7 +100,7 @@ export function FundMap({
       const mk = markersRef.current.get(p.id);
       if (!mk) return;
       const sel = p.id === selectedId;
-      mk.setStyle({ radius: sel ? 13 : 9, weight: sel ? 3 : 2, color: sel ? "#2f6f4f" : "#ffffff", fillColor: p.accent });
+      mk.setStyle({ radius: sel ? 13 : 9, weight: sel ? 3 : 2, color: sel ? SELECTED : "#ffffff", fillColor: p.accent });
       if (sel) mk.bringToFront();
     });
     if (selectedId && map) {
@@ -122,74 +120,61 @@ export function FundMap({
   const selected = properties.find((p) => p.id === selectedId) ?? null;
 
   return (
-    <div className={`${styles.mapShell} ${variant === "full" ? styles.mapShellFull : ""}`}>
-      <div className={styles.stage}>
-        <div ref={containerRef} className={styles.canvas} />
-        {status === "loading" && <div className={styles.stageNote}>{m.loading}</div>}
+    <div className={cn("grid gap-3.5 md:grid-cols-[minmax(0,1fr)_280px]", variant === "full" ? "md:h-[min(72vh,680px)]" : "md:h-[440px]")}>
+      <div className="relative overflow-hidden rounded-xl border border-border bg-muted">
+        <div ref={containerRef} className="absolute inset-0 max-md:relative max-md:h-80" />
+        {status === "loading" && (
+          <div className="absolute inset-0 z-[1] grid place-items-center text-sm text-muted-foreground">{m.loading}</div>
+        )}
         {status === "error" && (
-          <div className={styles.stageNote}>
-            <strong>{m.error}</strong>
+          <div className="absolute inset-0 z-[1] grid place-items-center gap-1 p-6 text-center text-sm text-muted-foreground">
+            <strong className="text-foreground">{m.error}</strong>
             <span>{m.errorHint}</span>
           </div>
         )}
         {status === "ready" && (
-          <div className={styles.stageControls}>
-            <span className={styles.stageBadge}>
+          <div className="absolute left-3 top-3 z-[500] flex items-center gap-2">
+            <span className="rounded-full bg-card/90 px-2.5 py-1 text-xs font-bold text-foreground shadow-sm">
               {properties.length} {t.capitalApp.common.buildings}
             </span>
-            <button type="button" onClick={reset} className={styles.stageBtn}>
+            <button type="button" onClick={reset} className="rounded-full bg-card/90 px-3 py-1 text-xs font-semibold text-primary shadow-sm hover:text-primary/80">
               {m.reset}
             </button>
           </div>
         )}
       </div>
 
-      <aside className={styles.drawer}>
-        <p className={styles.drawerHead}>{m.portfolioBuildings}</p>
-        <ul className={styles.drawerList}>
+      <aside className="flex min-h-0 flex-col gap-2.5 overflow-y-auto rounded-xl border border-border bg-card p-3.5 max-md:max-h-80">
+        <p className="text-[11px] font-bold uppercase tracking-wide text-muted-foreground">{m.portfolioBuildings}</p>
+        <ul className="flex flex-col gap-1.5">
           {properties.map((p) => (
             <li key={p.id}>
               <button
                 type="button"
-                className={`${styles.drawerItem} ${p.id === selectedId ? styles.drawerItemActive : ""}`}
                 onClick={() => onSelect(p.id === selectedId ? null : p.id)}
                 aria-pressed={p.id === selectedId}
+                className={cn(
+                  "grid w-full grid-cols-[auto_1fr] items-center gap-x-2.5 gap-y-1 rounded-lg border px-2.5 py-2.5 text-left transition-colors",
+                  p.id === selectedId ? "border-primary bg-secondary/50" : "border-transparent bg-muted/50 hover:border-border",
+                )}
               >
-                <span className={styles.dot} style={{ background: p.accent }} aria-hidden />
-                <span className={styles.drawerName}>{p.name}</span>
-                <span className={styles.drawerMeta}>
-                  {p.city}, {p.province}
-                </span>
+                <span className="size-2.5 rounded-full" style={{ background: p.accent }} aria-hidden />
+                <span className="text-[13px] font-semibold text-foreground">{p.name}</span>
+                <span className="col-start-2 text-xs text-muted-foreground">{p.city}, {p.province}</span>
               </button>
             </li>
           ))}
         </ul>
 
         {selected && (
-          <div className={styles.detail}>
-            <h3>{selected.name}</h3>
-            <p className={styles.detailLoc}>
-              {selected.city}, {selected.province}
-            </p>
-            <dl className={styles.detailMeta}>
-              <div>
-                <dt>{t.capitalApp.detail.assetClass}</dt>
-                <dd>{selected.assetClass}</dd>
-              </div>
-              {selected.detail && (
-                <div>
-                  <dt>{t.capitalApp.portfolio.size}</dt>
-                  <dd>{selected.detail}</dd>
-                </div>
-              )}
-              <div>
-                <dt>{t.capitalApp.portfolio.status}</dt>
-                <dd>{selected.status}</dd>
-              </div>
-              <div>
-                <dt>{t.capitalApp.portfolio.verification}</dt>
-                <dd>{selected.verification}</dd>
-              </div>
+          <div className="mt-auto border-t border-border pt-3">
+            <h3 className="font-serif text-[17px] font-semibold text-foreground">{selected.name}</h3>
+            <p className="mb-2 text-[12.5px] text-muted-foreground">{selected.city}, {selected.province}</p>
+            <dl className="grid grid-cols-2 gap-2.5">
+              <div><dt className="text-[10.5px] font-semibold text-muted-foreground">{t.capitalApp.detail.assetClass}</dt><dd className="text-[13px] font-semibold text-foreground">{selected.assetClass}</dd></div>
+              {selected.detail && <div><dt className="text-[10.5px] font-semibold text-muted-foreground">{t.capitalApp.portfolio.size}</dt><dd className="text-[13px] font-semibold text-foreground">{selected.detail}</dd></div>}
+              <div><dt className="text-[10.5px] font-semibold text-muted-foreground">{t.capitalApp.portfolio.status}</dt><dd className="text-[13px] font-semibold text-foreground">{selected.status}</dd></div>
+              <div><dt className="text-[10.5px] font-semibold text-muted-foreground">{t.capitalApp.portfolio.verification}</dt><dd className="text-[13px] font-semibold text-foreground">{selected.verification}</dd></div>
             </dl>
           </div>
         )}
